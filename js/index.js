@@ -1,3 +1,4 @@
+// dropdown click
 var dropx = document.querySelector('.dropx')
 
 var boxX = document.querySelector('.boxX')
@@ -11,3 +12,8 @@ dropx.addEventListener('click',function(){
     }
    
 })
+
+// search button
+$('.search-button').click(function(){
+    $(this).parent().toggleClass('open');
+  });
