@@ -22,8 +22,8 @@
 /* dropdown tepadagi */
 .dropx {
     width: 120px;
-   
-    
+
+
     font-size: 15px;
     text-align: center;
     cursor: pointer;
@@ -34,51 +34,51 @@
 }
 .dropx p {
     text-align: center;
-    
+
 
 }
 .boxX {
     padding: 10px;
-    
+
     display: none;
 }
 .boxX.active {
     display: block;
 }
 
-@media (max-width: 576px) {  
+@media (max-width: 576px) {
   .xs {color:red;font-weight:bold;}
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width:768px) {  
+@media (min-width: 576px) and (max-width:768px) {
   .sm {color:red;font-weight:bold;}
 }
- 
+
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
-@media (min-width: 768px) and (max-width:992px) {  
+@media (min-width: 768px) and (max-width:992px) {
  .md {color:red;font-weight:bold;}
 }
- 
+
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width:1200px) { 
+@media (min-width: 992px) and (max-width:1200px) {
  .lg {color:red;font-weight:bold;}
 }
- 
+
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  
+@media (min-width: 1200px) {
     .xl {color:red;font-weight:bold;}
 }
- 
+
 
   @import url(https://fonts.googleapis.com/css?family=Lato:700);
   .box {
     position: relative;
-    
+
     background: #fff;
     box-shadow: 0 0 15px rgba(0,0,0,.1);
   }
-  
+
   /* common */
   .ribbon {
     width: 150px;
@@ -107,8 +107,8 @@
     text-transform: uppercase;
     text-align: center;
   }
-  
-  
+
+
 
 /* top right*/
 .ribbon-top-right {
@@ -140,122 +140,17 @@
 }
 
 .bg1-dark{
-  background-color: #2F4052;
+  background-color: #18354C;
+  color:#ffffff;
 }
 
 .cursor1 {
   cursor: pointer;
 }
 
-/* search bar
-$background-color: #2A2E37;
-$search-bg-color: #242628;
-$icon-color: #00FEDE;
-$transition: all .5s ease; */
-* {
-  box-sizing: border-box;
-}
-.search {
-  width: 100px;
-  height: 100px;
-  margin: 40px auto 0;
-  background-color: $search-bg-color;
-  position: relative;
-  overflow: hidden;
-  transition: $transition;
-  &:before {
-    content: '';
-    display: block;
-    width: 3px;
-    height: 100%;
-    position: relative;
-    background-color: $icon-color;
-    transition: $transition;
-  }
-  &.open {
-    width: 420px;
-    &:before {
-      height: 60px;
-      margin: 20px 0 20px 30px;
-      position: absolute;
-    }
-  }
-}
+/* social network icons */
 
-.search-box {
-  width: 100%;
-  height: 100%;
-  box-shadow: none;
-  border: none;
-  background: transparent;
-  color: #fff;
-  padding: 20px 100px 20px 45px;
-  font-size: 40px;
-  &:focus {
-    outline: none;
-  }
-}
-
-.search-button {
-  width: 100px;
-  height: 100px;
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 20px;
-  cursor: pointer;
-}
-
-.search-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 40px;
-  border: 3px solid $icon-color;
-  display: block;
-  position: relative;
-  margin-left: 5px;
-  transition: $transition;
-  &:before {
-    content: '';
-    width: 3px;
-    height: 15px;
-    position: absolute;
-    right: -2px;
-    top: 30px;
-    display: block;
-    background-color: $icon-color;
-    transform: rotate(-45deg);
-    transition: $transition;
-  }
-  &:after {
-    content: '';
-    width: 3px;
-    height: 15px;
-    position: absolute;
-    right: -12px;
-    top: 40px;
-    display: block;
-    background-color: $icon-color;
-    transform: rotate(-45deg);
-    transition: $transition;
-  }
-  .open & {
-    margin: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 60px;
-    &:before {
-      transform: rotate(52deg);
-      right: 22px;
-      top: 23px;
-      height: 18px;
-    }
-    &:after {
-      transform: rotate(-230deg);
-      right: 22px;
-      top: 13px;
-      height: 18px;
-    }
-  }
+/* card tags */
+.card-tags {
+  margin: 0;
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pythonacademy</title>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
 <body>
@@ -46,14 +46,10 @@
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" id="colornav">Ish o`rinlari</a>
                       </li>
                     </ul>
-                    <!-- <li class="nav-item">
-                      <div class="search">
-                        <input type="search" class="search-box" />
-                        <span class="search-button">
-                          <span class="search-icon"></span>
-                        </span>
-                      </div>
-                    </li> -->
+                    <form class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form> &nbsp;&nbsp;&nbsp;
                     <ul class="navbar-nav">
 		                <li class="nav-item">
 		                    <a class="nav-link btn btn-danger btn-sm"  id='colornav' href="{{ url('/login') }}">Login</a>
@@ -67,19 +63,29 @@
               </nav>
         </div>
     </header>
-    <!-- HEADER OXIRI --> 
+    <!-- HEADER OXIRI -->
 
     <!-- section -->
     <section class="container">
       <div class="row">
         <div class="col-8">
           <div class="card mb-3">
-            <h1>Salom</h1>        
+            <h1>Salom</h1>
             <img src="img/wp3105538-python-wallpapers.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <div class="row">
+                <div class="col-4"><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div>
+              <div class="col-8">
+                <p class="card-tags">
+                  <small class="text-muted">
+                  <span class="fa fa-tags"></span>
+                  <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">community</span></a>
+                  </small>
+                  </p>
+              </div>
+              </div>
             </div>
           </div>
         </div>
@@ -87,7 +93,7 @@
           <div class="card" style="width: 18rem;">
             <button type="button" class="btn btn-primary">
               E'lonlar <span class="badge bg-secondary">4</span>
-            </button>            
+            </button>
             <div class="card" style="width: 18rem;">
               <div class="card-header">
                 Featured
@@ -115,110 +121,187 @@
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
   <div class="col mb-4">
-    <div class="card">
-    	<div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
+     <div class="card">
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
       <img src="img/py2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python</h5>
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">python</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">basics</span></a>
+          </small>
+          </p>
       </div>
     </div>
   </div>
   <div class="col mb-4">
     <div class="card">
-    	<div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
       <img src="img/py2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python</h5>
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">django</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">basics</span></a>
+          </small>
+          </p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+     <div class="card">
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
+      <img src="img/py2.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">flask</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">basics</span></a>
+          </small>
+          </p>
       </div>
     </div>
   </div>
   <div class="col mb-4">
     <div class="card">
-    	<div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
       <img src="img/py2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">telegram bot</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">basics</span></a>
+          </small>
+          </p>
       </div>
     </div>
   </div>
   <div class="col mb-4">
     <div class="card">
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
       <img src="img/py2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python</h5>
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">machine learning</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">basics</span></a>
+          </small>
+          </p>
       </div>
     </div>
   </div>
   <div class="col mb-4">
-    <div class="card">
+     <div class="card">
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
       <img src="img/py2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python</h5>
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">python</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">books</span></a>
+          </small>
+          </p>
       </div>
     </div>
   </div>
   <div class="col mb-4">
-    <div class="card">
+     <div class="card">
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
       <img src="img/py2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python</h5>
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">django</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">books</span></a>
+          </small>
+          </p>
       </div>
     </div>
   </div>
   <div class="col mb-4">
-    <div class="card">
+     <div class="card">
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
       <img src="img/py2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python</h5>
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">python</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">books</span></a>
+          </small>
+          </p>
       </div>
     </div>
   </div>
   <div class="col mb-4">
-    <div class="card">
+     <div class="card">
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
       <img src="img/py2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python</h5>
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">python</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">videos</span></a>
+          </small>
+          </p>
       </div>
     </div>
   </div>
   <div class="col mb-4">
-    <div class="card">
+     <div class="card">
+      <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
       <img src="img/py2.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Python</h5>
+        <h5><a  style="text-decoration:none" class="card-title">Python</a></h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="img/py2.jpeg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Python</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a href="#" class="btn btn-primary btn-sm">Go somewhere</a>
+        <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> admin | <i class="fas fa-calendar-alt"></i> Jan 20, 2021</small></p>
+        <p class="card-tags">
+          <small class="text-muted">
+          <span class="fa fa-tags"></span>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">django</span></a>
+          <a href="#" class="text-muted"><span class="badge rounded-pill bg-light text-muted">jobs</span></a>
+          </small>
+          </p>
       </div>
     </div>
   </div>
 </div>
-</div>  
+</div>
 
 <!-- Footer qismi -->
 <hr style="margin-top: 100px;">
@@ -229,7 +312,7 @@
       <div class="row">
         <!--Grid column-->
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Footer Content</h5>  
+          <h5 class="text-uppercase">Footer Content</h5>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
             molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
@@ -237,11 +320,11 @@
           </p>
         </div>
         <!--Grid column-->
-  
+
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Links</h5>
-  
+
           <ul class="list-unstyled mb-0">
             <li>
               <a href="#!">Link 1</a>
@@ -258,11 +341,11 @@
           </ul>
         </div>
         <!--Grid column-->
-  
+
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-0">Links</h5>
-  
+
           <ul class="list-unstyled">
             <li>
               <a href="#!">Link 1</a>
@@ -298,28 +381,28 @@
     <!-- Section: Social media -->
     <section class="d-flex justify-content-center align-items-center">
       <!-- Facebook -->
-      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
-  
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-facebook-f" style="color:white"></i></a>
+
       <!-- Twitter -->
-      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
-  
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark" ><i class="fab fa-twitter" style="color:white"></i></a>
+
       <!-- Telegram -->
-      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-telegram"></i></a>
-  
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-telegram" style="color:white"></i></a>
+
       <!-- Instagram -->
-      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
-      
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram" style="color:white"></i></a>
+
       <!-- Google -->
-      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>   
-  
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-google" style="color:white"></i></a>
+
       <!-- Linkedin -->
-      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
-      
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-linkedin" style="color:white"></i></a>
+
       <!-- Github -->
-      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" daata-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" daata-mdb-ripple-color="dark"><i class="fab fa-github" style="color:white"></i></a>
     </section>
     <!-- Section: Social media -->
-  
+
     <!-- Copyright -->
     <div class="text-center p-3 bg1-dark">
       © 2021 All rights reserved:
@@ -332,5 +415,5 @@
 <!-- <script src="js/jquery.min.js"></script>
 <script src="js/src/popover.js"></script>
 <script src="js/bootstrap.js"></script> -->
-<script src="js/index.js"></script>
+<script src="js/index2.js"></script>
 </html>
