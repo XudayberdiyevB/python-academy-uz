@@ -1,0 +1,155 @@
+.header-color {
+    background-color: #18354C;
+    color: #ffffff;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+.pylogo {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+}
+
+.container {
+    padding: 10px;
+}
+
+#colornav {
+    color: #ffffff;
+}
+/* dropdown tepadagi */
+.dropx {
+    width: 120px;
+
+
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+.solid {
+    width: 122px;
+    margin: 10px;
+}
+.dropx p {
+    text-align: center;
+
+
+}
+.boxX {
+    padding: 10px;
+
+    display: none;
+}
+.boxX.active {
+    display: block;
+}
+
+@media (max-width: 576px) {
+  .xs {color:red;font-weight:bold;}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width:768px) {
+  .sm {color:red;font-weight:bold;}
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) and (max-width:992px) {
+ .md {color:red;font-weight:bold;}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width:1200px) {
+ .lg {color:red;font-weight:bold;}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .xl {color:red;font-weight:bold;}
+}
+
+
+  @import url(https://fonts.googleapis.com/css?family=Lato:700);
+  .box {
+    position: relative;
+
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
+  }
+
+  /* common */
+  .ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+  }
+  .ribbon::before,
+  .ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #2980b9;
+  }
+  .ribbon span {
+    position: absolute;
+    display: block;
+    width: 225px;
+    padding: 15px 0;
+    background-color: #318CE7;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    color: #fff;
+    font: 700 18px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+
+
+/* top right*/
+.ribbon-top-right {
+  top: -10px;
+  right: -10px;
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-top-right::before {
+  top: 0;
+  left: 0;
+}
+.ribbon-top-right::after {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-top-right span {
+  left: -25px;
+  top: 30px;
+  transform: rotate(45deg);
+}
+
+.comment-box {
+  padding: 0.8rem 1rem;
+  border-radius: 30px;
+}
+
+.bg1-dark{
+  background-color: #18354C;
+  color:#ffffff;
+}
+
+.cursor1 {
+  cursor: pointer;
+}
+
+/* search bar
+$background-color: #2A2E37;
+$search-bg-color: #242628;
+$icon-color: #00FEDE;
+$transition: all .5s ease; */
