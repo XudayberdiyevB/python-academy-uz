@@ -16,4 +16,5 @@ dropx.addEventListener('click',function(){
 // search button
 $('.search-button').click(function(){
     $(this).parent().toggleClass('open');
-  });
+});
+
