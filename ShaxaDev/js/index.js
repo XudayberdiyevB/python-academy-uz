@@ -10,6 +10,10 @@ dropx.addEventListener('click',function(){
     else {
         boxX.classList.add('active')
     }
-
+   
 })
 
+// search button
+$('.search-button').click(function(){
+    $(this).parent().toggleClass('open');
+  });
