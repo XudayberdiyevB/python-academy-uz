@@ -59,15 +59,15 @@ body,
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
   font-size: 14px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.75;
+  /* font-weight: 400;
+  font-style: normal; */
+  /* line-height: 1.5; */
   position: relative;
   visibility: visible;
-  color: #454545;
-  background-color: #FFFFFF;
+  /* color: #454545; */
+  /* background-color: #FFFFFF; */
 }
 
 h1,
@@ -300,24 +300,6 @@ ul li + li {
   width: 100%;
 }
 
-@media only screen and (min-width: 1200px) {
-  .container {
-    max-width: 1200px;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  .container {
-    max-width: 450px;
-  }
-}
-
-@media only screen and (max-width: 479px) {
-  .container {
-    max-width: 300px;
-  }
-}
-
 .lead {
   font-size: 18px;
   font-weight: 400;
@@ -479,12 +461,12 @@ ul li + li {
   opacity: 0;
 }
 
-.tab-content .tab-pane.active {
+/* .tab-content .tab-pane.active {
   visibility: visible;
   overflow: visible;
   height: auto;
   opacity: 1;
-}
+} */
 
 /*--Background Image--*/
 [data-bg-image]:not(.bg-parallax) {
@@ -872,20 +854,7 @@ label {
   margin-bottom: 10px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea,
-.form-control {
-  line-height: 24px;
-  display: block;
-  width: 100%;
-  padding: 10px 20px;
-  color: #454545;
-  border: 1px solid #EDEDED;
-  border-radius: 0;
-  background-color: #FFFFFF;
-}
+
 
 select {
   line-height: 24px;
@@ -997,15 +966,7 @@ select {
 /*----
 /*  02.3 Button Elements CSS
 /*----------------------------------------*/
-.btn {
-  line-height: 24px;
-  padding: 10px 30px;
-  border-radius: 0;
-}
 
-.btn-lg {
-  padding: 20px 35px;
-}
 
 /*----
 /*  02.5 Button Elements CSS
@@ -1045,7 +1006,7 @@ select {
 /*----
 /*  02.1 Accordion Elements CSS
 /*----------------------------------------*/
-.accordion .card .card-header {
+/* .accordion .card .card-header {
   background-color: transparent;
 }
 
@@ -1057,7 +1018,7 @@ select {
 .accordion .card .card-header .btn:hover {
   text-decoration: none;
   color: #007BFF;
-}
+} */
 
 /*----
 /*  02.6 Button Elements CSS
@@ -1319,28 +1280,28 @@ select {
   background-color: #FFFFFF;
 }
 
-.main-menu > ul > li.active > a, .main-menu > ul > li:hover > a {
+/* .main-menu > ul > li.active > a, .main-menu > ul > li:hover > a {
   color: #FFFFFF;
-}
+} */
 
-.main-menu > ul > li.active > a::before, .main-menu > ul > li:hover > a::before {
+/* .main-menu > ul > li.active > a::before, .main-menu > ul > li:hover > a::before {
   right: auto;
   left: 0;
   width: 100%;
-}
+} */
 
-.main-menu > ul > li:hover > .sub-menu {
+/* .main-menu > ul > li:hover > .sub-menu {
   visibility: visible;
   opacity: 1;
-}
+} */
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+/* @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .main-menu > ul > li + li {
     margin-left: 30px;
   }
-}
+} */
 
-@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
+/* @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
   .main-menu {
     display: none;
     width: 100%;
@@ -1367,7 +1328,7 @@ select {
     padding-left: 12px;
     border-left: 4px solid #FFFFFF;
   }
-}
+} */
 
 /* Sub Menu */
 .sub-menu {
@@ -1674,23 +1635,6 @@ body.offcanvas-open {
   border-top-right-radius: 0.3rem;
 }
 
-.loginSignupNav li {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  margin: 0;
-}
-
-.loginSignupNav li .nav-link {
-  padding: 15px 30px;
-}
-
-.loginSignupNav li .nav-link.active {
-  color: #FFFFFF;
-  background-color: #007BFF;
-}
-
 /* Login & Signup With Social */
 .login-reg-social {
   display: -webkit-box;
@@ -1883,7 +1827,7 @@ body.offcanvas-open {
 /*  06. Page Heading/Title CSS
 /*----------------------------------------*/
 /* Page Heading Section */
-.page-heading-section {
+/* .page-heading-section {
   padding: 200px 0 100px;
 }
 
@@ -1916,7 +1860,7 @@ body.offcanvas-open {
 .page-heading-content .breadcrumb .breadcrumb-item.active {
   text-decoration: underline;
   color: #FFFFFF;
-}
+} */
 
 /*----------------------------------------*/
 /*  07. Job Search CSS
