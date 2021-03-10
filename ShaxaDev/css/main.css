@@ -1,7 +1,14 @@
+/* header */
 .header-color {
     background-color: #18354C;
     color: #ffffff;
+    height: 79px;
 }
+
+.nav-item-err {
+  margin-top: 0;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -17,14 +24,11 @@
 }
 
 #colornav {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 /* dropdown tepadagi */
 .dropx {
     width: 120px;
-
-
-    font-size: 15px;
     text-align: center;
     cursor: pointer;
 }
@@ -157,7 +161,7 @@
 
 /* login form */
 .loginforma {
-  width: 40%;
+  width: 30%;
   margin-top: 30px;
   padding: 5px;
 }
@@ -299,4 +303,14 @@
     height: 48px;
     margin-bottom: 16px;
     width: 100%;
+}
+
+/* password eye */
+.p-viewer {
+  float: right;
+  margin-top: -37px;
+  margin-right: 10px;
+  position: relative;
+  z-index: 1;
+  cursor:pointer;
 }
