@@ -308,9 +308,14 @@
 /* password eye */
 .p-viewer {
   float: right;
-  margin-top: -37px;
+  margin-top: -34px;
   margin-right: 10px;
   position: relative;
   z-index: 1;
   cursor:pointer;
+  display: flex;
+  align-items: center;
+}
+i.fa-eye-slash {
+  display: none;
 }
