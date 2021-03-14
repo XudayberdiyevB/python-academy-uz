@@ -81,7 +81,7 @@
             <div class="submit-row">
             <input type="submit" name=submit value="Kirish" class="btn btn-danger submit_input">
             <span>or</span>
-            <a href="#">Forgot Password</a>
+            <a href="{% url 'account:password_reset' %}">Forgot Password</a>
         </div>
         </form>
 
@@ -103,6 +103,6 @@
       <!-- Copyright -->
 
 </body>
-<script src="js/index.js"></script>
-<script src="js/password.js"></script>
+<script src="{% static 'js/index.js' %}"></script>
+<script src="{% static 'js/password.js' %}"></script>
 </html>

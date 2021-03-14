@@ -1,11 +1,10 @@
 from django.shortcuts import render
-from home.models import CardModel,TagModel,HomeMaqolaModel
+from .models import CardModel,TagModel,HomeMaqolaModel
 
-# Create your views here.
+# home page viewlari
 
 def homepage(request):
     card=CardModel.objects.all()[0]
     maqolalar=HomeMaqolaModel.objects.all()
     context={'card':card,'maqolalar':maqolalar}
-
     return render(request, 'home/index.html',context)
