@@ -322,6 +322,48 @@ i.fa-eye-slash {
 
 .list-menu {
   text-align: center;
+  border
 }
 
 /* tags courses */
+
+.homebtn_detail {
+  position: absolute;
+  bottom: 0;
+  right: 0;  
+}
+
+.home_rows {
+  position: relative;
+}
+
+/* .mtself {
+  margin-bottom: 80px;
+} */
+
+.course-detail-info {
+  border: none !important;
+  /* text-align: center; */
+}
+
+/* Comment section Course page */
+/* .icons i {
+  margin-left: 8px
+} */
+.user-img {
+  margin-right: 5px;
+}
+
+.reply {
+  margin-left: 12px
+}
+
+.reply small {
+  color: #b7b4b4
+}
+
+.reply small:hover {
+  color: green;
+  cursor: pointer
+}
+/* end comment section */

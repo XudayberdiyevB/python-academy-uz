@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %} Course Detail {% endblock title %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card mx-auto course-detail-info" style="width: 70%;">
+        <div class="card-body">
+          <h1 class="card-title">Creating PyQt Layouts for GUI Applications</h1>
+          <h6 class="card-subtitle mb-2 text-muted">
+            <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> admin </a>| 10 Videos | <i class="far fa-clock"> 1 soat 20 min | </i> <i class="far fa-comment-dots"></i> 100 </small></p>
+          </h6>
+          <p class="card-text">PyQt’s layout managers provide a user-friendly and productive way of arranging graphical components, or widgets, on a GUI. Laying out widgets properly will make your GUI applications look polished and professional. Learning to do so efficiently and effectively is a fundamental skill for you to get up and running with GUI application development using Python and PyQt.</p>
+          <ul>
+            <h3>In this course, you’ll learn:</h3>
+            <li>What the benefits are of using PyQt’s layout managers</li>
+            <li>How to programmatically lay out widgets on a GUI using PyQt’s layout managers</li>
+            <li>How to select the right layout manager for your GUI application</li>
+            <li>How to lay out widgets in main window–based and dialog-based applications</li>
+          </ul>              
+        </div>
+
+        <div class="video_content">
+            <video width="100%" height="auto" controls controlsList="nodownload">
+                <source src="All the right moves.mp4" type="video/mp4">
+                <!-- <source src="movie.ogg" type="video/ogg"> -->
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="card mx-auto mt-3" style="width: 70%;">
+      <div class="card-body">
+        <h5 class="card-title">Creating PyQt Layouts for GUI Applications</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <p class="card-text"><small class="text-muted">10 Videos | <i class="far fa-clock"> 1 soat 20 min</i></small></p>
+        </h6>
+        <p class="card-text">
+          <ol class="list-group list-group-flush">
+            <li class="list-group-item"><a class="a1 text-decoration-none"><i class="far fa-play-circle"></i> 1-video </a></li>
+            <li class="list-group-item"><a class="a2 text-decoration-none"><i class="far fa-play-circle"></i> 2-video </a></li>
+            <li class="list-group-item"><a class="a3 text-decoration-none"><i class="far fa-play-circle"></i> 3-video </a></li>
+            <li class="list-group-item"><a class="a4 text-decoration-none"><i class="far fa-play-circle"></i> 4-video </a></li>               
+          </ol>
+        </p>
+      </div>
+    </div>
+
+    <!-- Comment secton -->
+    <div class="container mt-5">
+      <div class="row d-flex justify-content-center">
+          <div class="col-md-8">
+              <div class="headings d-flex justify-content-between align-items-center mb-3">
+                  <h5>Izohlar</h5>                      
+              </div>
+              <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> user </a></small> <small class="font-weight-bold">Rahmat</small></span> </div> <small>2 days ago</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Reply</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+              </div>
+              <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> user </a></small> <small class="font-weight-bold">Rahmat</small></span> </div> <small>2 days ago</small>
+                </div>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> <small>Reply</small> </div>
+                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                </div>
+            </div>
+            <div class="card p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                  <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> user </a></small> <small class="font-weight-bold">Rahmat</small></span> </div> <small>2 days ago</small>
+              </div>
+              <div class="action d-flex justify-content-between mt-2 align-items-center">
+                  <div class="reply px-4"> <small>Reply</small> </div>
+                  <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+              </div>
+            </div>
+            <div class="form-floating mt-2">
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+              <label for="floatingTextarea">Izoh qoldirish</label>
+            </div>
+              
+          </div>
+      </div>
+  </div>
+  <!-- end comment section -->
+  <div class="mx-auto" style="width: 70%;">
+    <a class="btn btn-outline-primary mt-4" href="course_list.html" role="button"><i class="fas fa-arrow-left"></i> Orqaga</a>
+  </div>
+</div>      
+
+{% endblock content %}

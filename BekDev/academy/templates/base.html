@@ -16,17 +16,17 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light ">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{% url 'homepage' %}">
                         <img src="{% static 'img/python-seeklogo.com.svg' %}" alt="" width="30" height="24" class="pylogo">
                     </a>
-                    <a class="navbar-brand" href="index.html" id="colornav">Python Academy Uz</a>
+                    <a class="navbar-brand" href="{% url 'homepage' %}" id="colornav">Python Academy Uz</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-4 mb-lg-0">
                       <li class="nav-item">
-                        <a class="nav-link" href="courses.html" id="colornav">Kurslar</a>
+                        <a class="nav-link" href="{% url 'course' %}" id="colornav">Kurslar</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="detail.html" id="colornav">Maqola</a>
