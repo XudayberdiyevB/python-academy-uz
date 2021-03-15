@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} {% endblock title %} </title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+<body>
+    <!--   QISMI -->
+    <header class="header-color sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="{% static 'img/python-seeklogo.com.svg' %}" alt="" width="30" height="24" class="pylogo">
+                    </a>
+                    <a class="navbar-brand" href="{% url 'home:homepage' %}" id="colornav">Python Academy Uz</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link" href="courses.html" id="colornav">Kurslar</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="detail.html" id="colornav">Maqola</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" id="colornav">Test</a>
+                      </li>
+                      <li class="nav-item dropdown dropx">
+                        <a id="colornav" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Manbalar
+                        </a>
+                        <ul class="dropdown-menu boxX" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="books.html" >Kitoblar</a></li>
+                          <li><a class="dropdown-item" href="#" >Dasturlar</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#" >Foydali havolalar</a></li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="job_list.html" id="colornav">Jobs</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" id="colornav">Forum</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="team.html" id="colornav">Team</a>
+                      </li>                      
+                    </ul>
+                    <form class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form> &nbsp;&nbsp;&nbsp;
+                    <ul class="navbar-nav">
+
+                      {% if request.user.is_authenticated %}
+                         <li class="nav-item dropdown dropx">
+                        <a id="colornav" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Account
+                        </a>
+                        <ul class="dropdown-menu boxX" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="books.html" >Your profile</a></li>
+                          <li><a class="dropdown-item" href="#" >Your posts</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="{% url 'account:logout' %}" >Logout</a></li>
+                        </ul>
+                      </li>
+                      {% else %}
+                          <li class="nav-item">
+                              <a class="nav-link btn btn-danger btn-sm"  id='colornav' href="{% url 'account:login' %}">Login</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link"  id='colornav' href="{% url 'account:register' %}">Register</a>
+                          </li>
+                      {% endif %}
+
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </div>
+    </header>
+    <!-- HEADER OXIRI -->
+
+    {% block content %}
+    {% endblock content%}
+
+    <!-- Footer qismi -->
+<hr style="margin-top: 100px;">
+<footer class="bg-footer text-black text-center text-lg-start bg1-dark">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Footer Content</h5>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+          molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
+          voluptatem veniam, est atque cumque eum delectus sint!
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Links</h5>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-0">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+  <div class="p-4 pb-0">
+    <!-- Section: CTA -->
+    <section class="">
+      <p class="d-flex justify-content-center align-items-center">
+        <span class="me-3">Register for free</span>
+        <button type="button" class="btn btn-outline-success btn-rounded">
+          Sign up!
+        </button>
+      </p>
+    </section>
+    <!-- Section: CTA -->
+  </div>
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center align-items-center">
+    <!-- Facebook -->
+    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-facebook-f" style="color:white"></i></a>
+
+    <!-- Twitter -->
+    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark" ><i class="fab fa-twitter" style="color:white"></i></a>
+
+    <!-- Telegram -->
+    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-telegram" style="color:white"></i></a>
+
+    <!-- Instagram -->
+    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram" style="color:white"></i></a>
+
+    <!-- Google -->
+    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-google" style="color:white"></i></a>
+
+    <!-- Linkedin -->
+    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-linkedin" style="color:white"></i></a>
+
+    <!-- Github -->
+    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" daata-mdb-ripple-color="dark"><i class="fab fa-github" style="color:white"></i></a>
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3 bg1-dark">
+    © 2021 All rights reserved:
+    <a style="text-decoration: none; color: black;" href="pythonacademy">Python Academy</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+</body>
+</html>
