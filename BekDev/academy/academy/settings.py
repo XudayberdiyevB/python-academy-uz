@@ -25,7 +25,7 @@ SECRET_KEY = 'i8*b$tub7+k5lb^%ytwcq5$-+=a%m@2of123rz(q09a7ig^zja'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','198.211.99.20','localhost','testserver']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'courses',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,13 @@ STATICFILES_DIRS=[BASE_DIR / 'static']
 # media files
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/' # new
+
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'testshaxa@gmail.com'
+EMAIL_HOST_PASSWORD = 'assalom12'
+EMAIL_USE_TLS = True

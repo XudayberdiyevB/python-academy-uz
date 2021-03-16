@@ -10,7 +10,7 @@ class TagModel(models.Model):
 
 class CardModel(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='img',default='py2.jpeg')
+    image = models.ImageField(upload_to='img')
     text = models.TextField()
     create_date = models.DateField(default=datetime.now())
     tag = models.ManyToManyField(TagModel, verbose_name='tag_list')
