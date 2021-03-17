@@ -8,37 +8,14 @@
 
     <div class="card mx-auto course-detail-info" style="width: 70%;">
         <div class="card-body">
-          <h1 class="card-title">Creating PyQt Layouts for GUI Applications</h1>
+          <h1 class="card-title">{{course_list.kurs_name}}</h1>
           <h6 class="card-subtitle mb-2 text-muted">
-            <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> admin </a>| 10 Videos | <i class="far fa-clock"> 1 soat 20 min | </i> <i class="far fa-comment-dots"></i> 100 </small></p>
+            <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> {{course_list.author}}</a>| {{course_list.number_of_video}} Videos | <i class="far fa-clock"> {{course_list.hour_of_kurs}} soat {{course_list.minute_of_kurs}} |  </i> <i class="far fa-comment-dots"></i> {{course.comment.all.count}} </small></p>
           </h6>
-          <p class="card-text">PyQt’s layout managers provide a user-friendly and productive way of arranging graphical components, or widgets, on a GUI. Laying out widgets properly will make your GUI applications look polished and professional. Learning to do so efficiently and effectively is a fundamental skill for you to get up and running with GUI application development using Python and PyQt.</p>
-          <ul>
-            <h3>In this course, you’ll learn:</h3>
-            <li>What the benefits are of using PyQt’s layout managers</li>
-            <li>How to programmatically lay out widgets on a GUI using PyQt’s layout managers</li>
-            <li>How to select the right layout manager for your GUI application</li>
-            <li>How to lay out widgets in main window–based and dialog-based applications</li>
-          </ul>              
+            <p class="card-text">{{course_list.kurs_info}}</p>
+                <h3>In this course, you’ll learn:</h3>
+                <p>{{course.content}}</p>
         </div>
-
-        {% if user.is_superuser %}
-        <form class="form-video">   
-          <label for="">Choose a Course Name:</label>
-          <select name="" id="">
-            <option value="">--Please choose an option--</option>
-            <option value="">Dog</option>
-            <option value="">Cat</option>
-            <option value="">Hamster</option>
-            <option value="">Parrot</option>
-            <option value="">Spider</option>
-            <option value="">Goldfish</option>
-          </select>
-          <input type="file" multiple>          
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        {% endif %}
-
         <div class="video_content">
             <video width="100%" height="auto" controls controlsList="nodownload">
                 <source src="All the right moves.mp4" type="video/mp4">
@@ -50,7 +27,7 @@
 
     <div class="card mx-auto mt-3" style="width: 70%;">
       <div class="card-body">
-        <h5 class="card-title">Creating PyQt Layouts for GUI Applications</h5>
+        <h5 class="card-title">{{course_list.kurs_name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">
           <p class="card-text"><small class="text-muted">10 Videos | <i class="far fa-clock"> 1 soat 20 min</i></small></p>
         </h6>
@@ -72,33 +49,26 @@
               <div class="headings d-flex justify-content-between align-items-center mb-3">
                   <h5>Izohlar</h5>                      
               </div>
-              <div class="card p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> user </a></small> <small class="font-weight-bold">Rahmat</small></span> </div> <small>2 days ago</small>
-                </div>
-                <div class="action d-flex justify-content-between mt-2 align-items-center">
-                    <div class="reply px-4"> <small>Reply</small> </div>
-                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
-                </div>
-              </div>
-              <div class="card p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> user </a></small> <small class="font-weight-bold">Rahmat</small></span> </div> <small>2 days ago</small>
-                </div>
-                <div class="action d-flex justify-content-between mt-2 align-items-center">
-                    <div class="reply px-4"> <small>Reply</small> </div>
-                    <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
-                </div>
-            </div>
-            <div class="card p-3">
-              <div class="d-flex justify-content-between align-items-center">
-                  <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> user </a></small> <small class="font-weight-bold">Rahmat</small></span> </div> <small>2 days ago</small>
-              </div>
-              <div class="action d-flex justify-content-between mt-2 align-items-center">
-                  <div class="reply px-4"> <small>Reply</small> </div>
-                  <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
-              </div>
-            </div>
+              {% for i in course.comment.all %}
+                  <div class="card p-3">
+
+
+                       <div class="d-flex justify-content-between align-items-center">
+                            <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> {{i.author}} </a></small> <br> <small class="font-weight-bold">{{i.text}}</small></span> </div> <small>{{i.created_date}}
+                       </small>
+                       </div>
+                         <div class="action d-flex justify-content-between mt-2 align-items-center">
+                            <div class="reply px-4"> <small><a href="#">Reply</a></small> </div>
+                            <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                             {% for j in i.reply_comment.all  %}
+                                 <div class="d-flex justify-content-between align-items-center">
+                                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> {{j.author}} </a></small> <br> <small class="font-weight-bold">{{j.text}}</small></span> </div> <small>{{i.reply_comment.created_date}}
+                                   </small>
+                                 </div>
+                             {% endfor %}
+                         </div>
+                  </div>
+              {% endfor %}
             <div class="form-floating mt-2">
               <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
               <label for="floatingTextarea">Izoh qoldirish</label>

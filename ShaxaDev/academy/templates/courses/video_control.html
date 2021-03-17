@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Video</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <form enctype="multipart/form-data" action="{% url 'video_add' %}" method="POST">
+            {%csrf_token%}
+            <label for="">Choose a Course Name:</label>
+            <select name="select" id="">
+            <option value="">--Please choose an option--</option>
+              {% for i in all %}
+                     <option value="{{i}}" >{{i}}</option>
+              {% endfor %}
+          </select>
+          <input type="file" name="myfile" multiple>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
