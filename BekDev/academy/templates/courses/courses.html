@@ -16,7 +16,7 @@
              <div class="card-body">
                <h5><a class="card-title text-decoration-none">{{course.course_name}}</a></h5>
                <p class="card-text">{{course.course_info}}</p>                              
-               <a href="{% url 'course_list' pk=course.pk %}" class="btn btn-outline-primary mb-2">Kirish</a>
+               <a href="{% url 'courses:course_list' pk=course.pk %}" class="btn btn-outline-primary mb-2">Kirish</a>
                <p class="card-tags">
                 <small class="text-muted">
                 <span class="fa fa-tags"></span>

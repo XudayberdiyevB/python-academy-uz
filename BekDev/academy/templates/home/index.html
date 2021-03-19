@@ -75,22 +75,66 @@
   <!-- card qismi -->
 
 <div class="container">
+<h2>Kurslar</h2>
+
+<div class="home_rows">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-5">
+    {% for course in courses %}
+        <div class="col mb-4">
+            <div class="card">
+             <img src="{{course.image.url}}" class="card-img-top" alt="...">
+             <div class="card-body">
+               <h5><a  style="text-decoration:none" class="card-title">{{course.kurs_name}}</a></h5>
+               <p class="card-text">{{course.kurs_info}}</p>
+               <a href="{% url 'courses:course_detail' course.pk %}" class="btn btn-outline-primary mb-2">Boshlash</a>
+               <p class="card-text">
+                   <small class="text-muted">
+                       <a class="text-decoration-none" href="#">
+                       <i class="fas fa-user"></i> {{course.author}} </a>
+                   </small>
+               </p>
+               <p class="card-tags">
+                 <small class="text-muted">
+                 <span class="fa fa-tags"></span>
+                 {% for tag in course.tag.all %}
+                 <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
+                 {%endfor%}
+                 </small>
+                 </p>
+             </div>
+           </div>
+        </div>
+    {% endfor %}
+
+</div>
+  <a href="{% url 'courses:course' %}"><button type="button" class="btn btn-outline-primary homebtn_detail mb-4">Barcha kurslar <i class="fas fa-angle-double-right"></i></button></a>
+  <hr>
+</div>
+
 <h2>Python dasturlash tili bo'yicha maqolalar</h2>
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
-    {% for maqola in maqolalar %}
+<div class="home_rows">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-5">
+    {% for blog in blogs %}
     <div class="col mb-4">
         <div class="card">
          <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
-         <img src="{{maqola.image.url}}" class="card-img-top" alt="...">
+         <img src="{{blog.image.url}}" class="card-img-top" alt="...">
          <div class="card-body">
-           <h5><a  style="text-decoration:none" class="card-title">{{maqola.title}}</a></h5>
-           <p class="card-text">{{maqola.text}}</p>
-           <p class="card-text"><small class="text-muted"><i class="fas fa-eye"></i> 1000 | <i class="far fa-user"></i> {{maqola.author}} | <i class="fas fa-calendar-alt"></i> {{maqola.create_date}}</small></p>
+           <h5><a  style="text-decoration:none" class="card-title">{{blog.title}}</a></h5>
+           <p class="card-text">{{blog.text}}</p>
+           <a href="{% url 'blogs:blog_detail' blog.pk %}" class="btn btn-outline-primary mb-2">O'qish</a>
+           <p class="card-text">
+               <small class="text-muted">
+                   <i class="fas fa-eye"></i> 1000 |
+                   <i class="far fa-user"></i> {{blog.author}} |
+                   <i class="fas fa-calendar-alt"></i> {{blog.create_date}}
+               </small>
+           </p>
            <p class="card-tags">
              <small class="text-muted">
              <span class="fa fa-tags"></span>
-             {% for tag in maqola.tag.all %}
+             {% for tag in blog.tag.all %}
                  <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
              {%endfor%}
              </small>
@@ -101,6 +145,48 @@
     {%endfor%}
 
 </div>
+  <a href="{% url 'blogs:blogs' %}"><button type="button" class="btn btn-outline-primary homebtn_detail mb-4">Barcha maqolalar <i class="fas fa-angle-double-right"></i></button></a>
+  <hr>
+</div>
+
+<h2>Kitoblar</h2>
+
+<div class="home_rows">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-5">
+    {% for blog in blogs %}
+    <div class="col mb-4">
+        <div class="card">
+         <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
+         <img src="{{blog.image.url}}" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5><a  style="text-decoration:none" class="card-title">{{blog.title}}</a></h5>
+           <p class="card-text">{{blog.text}}</p>
+           <p class="card-text">
+               <small class="text-muted">
+                   <i class="fas fa-eye"></i> 1000 |
+                   <i class="far fa-user"></i> {{blog.author}} |
+                   <i class="fas fa-calendar-alt"></i> {{blog.create_date}}
+               </small>
+           </p>
+           <p class="card-tags">
+             <small class="text-muted">
+             <span class="fa fa-tags"></span>
+             {% for tag in blog.tag.all %}
+                 <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
+             {%endfor%}
+             </small>
+             </p>
+         </div>
+       </div>
+     </div>
+    {%endfor%}
+
+</div>
+  <a href="books.html"><button type="button" class="btn btn-outline-primary homebtn_detail mb-4">Barcha kitoblar <i class="fas fa-angle-double-right"></i></button></a>
+  <hr>
+</div>
+
+
 </div>
 
 {% endblock content %}

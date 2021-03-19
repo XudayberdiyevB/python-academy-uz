@@ -17,16 +17,3 @@ class CardModel(models.Model):
 
     def __str__(self):
         return self.title
-
-class HomeMaqolaModel(models.Model):
-    title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='img')
-    text = models.TextField()
-    create_date = models.DateField(default=datetime.now())
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    tag = models.ManyToManyField(TagModel, verbose_name='list_tag')
-    ribbon=models.CharField(max_length=10)
-
-
-    def __str__(self):
-        return str(self.author)

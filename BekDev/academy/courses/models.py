@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.utils import timezone
 from home.models import TagModel
 
 # Create your models here.
@@ -32,7 +33,7 @@ class CourseListModel(models.Model):
 
 class CourseVideoModel(models.Model):
     name = models.ForeignKey(CourseListModel, on_delete=models.CASCADE)
-    file = models.FileField(blank=True, null=True)
+    file = models.FileField(blank=True, null=True,upload_to='video_course')
     video_name = models.CharField(max_length=100)
     video_time = models.DateTimeField()
 
@@ -42,6 +43,33 @@ class CourseVideoModel(models.Model):
 class CourseDetailModel(models.Model):    
     course_detail_name = models.ForeignKey(CourseListModel,on_delete=models.CASCADE)
     content = models.TextField()
-
     def __str__(self):
         return str(self.course_detail_name)
+
+#################### comment part ###################
+
+class CommentCourse(models.Model):
+    course=models.ForeignKey(CourseDetailModel,on_delete=models.CASCADE,related_name='comment')
+    text=models.TextField()
+    author=models.ForeignKey(User,on_delete=models.CASCADE)
+    created_date=models.DateTimeField(default=timezone.now())
+
+    def add_coment(self):
+        self.created_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return str(self.author)
+
+class ReplyCommentCourse(models.Model):
+    reply_comment=models.ForeignKey(CommentCourse,on_delete=models.CASCADE,related_name='reply_comment')
+    text=models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_date = models.DateTimeField(default=timezone.now())
+
+    def add_coment_reply(self):
+        self.created_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return str(self.author)
