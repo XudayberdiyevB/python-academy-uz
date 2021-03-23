@@ -1,11 +1,13 @@
-from django.urls import path, include
-from .views import (courses, course_list,
-                    video_save_form,course_detail_view)
+from django.urls import path
+from .views import (courses,
+                    course_list,
+                    course_detail_view,
+                    lesson_detail)
 
 app_name = 'courses'
 urlpatterns = [
     path('', courses, name="course"),
     path('course-list/<int:pk>/', course_list, name="course_list"),
-    path('video_add/',video_save_form,name='video_add'),
-    path('course-detail/<int:pk>/',course_detail_view,name='course_detail')
+    path('course-detail/<int:pk>/',course_detail_view,name='course_detail'),
+    path('lesson/<int:pn>/', lesson_detail, name="lesson")
 ]

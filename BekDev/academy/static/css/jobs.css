@@ -294,6 +294,11 @@ ul li + li {
   clear: both;
 }
 
+.section,
+.main-wrapper {
+  float: left;
+  width: 100%;
+}
 
 .lead {
   font-size: 18px;
@@ -580,7 +585,7 @@ ul li + li {
 }
 
 /*--Section Spacing--*/
-/* .section-padding {
+.section-padding {
   padding-top: 120px;
   padding-bottom: 120px;
 }
@@ -607,7 +612,7 @@ ul li + li {
 }
 
 /*--Section Title--*/
-/* .section-title {
+.section-title {
   width: 100%;
   margin-bottom: 70px;
   text-align: center;
@@ -662,7 +667,7 @@ ul li + li {
   .section-title .title {
     font-size: 24px;
   }
-} */  
+}
 
 /*Page Pagination*/
 .page-pagination ul {

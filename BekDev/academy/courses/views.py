@@ -1,10 +1,10 @@
 from datetime import datetime
 from django.core.files.base import ContentFile
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import ensure_csrf_cookie
-from .forms import UploadFileForm
-from .models import CourseModel, CourseListModel, CourseVideoModel, CourseDetailModel, CommentCourse
 
+from .models import CourseModel, CourseListModel, CourseVideoModel, CommentCourse
+import pafy
 
 # Create your views here.
 # all courses
@@ -20,26 +20,15 @@ def course_list(request,pk):
     context = {'course_list':course_list}
     return render(request, 'courses/course_list.html', context)
 
-
-def video_save_form(request):
-    lis=CourseListModel.objects.all()
-    if request.method=='POST':
-        print(request.FILES['myfile'])
-
-        for i in request.FILES['myfile']:
-            print(i)
-            list_name=CourseListModel.objects.get(kurs_name=request.POST['select'])
-            v=CourseVideoModel(name=list_name,file=i,video_name=f"{request.FILES['myfile']}",video_time=datetime.now())
-            v.save()
-            print('yuklandi')
-    return render(request,'courses/video_control.html',{'all':lis})
-
-
 def course_detail_view(request,pk):
-    course_list=CourseListModel.objects.get(id=pk)
-    course_det=CourseDetailModel.objects.get(course_detail_name=course_list)
-    comments=CommentCourse.objects.filter(course=course_det)
-    return render(request,'courses/course_detail.html',{'course':course_det,'course_list':course_list,'comments':comments})
+    course_list = get_object_or_404(CourseListModel, id=pk)
+    comments = CommentCourse.objects.filter(course=course_list)
+    first_video=course_list.course_video.all()[0]
 
+    return render(request,'courses/course_detail.html',{'course_list':course_list,'comments':comments,'first_video':first_video})
 
+def lesson_detail(request, pn):
+    lesson_videos = get_object_or_404(CourseVideoModel, id=pn)
+    course_list = get_object_or_404(CourseListModel, id=lesson_videos.name.id)
+    return render(request, 'courses/lesson_detail.html', {'lesson':lesson_videos, 'course_list':course_list})
 

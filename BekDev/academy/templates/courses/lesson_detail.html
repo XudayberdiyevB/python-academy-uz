@@ -8,16 +8,10 @@
 
     <div class="card mx-auto course-detail-info" style="width: 70%;">
         <div class="card-body">
-          <h1 class="card-title">{{course_list.kurs_name}}</h1>
-          <h6 class="card-subtitle mb-2 text-muted">
-            <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> {{course_list.author}}</a>| {{course_list.number_of_video}} Videos | <i class="far fa-clock"> {{course_list.hour_of_kurs}} soat {{course_list.minute_of_kurs}} |  </i> <i class="far fa-comment-dots"></i> {{course.comment.all.count}} </small></p>
-          </h6>
-            <p class="card-text">{{course_list.kurs_info}}</p>
-                <h3>In this course, you’ll learn:</h3>
-                <p>{{course_list.content}}</p>
+          <h1 class="card-title fs-3">{{lesson.video_title}}</h1>
         </div>
         <div class="video_content">
-            <iframe width="560" height="315" src="{{first_video.video_url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="{{lesson.video_url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 

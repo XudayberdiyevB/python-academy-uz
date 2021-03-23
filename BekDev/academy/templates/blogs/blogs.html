@@ -21,14 +21,16 @@
                        <i class="far fa-comment-dots"></i> 100
                    </p>
                </div>
-                 {% for tag in i.tag.all %}
-                    <p class="card-tags mt-2">
-                        <small class="text-muted">
+
+               <p class="card-tags mt-2">
+                    <small class="text-muted">
                         <span class="fa fa-tags"></span>
-                        <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
-                        </small>
-                    </p>
-                 {%endfor%}
+                        {% for tag in i.tag.all %}
+                            <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
+                        {%endfor%}
+                    </small>
+               </p>
+
 
              </div>
            </div>

@@ -3,6 +3,7 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.utils import timezone
 from home.models import TagModel
+from .video_title import video_name
 
 # Create your models here.
 class CourseModel(models.Model):    
@@ -18,6 +19,7 @@ class CourseListModel(models.Model):
     course = models.ManyToManyField(CourseModel)
     kurs_name = models.CharField(max_length=100)
     kurs_info = models.CharField(max_length=1000)
+    content = models.TextField()
     image = models.ImageField(upload_to='img')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_of_kurs = models.DateField(default=datetime.now())
@@ -32,24 +34,22 @@ class CourseListModel(models.Model):
         return self.kurs_name
 
 class CourseVideoModel(models.Model):
-    name = models.ForeignKey(CourseListModel, on_delete=models.CASCADE)
-    file = models.FileField(blank=True, null=True,upload_to='video_course')
-    video_name = models.CharField(max_length=100)
-    video_time = models.DateTimeField()
+    name = models.ForeignKey(CourseListModel, on_delete=models.CASCADE,related_name="course_video")
+    video_url = models.URLField(default="https://www.google.com/")
+    video_title = models.CharField(max_length=1000, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.video_title = video_name(self.video_url)
+        super(CourseVideoModel, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return str(self.name)
 
-class CourseDetailModel(models.Model):    
-    course_detail_name = models.ForeignKey(CourseListModel,on_delete=models.CASCADE)
-    content = models.TextField()
-    def __str__(self):
-        return str(self.course_detail_name)
-
 #################### comment part ###################
 
 class CommentCourse(models.Model):
-    course=models.ForeignKey(CourseDetailModel,on_delete=models.CASCADE,related_name='comment')
+    course=models.ForeignKey(CourseListModel,on_delete=models.CASCADE,related_name='comment')
     text=models.TextField()
     author=models.ForeignKey(User,on_delete=models.CASCADE)
     created_date=models.DateTimeField(default=timezone.now())

@@ -330,16 +330,12 @@ i.fa-eye-slash {
 .homebtn_detail {
   position: absolute;
   bottom: 0;
-  right: 0;  
+  right: 0;
 }
 
 .home_rows {
   position: relative;
 }
-
-/* .mtself {
-  margin-bottom: 80px;
-} */
 
 .course-detail-info {
   border: none !important;

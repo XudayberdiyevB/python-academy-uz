@@ -81,11 +81,11 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-5">
     {% for course in courses %}
         <div class="col mb-4">
-            <div class="card">
+            <div class="card shadow">
              <img src="{{course.image.url}}" class="card-img-top" alt="...">
              <div class="card-body">
                <h5><a  style="text-decoration:none" class="card-title">{{course.kurs_name}}</a></h5>
-               <p class="card-text">{{course.kurs_info}}</p>
+               <p class="card-text">{{course.kurs_info|truncatechars:70}}</p>
                <a href="{% url 'courses:course_detail' course.pk %}" class="btn btn-outline-primary mb-2">Boshlash</a>
                <p class="card-text">
                    <small class="text-muted">
