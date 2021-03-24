@@ -35,7 +35,7 @@ class CourseListModel(models.Model):
 
 class CourseVideoModel(models.Model):
     name = models.ForeignKey(CourseListModel, on_delete=models.CASCADE,related_name="course_video")
-    video_url = models.URLField(default="https://www.google.com/")
+    video_url = models.URLField(default="https://www.youtube.com/embed/")
     video_title = models.CharField(max_length=1000, blank=True, null=True)
 
     def save(self, *args, **kwargs):

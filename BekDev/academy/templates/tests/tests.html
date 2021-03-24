@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Testlar {% endblock title %}
+
+{% block content %}
+
+<div class="container mt-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3" id="more">
+            {% for test in tests %}
+                <div class="col mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="mb-5"><a class="card-title text-decoration-none">{{test.name}}</a></h5>
+                            <div class="text-muted">
+                                <p><i class="far fa-calendar-alt"></i> {{test.date}}</p>
+                            </div>
+                            <a href="blog_detail.html" class="btn btn-sm btn-outline-primary mb-2">Boshlash</a>
+                            <p class="card-tags mt-2">
+                                <small class="text-muted">
+                                    <span class="fa fa-tags"></span>
+                                    {% for tag in test.tag.all %}
+                                        <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
+                                    {% endfor %}
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
