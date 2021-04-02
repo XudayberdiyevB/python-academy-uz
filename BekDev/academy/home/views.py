@@ -13,3 +13,6 @@ def homepage(request):
     context = {'card':card,'blogs':blogs, 'courses':courses}
 
     return render(request, 'home/index.html',context)
+
+def team(requst):
+    return render(requst, 'team.html')

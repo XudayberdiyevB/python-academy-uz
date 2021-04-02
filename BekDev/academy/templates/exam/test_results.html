@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> {% block title %} {% endblock title %} </title>
+    <title> Python academy </title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
-    <link rel="stylesheet" href="{% static 'css/team.css' %}">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -17,83 +15,142 @@
 <body>
     <!-- HEADER QISMI -->
     <header class="header-color sticky-top">
-        <div class="container" style="padding-top: 5px;">
-            <nav class="navbar navbar-expand-lg navbar-light" style="font-size: 16px;">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light ">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="{% url 'home:homepage' %}" style="padding-top: 10px;">
+                    <a class="navbar-brand" href="{% url 'home:homepage' %}">
                         <img src="{% static 'img/python-seeklogo.com.svg' %}" alt="" width="30" height="24" class="pylogo">
                     </a>
-                    <a class="navbar-brand" href="{% url 'home:homepage' %}" id="colornav" style="padding-top: 10px;">Python Academy Uz</a>
+                    <a class="navbar-brand" href="{% url 'home:homepage' %}" id="colornav">Python Academy Uz</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-4 mb-lg-0">
-                      <li class="nav-item" style="padding-top: 6px;">
-                        <a class="nav-link active" aria-current="page" href="{% url 'courses:course' %}" id="colornav">Kurslar</a>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'courses:course' %}" id="colornav">Kurslar</a>
                       </li>
-                      <li class="nav-item" style="padding-top: 0;">
+                      <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'blogs:blogs' %}" id="colornav">Maqola</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link nav-item-err" href="{% url 'exam:exam' %}" id="colornav">Test</a>
+                        <a class="nav-link" href="{% url 'exam:exam' %}" id="colornav">Test</a>
                       </li>
                       <li class="nav-item dropdown dropx">
-                        <a id="colornav" class="nav-link dropdown-toggle nav-item-err" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a id="colornav" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Manbalar
                         </a>
                         <ul class="dropdown-menu boxX" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#" >Kitoblar</a></li>
+                          <li><a class="dropdown-item" href="books.html" >Kitoblar</a></li>
                           <li><a class="dropdown-item" href="#" >Dasturlar</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="#" >Foydali havolalar</a></li>
                         </ul>
                       </li>
+                      <!-- <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" id="colornav">Ish o`rinlari</a>
+                      </li> -->
                       <li class="nav-item">
-                        <a class="nav-link nav-item-err" href="{% url 'jobs:jobs' %}" id="colornav">Jobs</a>
+                        <a class="nav-link" href="{% url 'jobs:jobs' %}" id="colornav">Jobs</a>
                       </li>
 <!--                      <li class="nav-item">-->
-<!--                        <a class="nav-link nav-item-err" href="#" id="colornav">Forum</a>-->
+<!--                        <a class="nav-link" href="#" id="colornav">Forum</a>-->
 <!--                      </li>-->
                       <li class="nav-item">
-                        <a class="nav-link nav-item-err" href="{% url 'home:team' %}" id="colornav">Team</a>
+                        <a class="nav-link" href="{% url 'home:team' %}" id="colornav">Team</a>
                       </li>
                     </ul>
-                    <form class="d-flex" style="padding-top: 6px;">
+                    <form class="d-flex">
                       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form> &nbsp;&nbsp;&nbsp;
                     <ul class="navbar-nav">
 		                {% if request.user.is_authenticated %}
                          <li class="nav-item dropdown dropx">
-                        <a id="colornav" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Account
-                        </a>
-                        <ul class="dropdown-menu boxX" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="books.html" >Your profile</a></li>
-                          <li><a class="dropdown-item" href="#" >Your posts</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="{% url 'account:logout' %}" >Logout</a></li>
-                        </ul>
-                      </li>
-                      {% else %}
+                            <a id="colornav" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Account
+                            </a>
+                            <ul class="dropdown-menu boxX" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="books.html" >Your profile</a></li>
+                                <li><a class="dropdown-item" href="#" >Your posts</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'account:logout' %}" >Logout</a></li>
+                            </ul>
+                         </li>
+                         {% else %}
                           <li class="nav-item" style="margin-top: 6px;">
                               <a class="nav-link btn btn-danger btn-sm"  id='colornav' href="{% url 'account:login' %}">Login</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link"  id='colornav' href="{% url 'account:register' %}">Register</a>
                           </li>
-                      {% endif %}
-            		    </ul>
+                          {% endif %}
+            		</ul>
                   </div>
                 </div>
               </nav>
         </div>
     </header>
     <!-- HEADER OXIRI -->
+{{check}}
+{{check.12}}<br>
+{{check.items}} <br>
 
-    {% block content %}
-    {% endblock content%}
+<div class="container mt-3">
+        <div class="mb-5">
+            <div class="abs mx-auto" style="width:50%;">
+                <p class="fs-3" style="text-align:center">{{test.name}}</p>
+                <ul class="list-group list-group-horizontal text-muted mx-auto" style="width:100%">
+                <li class="list-group-item" style="border:none;"><i class="fas fa-check-circle"></i> {{test.questions.count}} ta test</li>
+                <li class="list-group-item" style="border:none;"><i class="fas fa-star"></i> {{test.rating}} </li>
+                <li class="list-group-item" style="border:none;"><i class="fas fa-calendar-alt"></i> {{test.date}} </li>
+                <li class="list-group-item" style="border:none;"><i class="fas fa-user"></i> {{request.user}} </li>
+            </ul>
+
+                {% for i in test.questions.all %}
+                <div class="row mt-3 shadow">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="mb-2">{{i.question_text}}</h5>
+                            <hr>
+                            {% for j in i.answers.all %}
+
+                            {% if j.is_valid %}
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    ✅ {{j.text}}
+                                </label>
+                            </div>
+                            <hr>
+
+                            {% else %}
+                                <div class="form-check">
+                                <label class="form-check-label">
+                                    {% for k,v in check.items %}
+
+                                        {% if v == j.text %}
+                                             ❌ {{j.text}}
+                                        {% else %}
+                                            {{j.text}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </label>
+                                </div>
+                            <hr>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="tugatishbutton position-relative mt-5 mx-auto" style="width:50%">
+            <a href="{% url 'exam:exam' %}">
+                <button type="button" class="btn btn-primary mt-3 position-absolute bottom-0 start-0">Orqaga</button>
+            </a>
+        </div>
+    </div>
 
     <!-- Footer qismi -->
 <hr style="margin-top: 100px;">
