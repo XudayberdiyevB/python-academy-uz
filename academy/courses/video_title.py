@@ -5,3 +5,9 @@ def video_name(url):
     u = ''.join(map(str, url_replace.split('/embed')))
     video = pafy.new(u)
     return video.title
+
+def video_duration(url):
+    url_replace = url.replace('www.youtube.com', 'youtu.be')
+    u = ''.join(map(str, url_replace.split('/embed')))
+    video = pafy.new(u)
+    return video.duration

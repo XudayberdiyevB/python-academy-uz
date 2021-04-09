@@ -10,7 +10,13 @@
         <div class="card-body">
           <h1 class="card-title">{{course_list.kurs_name}}</h1>
           <h6 class="card-subtitle mb-2 text-muted">
-            <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> {{course_list.author}}</a>| {{course_list.number_of_video}} Videos | <i class="far fa-clock"> {{course_list.hour_of_kurs}} soat {{course_list.minute_of_kurs}} |  </i> <i class="far fa-comment-dots"></i> {{course.comment.all.count}} </small></p>
+            <p class="card-text">
+                <small class="text-muted">
+                    <a class="text-decoration-none" href="#">
+                        <i class="fas fa-user"></i> {{course_list.author}} | </a>
+                        {{count_of_video}} ta Video |
+                        <i class="far fa-clock"> {{soat}} soat {{minut}} minut | </i>
+                        <i class="far fa-comment-dots"></i> {{course.comment.all.count}} </small></p>
           </h6>
             <p class="card-text">{{course_list.kurs_info}}</p>
                 <h3>In this course, you’ll learn:</h3>
@@ -25,14 +31,19 @@
       <div class="card-body">
         <h5 class="card-title">{{course_list.kurs_name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">
-          <p class="card-text"><small class="text-muted">10 Videos | <i class="far fa-clock"> 1 soat 20 min</i></small></p>
+          <p class="card-text">
+              <small class="text-muted">
+                  {{count_of_video}} ta Video |
+                  <i class="far fa-clock"> {{soat}} soat {{minut}} minut</i>
+              </small>
+          </p>
         </h6>
         <p class="card-text">
           <ol class="list-group list-group-flush">
           {% for i in course_list.course_video.all %}
           <li class="list-group-item">
               <a href="{% url 'courses:lesson' pn=i.id %}" class="a text-decoration-none">
-                  <i class="far fa-play-circle"></i> {{i.video_title}}
+                  <i class="far fa-play-circle"></i> {{i.video_title}} | {{i.video_time}}
               </a>
           </li>
           {% endfor %}

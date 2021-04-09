@@ -3,7 +3,7 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.utils import timezone
 from home.models import TagModel
-from .video_title import video_name
+from .video_title import video_name, video_duration
 
 # Create your models here.
 class CourseModel(models.Model):    
@@ -23,11 +23,6 @@ class CourseListModel(models.Model):
     image = models.ImageField(upload_to='img')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_of_kurs = models.DateField(default=datetime.now())
-    number_of_video = models.IntegerField()
-    hour_of_kurs = models.IntegerField()
-    minute_of_kurs = models.IntegerField()
-    number_of_saw = models.IntegerField()
-    number_of_comment = models.IntegerField()
     tag = models.ManyToManyField(TagModel, verbose_name='tag_list')
 
     def __str__(self):
@@ -37,11 +32,13 @@ class CourseVideoModel(models.Model):
     name = models.ForeignKey(CourseListModel, on_delete=models.CASCADE,related_name="course_video")
     video_url = models.URLField(default="https://www.youtube.com/embed/")
     video_title = models.CharField(max_length=1000, blank=True, null=True)
+    video_time = models.CharField(max_length=100, blank=True, null=True)
+    number_of_view = models.IntegerField(default=0)
 
     def save(self, *args, **kwargs):
         self.video_title = video_name(self.video_url)
+        self.video_time = video_duration(self.video_url)
         super(CourseVideoModel, self).save(*args, **kwargs)
-
 
     def __str__(self):
         return str(self.name)

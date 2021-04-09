@@ -43,7 +43,22 @@ INSTALLED_APPS = [
     'blogs',
     'jobs',
     'exam',
+    'ckeditor',
+    'ckeditor_uploader'
 ]
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_CONFIGS = {
+    'default':{
+        #'toolbar':'full'
+        'toolbar':'full',
+        'height':500,
+        'extraPlugins': ','.join(
+            [
+                'codesnippet',
+            ]),
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -115,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
