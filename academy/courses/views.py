@@ -14,7 +14,7 @@ def courses(request):
     return render(request, 'courses/courses.html', context)
 
 # course lists
-def course_list(request,pk):
+def course_list(request,pk=None):
     course=CourseModel.objects.get(id=pk)
     course_list = CourseListModel.objects.filter(course=course)
     count_of_video = CourseVideoModel.objects.filter(name=course_list[0]).count()
@@ -28,10 +28,12 @@ def course_list(request,pk):
         minut = minut % 60
 
     # ---- number of view ----
-    #course_object = CourseVideoModel.objects.filter(name=course_list[0])
+    #course_object = CourseListModel.objects.all()
+    course_object = get_object_or_404(CourseListModel, id=pk)
+
     #course_object.number_of_view += 1
     #course_object.save()
-    #print(course_object)
+    print(course_object)
 
     context = {'course_list':course_list, 'count_of_video':count_of_video,
                'soat':hour, 'minut':minut}

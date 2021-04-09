@@ -360,3 +360,8 @@ i.fa-eye-slash {
   cursor: pointer
 }
 /* end comment section */
+
+/* tag background */
+.bg-tags {
+    background-color: #e8e3e3;
+}
