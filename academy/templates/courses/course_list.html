@@ -18,7 +18,7 @@
                <h5><a  style="text-decoration:none" class="card-title">{{i.kurs_name}}</a></h5>
                <p class="card-text">{{i.kurs_info}}</p>
                <a href="{% url 'courses:course_detail' i.pk %}" class="btn btn-outline-primary mb-2">Boshlash</a>
-               <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> {{i.author}} </a> | {{count_of_video}} ta Video | <i class="far fa-clock"> {{soat}} soat {{minut}} min</i></small></p>
+               <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> {{i.author}} </a> | {{count_of_video}} ta Video | <i class="far fa-clock"> count time min</i></small></p>
                <p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt"></i> {{i.date_of_kurs}} | <i class="fas fa-eye"></i> {{i.number_of_saw}} | <i class="far fa-comment-dots"></i> {{i.number_of_comment}} </a></small></p>
                <p class="card-tags">
                  <small class="text-muted">

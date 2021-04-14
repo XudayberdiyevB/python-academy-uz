@@ -21,27 +21,22 @@ class BlogModel(models.Model):
         return self.title
 
 class CommentBlogModel(models.Model):
-    course = models.ForeignKey(BlogModel, on_delete=models.CASCADE, related_name='comment_blog')
+    blog = models.ForeignKey(BlogModel, on_delete=models.CASCADE, related_name='comment_blog')
     text = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_date = models.DateTimeField(default=timezone.now())
+    created_date = models.DateTimeField(auto_now_add=True)
 
-    def add_coment(self):
-        self.created_date = timezone.now()
-        self.save()
+    class Meta:
+        ordering = ['-created_date']
 
     def __str__(self):
-        return str(self.author)
+        return str(self.author) + ':' + self.text
 
 class ReplyCommentBlogModel(models.Model):
     reply_comment = models.ForeignKey(CommentBlogModel, on_delete=models.CASCADE, related_name='reply_comment_blog')
     text = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_date = models.DateTimeField(default=timezone.now())
-
-    def add_coment_reply(self):
-        self.created_date = timezone.now()
-        self.save()
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.author)
+        return str(self.author) + ':' + self.text

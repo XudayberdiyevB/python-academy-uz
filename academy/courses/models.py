@@ -1,3 +1,4 @@
+from django.contrib.humanize.templatetags import humanize
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
@@ -24,6 +25,8 @@ class CourseListModel(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_of_kurs = models.DateField(default=datetime.now())
     number_of_view = models.IntegerField(default=0)
+    hour_of_course = models.IntegerField(default=0)
+    minut_of_course = models.IntegerField(default=0)
     tag = models.ManyToManyField(TagModel, verbose_name='tag_list')
 
     def __str__(self):
@@ -49,24 +52,38 @@ class CommentCourse(models.Model):
     course=models.ForeignKey(CourseListModel,on_delete=models.CASCADE,related_name='comment')
     text=models.TextField()
     author=models.ForeignKey(User,on_delete=models.CASCADE)
-    created_date=models.DateTimeField(default=timezone.now())
+    created_date = models.DateTimeField(auto_now_add=True)
 
-    def add_coment(self):
-        self.created_date = timezone.now()
-        self.save()
+    #qancha vaqt oldin
+    # def get_date(self):
+    #     time = datetime.now()
+    #     if self.created_date.day == time.day:
+    #         return str(time.hour - self.created_date.hour) + " soat oldin"
+    #     else:
+    #         if self.created_date.month == time.month:
+    #             return str(time.day - self.created_date.day) + " kun oldin"
+    #         else:
+    #             if self.created_date.year == time.year:
+    #                 return str(time.month - self.created_date.month) + " oy oldin"
+    #     print(self.created_date.day)
+    #     return self.created_date
+
+    class Meta:
+        ordering=['-created_date']
+    #created_date=models.DateTimeField(default=timezone.now())
+    #def add_coment(self):
+    #    self.created_date = timezone.now()
+    #    self.save()
 
     def __str__(self):
-        return str(self.author)
+        return str(self.author) + ":" + self.text
+
 
 class ReplyCommentCourse(models.Model):
     reply_comment=models.ForeignKey(CommentCourse,on_delete=models.CASCADE,related_name='reply_comment')
     text=models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_date = models.DateTimeField(default=timezone.now())
-
-    def add_coment_reply(self):
-        self.created_date = timezone.now()
-        self.save()
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.author)
+        return str(self.author) + ':' + self.text

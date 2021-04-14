@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+<h2 class="mb-5 mt-2">Python dasturlash tili bo'yicha kitoblar</h2>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 ">
+  {% for book in books %}
+  <div class="col mb-4">
+     <div class="card">
+      <div class="ribbon ribbon-top-right" ><span>{{book.status}}</span></div>
+      <img style="height:350px" src="{{book.image.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5><a  style="text-decoration:none" class="card-title">{{book.name}}</a></h5>
+        <p class="card-text">{{book.info}}</p>
+        <p class="card-text text-muted"><i class="fa fa-book" aria-hidden="true"></i> Kitobni bepul yuklab oling</p>
+
+        <p class="card-tags">
+          <small class="text-muted">
+            <span class="fa fa-tags"></span>
+            {% for tag in book.tag.all %}
+            <a href="#" class="text-muted">
+              <span class="badge rounded-pill bg-tags text-muted">
+                {{tag.name}}
+              </span>
+            </a>
+            {%endfor%}
+          </small>
+          <a href="{{ book.file.url }}" download><i class="fa fa-download ms-2 text-primary"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+  </div>
+
+{% endblock content %}
