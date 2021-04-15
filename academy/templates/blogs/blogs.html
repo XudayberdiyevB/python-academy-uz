@@ -26,7 +26,7 @@
                     <small class="text-muted">
                         <span class="fa fa-tags"></span>
                         {% for tag in i.tag.all %}
-                            <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
+                            <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
                         {%endfor%}
                     </small>
                </p>

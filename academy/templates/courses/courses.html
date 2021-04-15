@@ -18,12 +18,9 @@
                <p class="card-text">{{course.course_info}}</p>                              
                <a href="{% url 'courses:course_list' pk=course.pk %}" class="btn btn-outline-primary mb-2">Kirish</a>
                <p class="card-tags">
-                <small class="text-muted">
-                <span class="fa fa-tags"></span>
-                {% for tag in course.tag.all %}
-                    <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
-                {% endfor %}
-                </small>
+                    <small>
+                        <i class="fas fa-laptop-code"></i> {{ course.course_count.all.count }} ta kurs
+                    </small>
                </p>
               </div>
            </div>        

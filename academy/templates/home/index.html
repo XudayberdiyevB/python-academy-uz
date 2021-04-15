@@ -17,7 +17,7 @@
             
             <p class="card-text">{{card.text}}</p>
             <div class="row">
-              <div class="col-4"><p class="card-text"><small class="text-muted">{{card.create_date}}</small></p></div>
+              <div class="col-4"><p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt"></i> {{card.create_date}}</small></p></div>
             <div class="col-8">
               <p class="card-tags">
                 <small class="text-muted">
@@ -25,7 +25,7 @@
                 
                
                     {% for i in card.tag.all %}
-                    <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{i.name}}</span></a>
+                    <a href="{% url 'home:filter' i.name %}" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{i.name}}</span></a>
                     {%endfor%}
                 
                 
@@ -101,7 +101,7 @@
                  <small class="text-muted">
                  <span class="fa fa-tags"></span>
                  {% for tag in course.tag.all %}
-                 <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
+                 <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
                  {%endfor%}
                  </small>
                  </p>
@@ -139,7 +139,7 @@
              <small class="text-muted">
              <span class="fa fa-tags"></span>
              {% for tag in blog.tag.all %}
-                 <a href="#" class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
+                 <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
              {%endfor%}
              </small>
              </p>
@@ -154,42 +154,6 @@
 </div>
 
 <h2>Kitoblar</h2>
-
-<!--<div class="home_rows">-->
-<!--  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-5">-->
-<!--    {% for blog in blogs %}-->
-<!--    <div class="col mb-4">-->
-<!--        <div class="card">-->
-<!--         <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>-->
-<!--         <img src="{{blog.image.url}}" class="card-img-top" alt="...">-->
-<!--         <div class="card-body">-->
-<!--           <h5><a  style="text-decoration:none" class="card-title">{{blog.title}}</a></h5>-->
-<!--           <p class="card-text">{{blog.text}}</p>-->
-<!--           <p class="card-text">-->
-<!--               <small class="text-muted">-->
-<!--                   <i class="fas fa-eye"></i> 1000 |-->
-<!--                   <i class="far fa-user"></i> {{blog.author}} |-->
-<!--                   <i class="fas fa-calendar-alt"></i> {{blog.create_date}}-->
-<!--               </small>-->
-<!--           </p>-->
-<!--           <p class="card-tags">-->
-<!--             <small class="text-muted">-->
-<!--             <span class="fa fa-tags"></span>-->
-<!--             {% for tag in blog.tag.all %}-->
-<!--                 <a href="#" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>-->
-<!--             {%endfor%}-->
-<!--             </small>-->
-<!--             </p>-->
-<!--         </div>-->
-<!--       </div>-->
-<!--     </div>-->
-<!--    {%endfor%}-->
-
-<!--</div>-->
-<!--  <a href="books.html"><button type="button" class="btn btn-outline-primary homebtn_detail mb-4">Barcha kitoblar <i class="fas fa-angle-double-right"></i></button></a>-->
-<!--  <hr>-->
-<!--</div>-->
-
 
 </div>
 

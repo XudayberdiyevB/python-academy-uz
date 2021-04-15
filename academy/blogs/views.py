@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import BlogModel, CommentBlogModel, ReplyCommentBlogModel
 
 # Create your views here.
+from home.models import TagModel
+
+
 def blogs(request):
     blogs = BlogModel.objects.all()
     return render(request, 'blogs/blogs.html', {'blogs':blogs})

@@ -1,6 +1,6 @@
 import random
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from home.models import CardModel,TagModel
 from blogs.models import BlogModel
 from courses.models import CourseListModel
@@ -32,3 +32,13 @@ def homepage(request):
 
 def team(requst):
     return render(requst, 'team.html')
+
+
+def tag_filter(request,name):
+    print(name)
+    tag=get_object_or_404(TagModel,name=name)
+    filters_result_course=CourseListModel.objects.filter(tag=tag)
+    filters_result_blog=BlogModel.objects.filter(tag=tag)
+    filter_result_card=CardModel.objects.filter(tag=tag)
+    context={'results_course': filters_result_course, 'results_blog':filters_result_blog,'result_home':filter_result_card}
+    return render(request,'home/all_filter.html',context)

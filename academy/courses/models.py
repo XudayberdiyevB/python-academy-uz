@@ -17,7 +17,7 @@ class CourseModel(models.Model):
         return self.course_name
 
 class CourseListModel(models.Model):
-    course = models.ManyToManyField(CourseModel)
+    course = models.ManyToManyField(CourseModel,related_name='course_count')
     kurs_name = models.CharField(max_length=100)
     kurs_info = models.CharField(max_length=1000)
     content = models.TextField()

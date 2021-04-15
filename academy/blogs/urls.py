@@ -5,4 +5,5 @@ app_name = "blogs"
 urlpatterns = [
     path('', blogs, name="blogs"),
     path('<int:pk>/', blog_detail, name="blog_detail"),
+
 ]
