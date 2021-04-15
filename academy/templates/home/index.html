@@ -8,6 +8,7 @@
 <!-- section -->
 <section class="container">
     <div class="row">
+      <a href="{% url 'home:card_detail' card.pk %}">
       <div class="col-8">
         <h5 class="card-title">{{card.title}}</h5>
         <div class="card mb-3">
@@ -15,7 +16,7 @@
           <img src="{{card.image.url}}" class="card-img-top" alt="...">
           <div class="card-body">
             
-            <p class="card-text">{{card.text}}</p>
+            <p class="card-text">{{card.text|safe}}</p>
             <div class="row">
               <div class="col-4"><p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt"></i> {{card.create_date}}</small></p></div>
             <div class="col-8">
@@ -36,6 +37,7 @@
           </div>
         </div>
       </div>
+      </a>
       <div class="col-4">
         <div class="card">
          <form class="card-body" action="/optins/process/" method="post">

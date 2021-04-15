@@ -7,6 +7,10 @@ from courses.models import CourseListModel
 
 # Create your views here.
 
+def card_detail(request, pk):
+    card = get_object_or_404(CardModel, id=pk)
+    return render(request, 'home/card_detail.html', {'card':card})
+
 def homepage(request):
     card = CardModel.objects.order_by("-id")[0]
 
@@ -35,7 +39,6 @@ def team(requst):
 
 
 def tag_filter(request,name):
-    print(name)
     tag=get_object_or_404(TagModel,name=name)
     filters_result_course=CourseListModel.objects.filter(tag=tag)
     filters_result_blog=BlogModel.objects.filter(tag=tag)

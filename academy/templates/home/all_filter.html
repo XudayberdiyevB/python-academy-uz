@@ -82,11 +82,11 @@
           {% for i in result_home %}
             <div class="col mb-4">
             <div class="card">
-             <img src="{{i.image.url}}" class="card-img-top" alt="...">
+             <img src="{{i.image.url}}" class="card-img-top" alt="..." width="355" height="240">
              <div class="card-body">
                <h5><a class="card-title text-decoration-none">{{i.title}}</a></h5>
                <p class="card-text">{{i.text|truncatechars:9|safe}}</p>
-               <a href="#" class="btn btn-outline-primary mb-2">O'qish</a>
+               <a href="{% url 'home:card_detail' i.pk %}" class="btn btn-outline-primary mb-2">O'qish</a>
                <div class="text-muted">
                   <small><i class="fas fa-calendar-alt"></i> {{i.create_date}}</small>
               </div>
@@ -98,10 +98,6 @@
                         {%endfor%}
                     </small>
                </p>
-
-
-
-
              </div>
            </div>
          </div>
