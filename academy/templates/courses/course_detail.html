@@ -89,6 +89,7 @@
                                         <small class="font-weight-bold">{{j.text}}</small></span> </div>
                                  </div>
                              {% endfor %}
+                                {% if request.user.is_authenticated %}
                                 <div class="form-floating mt-3">
                                 <form action="" method="POST">
                                     {% csrf_token %}
@@ -101,22 +102,25 @@
                                     </div>
                                 </form>
                              </div>
+                                {% endif %}
                             </div>
                          </div>
                   </div>
               {% endfor %}
-            <div class="form-floating mt-3">
-              <form method="POST">
-                   {% csrf_token %}
-                    <div class="comment-input">
-                        <input type="text" id="id-checkbox" placeholder="Izoh qoldirish" name="comment" class="comment-inputype">
-                    </div>
-                    <div class="comment-send-icon text-muted">
-                        <input type="image" id="id-checkbox" src="{% static 'img/send.png' %}" width="25" height="25">
-                    </div>
-
-              </form>
-            </div>
+              {% if request.user.is_authenticated %}
+                <div class="form-floating mt-3">
+                  <form method="POST" id="commentpost">
+                       {% csrf_token %}
+                        <div class="comment-input">
+                            <input type="text" id="id-checkbox" placeholder="Izoh qoldirish" name="comment" class="comment-inputype">
+                        </div>
+                        <div class="comment-send-icon text-muted">
+                            <input type="image" id="id-checkbox" src="{% static 'img/send.png' %}" width="25" height="25">
+                        </div>
+                      <input type="submit" style="visibility:hidden">
+                  </form>
+                </div>
+              {% endif %}
           </div>
       </div>
   </div>

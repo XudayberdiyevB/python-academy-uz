@@ -130,9 +130,10 @@
            <a href="{% url 'blogs:blog_detail' blog.pk %}" class="btn btn-outline-primary mb-2">O'qish</a>
            <p class="card-text">
                <small class="text-muted">
+                   <i class="fas fa-user"></i> {{blog.author}} |
+                   <i class="fas fa-calendar-alt"></i> {{blog.create_date}} <br>
                    <i class="fas fa-eye"></i> {{ blog.count_of_view }} |
-                   <i class="far fa-user"></i> {{blog.author}} |
-                   <i class="fas fa-calendar-alt"></i> {{blog.create_date}}
+                   <i class="far fa-comment-dots"></i> {{ blog.count_of_comment }}
                </small>
            </p>
            <p class="card-tags">
