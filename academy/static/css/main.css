@@ -354,10 +354,12 @@ i.fa-eye-slash {
 .reply-comment {
     padding-left: 30px;
 }
-#replydisplay {
+.replydisplay {
     display:none;
 }
-
+.replydisplay.show {
+    display:block;
+}
 .reply-color {
   color: #b7b4b4
 }

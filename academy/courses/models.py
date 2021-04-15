@@ -54,20 +54,6 @@ class CommentCourse(models.Model):
     author=models.ForeignKey(User,on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
 
-    #qancha vaqt oldin
-    # def get_date(self):
-    #     time = datetime.now()
-    #     if self.created_date.day == time.day:
-    #         return str(time.hour - self.created_date.hour) + " soat oldin"
-    #     else:
-    #         if self.created_date.month == time.month:
-    #             return str(time.day - self.created_date.day) + " kun oldin"
-    #         else:
-    #             if self.created_date.year == time.year:
-    #                 return str(time.month - self.created_date.month) + " oy oldin"
-    #     print(self.created_date.day)
-    #     return self.created_date
-
     class Meta:
         ordering=['-created_date']
     #created_date=models.DateTimeField(default=timezone.now())

@@ -76,7 +76,7 @@
                        </div>
                          <div class="action justify-content-between mt-2 align-items-center">
                             <div class="reply reply-color px-4"> <small>Reply</small> </div>
-                            <div class="reply-comment" id="replydisplay">
+                            <div class="reply-comment replydisplay">
                              {% for j in i.reply_comment.all  %}
                                  <div class="d-flex justify-content-between align-items-center mb-2">
                                     <div class="user d-flex flex-row align-items-center">
@@ -84,7 +84,7 @@
                                         <span>
                                             <small class="font-weight-bold">
                                             <a href="#" class="text-decoration-none text-primary"> {{j.author}} </a>
-                                            <small class="reply-color">| {{j.reply_comment.created_date|timesince}} oldin </small>
+                                            <small class="reply-color">| {{j.created_date|timesince}} oldin </small>
                                             </small> <br>
                                         <small class="font-weight-bold">{{j.text}}</small></span> </div>
                                  </div>
@@ -109,10 +109,10 @@
               <form method="POST">
                    {% csrf_token %}
                     <div class="comment-input">
-                        <input type="text" placeholder="Izoh qoldirish" name="comment" class="comment-inputype">
+                        <input type="text" id="id-checkbox" placeholder="Izoh qoldirish" name="comment" class="comment-inputype">
                     </div>
                     <div class="comment-send-icon text-muted">
-                        <input type="image" src="{% static 'img/send.png' %}" width="25" height="25">
+                        <input type="image" id="id-checkbox" src="{% static 'img/send.png' %}" width="25" height="25">
                     </div>
                   <input type="submit" style="visibility:hidden" onclick="post_comment()">
               </form>
