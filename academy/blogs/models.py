@@ -15,6 +15,8 @@ class BlogModel(models.Model):
     text = RichTextUploadingField(blank=True, null=True)
     create_date = models.DateField(default=datetime.now())
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    count_of_view=models.IntegerField(default=0)
+    count_of_comment=models.IntegerField(default=0)
     tag = models.ManyToManyField(TagModel, verbose_name='list_tag')
 
     def __str__(self):

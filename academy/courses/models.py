@@ -27,7 +27,10 @@ class CourseListModel(models.Model):
     number_of_view = models.IntegerField(default=0)
     hour_of_course = models.IntegerField(default=0)
     minut_of_course = models.IntegerField(default=0)
+    count_of_videos=models.IntegerField(default=0)
+    count_of_comments=models.IntegerField(default=0)
     tag = models.ManyToManyField(TagModel, verbose_name='tag_list')
+
 
     def __str__(self):
         return self.kurs_name

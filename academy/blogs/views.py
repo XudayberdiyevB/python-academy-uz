@@ -8,7 +8,9 @@ def blogs(request):
 
 def blog_detail(request, pk):
     blog = BlogModel.objects.get(id=pk)
-
+    blog.count_of_view+=1
+    blog.count_of_comment=blog.comment_blog.count()
+    blog.save()
     if request.method == 'POST':
         if request.POST.get('comment')=='':
             redirect('blogs:blog_detail',pk=pk)

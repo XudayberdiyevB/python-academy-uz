@@ -1,8 +1,16 @@
-var reply = document.querySelector('.reply')
-var replydisplay = document.getElementById('replydisplay')
-    reply.addEventListener('click', function(){
-        if(replydisplay.style.display == 'none')
-            replydisplay.style.display = 'block';
-        else
-            replydisplay.style.display = 'none';
+var reply = document.querySelectorAll('.reply');
+// var replydisplay = document.querySelectorAll('.replydisplay');
+
+reply.forEach(function(item){
+    item.addEventListener('click',function(event){
+        var ss = item.nextElementSibling
+        console.log('ok')
+//        ss.classList.toggle('show')
+        if(ss.classList.contains('show')){
+            ss.classList.remove('show')
+        }
+        else {
+            ss.classList.add('show')
+        }
     })
+})

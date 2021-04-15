@@ -3,7 +3,7 @@ from django.core.files.base import ContentFile
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from .models import CourseModel, CourseListModel, CourseVideoModel, CommentCourse
+from .models import CourseModel, CourseListModel, CourseVideoModel, CommentCourse, ReplyCommentCourse
 import pafy
 
 # Create your views here.
@@ -17,18 +17,23 @@ def courses(request):
 def course_list(request,pk=None):
     course=CourseModel.objects.get(id=pk)
     course_list = CourseListModel.objects.filter(course=course)
-    count_of_video = CourseVideoModel.objects.filter(name=course_list[0]).count()
-
     for i in course_list:
         duration_of_course = CourseVideoModel.objects.filter(name=i)
-        hour = time_count(duration_of_course)[0]
-        minut = time_count(duration_of_course)[1]
-        #print(type(hour))
-        #duration_of_course.hour_of_course = hour
-        #duration_of_course.minut_of_course = minut
-        #duration_of_course.save()
+        count_video=CourseVideoModel.objects.filter(name=i).count()
+        hour, minut = 0, 0
+        for video in duration_of_course:
+            hour += int((video.video_time).split(':')[0])
+            minut += int((video.video_time).split(':')[1])
+        if minut >= 60:
+            hour += minut // 60
+            minut = minut % 60
 
-    context = {'course_list':course_list, 'count_of_video':count_of_video}
+        i.hour_of_course = hour
+        i.minut_of_course = minut
+        i.count_of_videos=count_video
+        i.save()
+
+    context = {'course_list':course_list}
 
     return render(request, 'courses/course_list.html', context)
 
@@ -39,10 +44,14 @@ def course_list(request,pk=None):
 
 def course_detail_view(request,pk):
     course_list = get_object_or_404(CourseListModel, id=pk)
+    course_list.number_of_view+=1
+    course_list.count_of_comments=course_list.comment.count()
+    course_list.save()
     first_video = course_list.course_video.all()[0]
     count_of_video = CourseVideoModel.objects.filter(name=course_list).count()
     duration_of_course = CourseVideoModel.objects.filter(name=course_list)
     hour, minut = 0, 0
+
     for video in duration_of_course:
         hour += int((video.video_time).split(':')[0])
         minut += int((video.video_time).split(':')[1])
@@ -57,8 +66,6 @@ def course_detail_view(request,pk):
         if request.POST.get('comment')=='':
             redirect('courses:course_detail', pk=pk)
         else:
-            # print(request.POST)
-            # print(request.POST.get('comment_id'))
             if request.POST.get('comment_id') is not None:
                 comment=CommentCourse.objects.get(id=request.POST.get('comment_id'))
                 reply_com=ReplyCommentCourse(reply_comment=comment,author=request.user,text=request.POST.get('reply_comment'))
