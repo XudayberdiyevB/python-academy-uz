@@ -4,73 +4,68 @@
 {% block content %}
 {# blog filter #}
 {% if  results_blog %}
-    <div class="container mt-3">
+<div class="container mt-3">
 <h3>Maqolalar</h3>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3" id="more">
           {% for i in results_blog %}
             <div class="col mb-4">
-            <div class="card">
-             <img src="{{i.image.url}}" class="card-img-top" alt="...">
-             <div class="card-body">
-               <h5><a class="card-title text-decoration-none">{{i.title}}</a></h5>
-               <p class="card-text">{{i.text|truncatechars:9|safe}}</p>
-               <a href="{% url 'blogs:blog_detail' i.pk %}" class="btn btn-outline-primary mb-2">O'qish</a>
-               <div class="text-muted">
-                   <p><i class="fa fa-user" aria-hidden="true"></i> {{i.author}} |
-                       <i class="far fa-calendar-alt"></i> {{i.create_date}}
-                       <br>
-                       <i class="fas fa-eye"></i> {{ i.count_of_view }} |
-                       <i class="far fa-comment-dots"></i> {{ i.count_of_comment }}
+                <div class="card">
+                 <img src="{{i.image.url}}" class="card-img-top" alt="...">
+                 <div class="card-body">
+                   <h5><a class="card-title text-decoration-none">{{i.title}}</a></h5>
+                   <p class="card-text">{{i.text|truncatechars:9|safe}}</p>
+                   <a href="{% url 'blogs:blog_detail' i.pk %}" class="btn btn-outline-primary mb-2">O'qish</a>
+                   <div class="text-muted">
+                       <p><i class="fa fa-user" aria-hidden="true"></i> {{i.author}} |
+                           <i class="far fa-calendar-alt"></i> {{i.create_date}}
+                           <br>
+                           <i class="fas fa-eye"></i> {{ i.count_of_view }} |
+                           <i class="far fa-comment-dots"></i> {{ i.count_of_comment }}
+                       </p>
+                   </div>
+                   <p class="card-tags mt-2">
+                        <small class="text-muted">
+                            <span class="fa fa-tags"></span>
+                            {% for tag in i.tag.all %}
+                                <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
+                            {%endfor%}
+                        </small>
                    </p>
-               </div>
-
-               <p class="card-tags mt-2">
-                    <small class="text-muted">
-                        <span class="fa fa-tags"></span>
-                        {% for tag in i.tag.all %}
-                            <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
-                        {%endfor%}
-                    </small>
-               </p>
-
-
-             </div>
-           </div>
-         </div>
+                 </div>
+            </div>
+          </div>
           {% endfor %}
         </div>
-    </div>
+</div>
 {% endif %}
-
 
 {# course filter #}
 {% if results_course %}
-    <div class="container mt-4">
+<div class="container mt-4">
 <h3 >Kurslardan</h3>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
 {% for i in results_course %}
-        <div class="col mb-4">
-            <div class="card shadow">
-             <img src="{{i.image.url}}" class="card-img-top" alt="...">
-             <div class="card-body">
-               <h5><a  style="text-decoration:none" class="card-title">{{i.kurs_name}}</a></h5>
-               <p class="card-text">{{i.kurs_info}}</p>
-               <a href="{% url 'courses:course_detail' i.pk %}" class="btn btn-outline-primary mb-2">Boshlash</a>
-               <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> {{i.author}} </a> | {{i.count_of_videos}} ta Video | <i class="far fa-clock"> {{ i.hour_of_course }} soat {{ i.minut_of_course }} minut</i></small></p>
-               <p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt"></i> {{i.date_of_kurs}} | <i class="fas fa-eye"></i> {{i.number_of_view}} | <i class="far fa-comment-dots"></i> {{i.count_of_comments}} </a></small></p>
-               <p class="card-tags">
-                 <small class="text-muted">
-                 <span class="fa fa-tags"></span>
-                 {% for tag in i.tag.all %}
-                        <a href="{% url 'home:filter' tag.name %}"   class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
-                 {%endfor%}
-                 </small>
-                 </p>
-             </div>
-           </div>
-        </div>
-        {% endfor %}
+    <div class="col mb-4">
+        <div class="card shadow">
+         <img src="{{i.image.url}}" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5><a  style="text-decoration:none" class="card-title">{{i.kurs_name}}</a></h5>
+           <p class="card-text">{{i.kurs_info}}</p>
+           <a href="{% url 'courses:course_detail' i.pk %}" class="btn btn-outline-primary mb-2">Boshlash</a>
+           <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> {{i.author}} </a> | {{i.count_of_videos}} ta Video | <i class="far fa-clock"> {{ i.hour_of_course }} soat {{ i.minut_of_course }} minut</i></small></p>
+           <p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt"></i> {{i.date_of_kurs}} | <i class="fas fa-eye"></i> {{i.number_of_view}} | <i class="far fa-comment-dots"></i> {{i.count_of_comments}} </a></small></p>
+           <p class="card-tags">
+             <small class="text-muted">
+             <span class="fa fa-tags"></span>
+             {% for tag in i.tag.all %}
+                    <a href="{% url 'home:filter' tag.name %}"   class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
+             {%endfor%}
+             </small>
+             </p>
+         </div>
+       </div>
+    </div>
+{% endfor %}
 
     </div>
     <a class="btn btn-outline-primary mt-4" href="{% url 'courses:course' %}" role="button"><i class="fas fa-arrow-left"></i> Orqaga</a>
@@ -94,7 +89,7 @@
                     <small class="text-muted">
                         <span class="fa fa-tags"></span>
                         {% for tag in i.tag.all %}
-                            <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
+                            <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
                         {%endfor%}
                     </small>
                </p>

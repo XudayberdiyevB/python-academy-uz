@@ -373,6 +373,7 @@ i.fa-eye-slash {
 /* tag background */
 .bg-tags {
     background-color: #e8e3e3;
+    color:#fff;
 }
 
 /* comment form input */
@@ -433,3 +434,8 @@ i.fa-eye-slash {
   display: flex;
   align-items: center;
 }
+
+/*
+.anstext {
+    white-space: pre-wrap;
+}*/

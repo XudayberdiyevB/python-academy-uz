@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "All Quizzes" %}{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <h2>{% trans "Category list" %}</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-3">
+        {% for cat in categorys %}
+        <div class="col mb-4">
+            <div class="card shadow">
+<!--             <img src="" class="card-img-top" alt="...">-->
+             <div class="card-body">
+               <p class="card-text"><a href="{% url 'category_quiz_filter' cat.id %}">
+                  {{ cat.category }}
+                </a></p>
+               <a href="{% url 'category_quiz_filter' cat.id %}" class="btn btn-outline-primary mb-2">Kirish</a>
+               <p class="card-tags">
+                    <small>
+                        <i class="fas fa-laptop-code"></i> {{ course.course_count.all.count }} ta kurs
+                    </small>
+               </p>
+              </div>
+           </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

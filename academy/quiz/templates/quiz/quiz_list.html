@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+<!--{% block title %}{% trans "All Quizzes" %}{% endblock %}-->
+
+{% block content %}
+<!--<h2>{% trans "List of quizzes" %}</h2>-->
+
+<div class="container mt-3">
+    <h2>{% trans "Category list" %}</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-3">
+        {% for quiz in quizs %}
+        <div class="col mb-4">
+            <div class="card shadow">
+<!--             <img src="" class="card-img-top" alt="...">-->
+             <div class="card-body">
+               <p class="card-text"><a href="{% url 'quiz_start_page' slug=quiz.url %}">
+                  {{ quiz.title }}
+                </a></p>
+               <a href="{% url 'quiz_question' pk=quiz.id %}" class="btn btn-sm btn-outline-primary mb-2 mt-4">BOSHLASH</a>
+               <p class="card-tags">
+                 <small class="text-muted">
+                 <span class="fa fa-tags"></span>
+                 {% for tag in quiz.tag.all %}
+                        <a href="{% url 'home:filter' tag.name %}"   class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
+                 {%endfor%}
+                 </small>
+               </p>
+              </div>
+           </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

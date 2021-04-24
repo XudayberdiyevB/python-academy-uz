@@ -8,14 +8,12 @@
 <!-- section -->
 <section class="container">
     <div class="row">
-      <a href="{% url 'home:card_detail' card.pk %}">
-      <div class="col-8">
+      <a href="{% url 'home:card_detail' card.pk %}" class="text-decoration-none">
+      <div class="col-8 mt-4">
         <h5 class="card-title">{{card.title}}</h5>
         <div class="card mb-3">
-           
           <img src="{{card.image.url}}" class="card-img-top" alt="...">
           <div class="card-body">
-            
             <p class="card-text">{{card.text|safe}}</p>
             <div class="row">
               <div class="col-4"><p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt"></i> {{card.create_date}}</small></p></div>
@@ -23,13 +21,9 @@
               <p class="card-tags">
                 <small class="text-muted">
                 <span class="fa fa-tags"></span>
-                
-               
                     {% for i in card.tag.all %}
-                    <a href="{% url 'home:filter' i.name %}" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{i.name}}</span></a>
+                    <a href="{% url 'home:filter' i.name %}" class="text-muted"><span class="badge rounded-pill bg-tags text-muted ms-1">{{i.name}}</span></a>
                     {%endfor%}
-                
-                
                 </small>
                 </p>
             </div>
@@ -38,7 +32,7 @@
         </div>
       </div>
       </a>
-      <div class="col-4">
+      <div class="col-4 mt-4">
         <div class="card">
          <form class="card-body" action="/optins/process/" method="post">
             <div class="form-group">
@@ -72,7 +66,7 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 
   <!-- card qismi -->
 
@@ -103,7 +97,7 @@
                  <small class="text-muted">
                  <span class="fa fa-tags"></span>
                  {% for tag in course.tag.all %}
-                 <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
+                 <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
                  {%endfor%}
                  </small>
                  </p>
@@ -125,7 +119,7 @@
     <div class="col mb-4">
         <div class="card shadow">
          <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
-         <img src="{{blog.image.url}}" class="card-img-top" alt="...">
+         <img src="{{blog.image.url}}" class="card-img-top" alt="..." width="350" height="240">
          <div class="card-body">
            <h5><a  style="text-decoration:none" class="card-title">{{blog.title}}</a></h5>
            <p class="card-text">{{blog.text|truncatechars:10|safe}}</p>

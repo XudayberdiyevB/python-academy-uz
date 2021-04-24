@@ -8,7 +8,7 @@
           {% for i in blogs %}
             <div class="col mb-4">
             <div class="card">
-             <img src="{{i.image.url}}" class="card-img-top" alt="...">
+             <img src="{{i.image.url}}" class="card-img-top" alt="..." width="350" height="240">
              <div class="card-body">
                <h5><a class="card-title text-decoration-none">{{i.title}}</a></h5>
                <p class="card-text">{{i.text|truncatechars:9|safe}}</p>
@@ -26,7 +26,7 @@
                     <small class="text-muted">
                         <span class="fa fa-tags"></span>
                         {% for tag in i.tag.all %}
-                            <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-light  text-muted">{{tag.name}}</span></a>
+                            <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
                         {%endfor%}
                     </small>
                </p>
