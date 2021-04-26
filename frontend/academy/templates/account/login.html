@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pythonacademy</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+<body>
+    <header class="header-color sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                 <ul class="navbar-nav">
+                    <li>
+                         <div class="container-fluid nav-login">
+                            <a class="navbar-brand" href="{% url 'home:homepage' %}">
+                                <img src="{% static 'img/python-seeklogo.com.svg' %}" alt="" width="30" height="24" class="pylogo">
+                            </a>
+                        </div>
+                    </li>
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="index.html" id="colornav"><i>Python Academy Uz</i></a>
+                        </li>
+                    </ul>
+              </nav>
+        </div>
+    </header>
+
+    <!-- Login form -->
+     {% if messages %}
+        <div class="container">
+            <div class="row">
+             <div class="col-md-8 mx-auto my-4">
+                        {% for message in messages %}
+                                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% else %}
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endif %}
+                        {% endfor %}
+                    </div>
+             </div>
+        </div>
+{% endif %}
+
+    <div class="container loginforma">
+        <form action="{% url 'account:login' %}" method="POST">
+            {%csrf_token%}
+            <h1 style="text-align: center;">Log In</h1>
+            <hr>
+            <div class="wrap-input100">
+                <input class="input100 myinput" type="text" name="username" placeholder="Username">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="wrap-input100">
+                <input class="input100 myinput" id="password" type="password" name="password" placeholder="Password">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+                <span class="p-viewer text-muted kurish">
+                    <i class="fas fa-eye" aria-hidden="true"></i>
+                    <i class="fas fa-eye-slash" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="submit-row">
+            <input type="submit" name=submit value="Kirish" class="btn btn-danger submit_input">
+            <span>or</span>
+            <a href="{% url 'account:password_reset' %}">Forgot Password</a>
+        </div>
+        </form>
+
+        <hr>
+        <div class="loginbox-footer">
+            Sizda accaunt yo'qmi?
+            <a class="sign-link" href="{% url 'account:register' %}">
+            Register
+            </a>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <!-- Copyright -->
+    <div class="text-center p-3 bg1-dark footer_login position-absolute bottom-0">
+        © 2021 All rights reserved:
+        <a style="text-decoration: none; color: black;" href="pythonacademy">Python Academy</a>
+      </div>
+      <!-- Copyright -->
+
+</body>
+<script src="{% static 'js/index.js' %}"></script>
+<script src="{% static 'js/password.js' %}"></script>
+</html>

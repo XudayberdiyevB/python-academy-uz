@@ -1,0 +1,441 @@
+/* header */
+.header-color {
+    background-color: #18354C;
+    color: #ffffff;
+    height: 79px;
+}
+
+.nav-item-err {
+  margin-top: 0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+.pylogo {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+}
+
+.container {
+    padding: 10px;
+}
+
+#colornav {
+    color: #ffffff !important;
+}
+/* dropdown tepadagi */
+.dropx {
+    width: 120px;
+    text-align: center;
+    cursor: pointer;
+}
+.solid {
+    width: 122px;
+    margin: 10px;
+}
+.dropx p {
+    text-align: center;
+}
+.boxX {
+    padding: 10px;
+
+    display: none;
+}
+.boxX.active {
+    display: block;
+}
+
+@media (max-width: 576px) {
+  .xs {color:red;font-weight:bold;}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width:768px) {
+  .sm {color:red;font-weight:bold;}
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) and (max-width:992px) {
+ .md {color:red;font-weight:bold;}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width:1200px) {
+ .lg {color:red;font-weight:bold;}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .xl {color:red;font-weight:bold;}
+}
+
+
+  @import url(https://fonts.googleapis.com/css?family=Lato:700);
+  .box {
+    position: relative;
+
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
+  }
+
+  /* common */
+  .ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+  }
+  .ribbon::before,
+  .ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #2980b9;
+  }
+  .ribbon span {
+    position: absolute;
+    display: block;
+    width: 225px;
+    padding: 15px 0;
+    background-color: #318CE7;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    color: #fff;
+    font: 700 18px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+
+
+/* top right*/
+.ribbon-top-right {
+  top: -10px;
+  right: -10px;
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-top-right::before {
+  top: 0;
+  left: 0;
+}
+.ribbon-top-right::after {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-top-right span {
+  left: -25px;
+  top: 30px;
+  transform: rotate(45deg);
+}
+
+.comment-box {
+  padding: 0.8rem 1rem;
+  border-radius: 30px;
+}
+
+.bg1-dark{
+  background-color: #18354C;
+  color:#ffffff;
+}
+
+.cursor1 {
+  cursor: pointer;
+}
+
+/* social network icons */
+
+/* card tags */
+.card-tags {
+  margin: 0;
+}
+
+/* login form */
+.loginforma {
+  width: 30%;
+  margin-top: 30px;
+  padding: 5px;
+}
+
+/* login form input */
+.wrap-input100 {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+.input100 {
+  font-family: Poppins-Medium;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 5px;
+  padding: 0 30px 0 68px;
+  /* border-color: #666666; */
+}
+
+
+/*------------------------------------------------------------------
+[ Focus ]*/
+.focus-input100 {
+  display: block;
+  position: absolute;
+  border-radius: 5px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 0px 0px;
+  color: rgba(87,184,70, 0.8);
+}
+
+.input100:focus + .focus-input100 {
+  -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+  animation: anim-shadow 0.5s ease-in-out forwards;
+}
+
+@-webkit-keyframes anim-shadow {
+  to {
+    box-shadow: 0px 0px 70px 25px;
+    opacity: 0;
+  }
+}
+
+@keyframes anim-shadow {
+  to {
+    box-shadow: 0px 0px 70px 25px;
+    opacity: 0;
+  }
+}
+
+.symbol-input100 {
+  font-size: 15px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-radius: 5px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 35px;
+  pointer-events: none;
+  color: #666;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.input100:focus + .focus-input100 + .symbol-input100 {
+  color: #57b846;
+  padding-left: 28px;
+}
+
+.myinput {
+  border: 1px solid #777;
+}
+
+.myinput:focus {
+  border: 1px solid #57b846;
+  border-radius: 5px;
+  outline: none;
+}
+
+.mybtnlogin {
+  width: 100%;
+  margin-top: 30px;
+  font-size: 25px;
+  font-style: initial;
+}
+
+.loginbox-footer {
+    display: block;
+    padding: 0 0 24px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.sign-link {
+  text-decoration: none;
+}
+
+.footer_login {
+  width: 100%;
+  margin-top: 50px;
+}
+
+/* login, register page header */
+.nav-login {
+  display: inline-block;
+  float: left;
+}
+
+.submit-row {
+  text-align: center;
+}
+
+.submit_input {
+  font-size: 16px;
+    font-weight: 700;
+    height: 48px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+/* password eye */
+.p-viewer {
+  float: right;
+  margin-top: -34px;
+  margin-right: 10px;
+  position: relative;
+  z-index: 1;
+  cursor:pointer;
+  display: flex;
+  align-items: center;
+}
+i.fa-eye-slash {
+  display: none;
+}
+
+.list-menu {
+  text-align: center;
+}
+
+/* tags courses */
+
+.homebtn_detail {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.home_rows {
+  position: relative;
+}
+
+.course-detail-info {
+  border: none !important;
+  /* text-align: center; */
+}
+
+/* Comment section Course page */
+/* .icons i {
+  margin-left: 8px
+} */
+.user-img {
+  margin-right: 5px;
+}
+
+.reply {
+  margin-left: 12px;
+}
+
+.reply-comment {
+    padding-left: 30px;
+}
+.replydisplay {
+    display:none;
+}
+.replydisplay.show {
+    display:block;
+}
+.reply-color {
+  color: #b7b4b4
+}
+
+.reply small:hover {
+  color: green;
+  cursor: pointer
+}
+/* end comment section */
+
+/* tag background */
+.bg-tags {
+    background-color: #e8e3e3;
+    color:#fff;
+}
+
+/* comment form input */
+.comment-input {
+  position: relative;
+  font-family: Poppins-Medium;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  width: 80%;
+  border-radius: 5px;
+}
+.comment-inputype::placeholder {
+  color: #939694;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.comment-inputype {
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding-left: 10px;
+    border-radius: 5px;
+}
+.reply-inputype {
+    width: 80%;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding-left: 10px;
+    border-radius: 4px;
+}
+.reply-inputype::placeholder{
+    color: #939694;
+    font-size: 1em;
+    font-style: italic;
+}
+
+
+.comment-send-icon {
+  width: 30px;
+  position: absolute;
+  top: 12px;
+  right: 150px;
+  z-index: 1;
+  cursor:pointer;
+  display: flex;
+  align-items: center;
+}
+
+.comment-send-icon-reply {
+  width: 30px;
+  position: absolute;
+  top: 10px;
+  right: 240px;
+  z-index: 1;
+  cursor:pointer;
+  display: flex;
+  align-items: center;
+}
+
+/*
+.anstext {
+    white-space: pre-wrap;
+}*/
