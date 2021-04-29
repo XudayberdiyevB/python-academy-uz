@@ -3,7 +3,7 @@
 
   {% if user_was_incorrect %}
     <div class="alert alert-error">
-  	  <strong>{% trans "You answered the above question incorrectly" %}</strong>
+  	  <strong>{% trans "Siz noto'g'ri javob berdingiz ❌" %}</strong>
     </div>
   {% endif %}
 
@@ -13,7 +13,7 @@
         {% if answer.correct %}
   	    <tr class="success">
   		  <td>{{ answer.content }}</td>
-  		  <td><strong>{% trans "This is the correct answer" %}</strong></td>
+  		  <td><i class="far fa-hand-point-left"></i><strong>{% trans " Bu to'g'ri javob ✅" %}</strong></td>
         {% else %}
   		<tr>
       	  <td>{{ answer.content }}</td>

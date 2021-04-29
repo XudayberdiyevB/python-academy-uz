@@ -11,11 +11,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
 from six import python_2_unicode_compatible
 from django.conf import settings
-
 from model_utils.managers import InheritanceManager
 
 from home.models import TagModel
-
+from ckeditor.fields import RichTextField
 
 class CategoryManager(models.Manager):
 
@@ -83,7 +82,7 @@ class Quiz(models.Model):
 
     category = models.ForeignKey(
         Category, null=True, blank=True,
-        verbose_name=_("Category"), on_delete=models.CASCADE)
+        verbose_name=_("Category"), on_delete=models.CASCADE, related_name='quizcategory')
 
     tag = models.ManyToManyField(TagModel)
 
@@ -414,6 +413,9 @@ class Sitting(models.Model):
     class Meta:
         permissions = (("view_sittings", _("Can see completed exams.")),)
 
+    def __str__(self):
+        return str(self.quiz)
+
     def get_first_question(self):
         """
         Returns the next question.
@@ -574,13 +576,22 @@ class Question(models.Model):
                                null=True,
                                verbose_name=_("Figure"))
 
-    content = models.CharField(max_length=1000,
-                               blank=False,
-                               help_text=_("Enter the question text that "
-                                           "you want displayed"),
-                               verbose_name=_('Question'))
+    # content = models.CharField(max_length=1000,
+    #                            blank=False,
+    #                            help_text=_("Enter the question text that "
+    #                                        "you want displayed"),
+    #                            verbose_name=_('Question'))
+    content = RichTextField(config_name='question-post',blank=False, null=True, help_text=_("Enter the question text that "
+                                            "you want displayed"),
+                                            verbose_name=_('Question'))
 
-    explanation = models.TextField(max_length=2000,
+    # explanation = models.TextField(max_length=2000,
+    #                                blank=True,
+    #                                help_text=_("Explanation to be shown "
+    #                                            "after the question has "
+    #                                            "been answered."),
+    #                                verbose_name=_('Explanation'))
+    explanation = RichTextField(config_name='question-post',
                                    blank=True,
                                    help_text=_("Explanation to be shown "
                                                "after the question has "

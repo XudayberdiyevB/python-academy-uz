@@ -7,12 +7,9 @@ from .views import QuizUserProgressView, QuizMarkingList, \
     QuizMarkingDetail, QuizDetailView, QuizTake,CategoryByQuizList,category_quiz_filter
 
 urlpatterns = [
-
     url(r'^$',
         view=CategoryByQuizList.as_view(),
         name='quiz_index'),
-
-
 
     url('progress/',
         view=QuizUserProgressView.as_view(),
@@ -31,8 +28,7 @@ urlpatterns = [
         view=QuizDetailView.as_view(),
         name='quiz_start_page'),
 
-
     path('<int:pk>/take/',QuizTake.as_view(),name='quiz_question'),
-    url(r'^category/(?P<pk>[\d.]+)/$',view=category_quiz_filter,name='category_quiz_filter'),
-    # path('category/<int:pk>',category_quiz_filter,name='category_quiz_filter')
+    # url(r'^category/(?P<pk>[\d.]+)/$',view=category_quiz_filter,name='category_quiz_filter'),
+    path('category/<str:slug>',category_quiz_filter,name='category_quiz_filter')
 ]

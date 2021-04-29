@@ -78,6 +78,23 @@ CKEDITOR_CONFIGS = {
                         'codesnippet',
                     ]),
          },
+    'answer-post':{
+        'toolbar':'Custom',
+        'width':700,
+        'height':200,
+        'toolbar_Custom': [
+                    ['Bold', 'Italic', 'Underline'],
+                    ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                    ['Link', 'Unlink'],
+                    ['RemoveFormat', 'Source'],
+                    ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
+                    ['CodeSnippet'],
+                ],
+        'extraPlugins': ','.join(
+                    [
+                        'codesnippet',
+                    ]),
+         }
     }
 
 MIDDLEWARE = [
