@@ -15,13 +15,13 @@
                 <small class="text-muted">
                     <a class="text-decoration-none" href="#">
                         <i class="fas fa-user"></i> {{course_list.author}} | </a>
-                        {{count_of_video}} ta Video |
-                        <i class="far fa-clock"> {{soat}} soat {{minut}} minut | </i>
+                        {{course_list.count_of_videos}} ta Video |
+                        <i class="far fa-clock"> {{course_list.hour_of_course}} soat {{course_list.minut_of_course}} minut | </i>
                         <i class="far fa-comment-dots"></i> {{course_list.count_of_comments}} </small></p>
           </h6>
             <p class="card-text">{{course_list.kurs_info}}</p>
-                <h3>In this course, you’ll learn:</h3>
-                <p>{{course_list.content}}</p>
+                <h5>Kurs davomida quyidagilarni o'rganishingiz mumkin:</h5>
+                <p>{{course_list.content|safe}}</p>
         </div>
         <div class="video_content">
             <iframe width="560" height="315" src="{{first_video.video_url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -34,8 +34,8 @@
         <h6 class="card-subtitle mb-2 text-muted">
           <p class="card-text">
               <small class="text-muted">
-                  {{count_of_video}} ta Video |
-                  <i class="far fa-clock"> {{soat}} soat {{minut}} minut</i>
+                  {{course_list.count_of_videos}} ta Video |
+                  <i class="far fa-clock"> {{course_list.hour_of_course}} soat {{course_list.minut_of_course}} minut</i>
               </small>
           </p>
         </h6>

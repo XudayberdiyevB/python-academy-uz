@@ -1,18 +1,18 @@
 from __future__ import unicode_literals
 import re
 import json
-
 from django.db import models
 from django.core.exceptions import ValidationError, ImproperlyConfigured
 from django.core.validators import (
     MaxValueValidator, validate_comma_separated_integer_list,
 )
+from django.template.defaultfilters import slugify
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django.utils.timezone import now
 from six import python_2_unicode_compatible
 from django.conf import settings
 from model_utils.managers import InheritanceManager
-
 from home.models import TagModel
 from ckeditor.fields import RichTextField
 
@@ -159,8 +159,6 @@ class Quiz(models.Model):
 
     def __str__(self):
         return self.title
-    
-
 
     def get_questions(self):
         return self.question_set.all().select_subclasses()
@@ -189,19 +187,10 @@ class ProgressManager(models.Manager):
 
 
 class Progress(models.Model):
-    """
-    Progress is used to track an individual signed in users score on different
-    quiz's and categories
-
-    Data stored in csv using the format:
-        category, score, possible, category, score, possible, ...
-    """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=_("User"), on_delete=models.CASCADE)
-
     score = models.CharField(max_length=1024,
                              verbose_name=_("Score"),
                              validators=[validate_comma_separated_integer_list])
-
     objects = ProgressManager()
 
     class Meta:
@@ -210,37 +199,21 @@ class Progress(models.Model):
 
     @property
     def list_all_cat_scores(self):
-        """
-        Returns a dict in which the key is the category name and the item is
-        a list of three integers.
-
-        The first is the number of questions correct,
-        the second is the possible best score,
-        the third is the percentage correct.
-
-        The dict will have one key for every category that you have defined
-        """
         score_before = self.score
         output = {}
-
         for cat in Category.objects.all():
             to_find = re.escape(cat.category) + r",(\d+),(\d+),"
             #  group 1 is score, group 2 is highest possible
-
             match = re.search(to_find, self.score, re.IGNORECASE)
-
             if match:
                 score = int(match.group(1))
                 possible = int(match.group(2))
-
                 try:
                     percent = int(round((float(score) / float(possible))
                                         * 100))
                 except:
                     percent = 0
-
                 output[cat.category] = [score, possible, percent]
-
             else:  # if category has not been added yet, add it.
                 self.score += cat.category + ",0,0,"
                 output[cat.category] = [0, 0]
@@ -260,7 +233,6 @@ class Progress(models.Model):
         """
         category_test = Category.objects.filter(category=question.category)\
                                         .exists()
-
         if any([item is False for item in [category_test,
                                            score_to_add,
                                            possible_to_add,
@@ -270,25 +242,20 @@ class Progress(models.Model):
 
         to_find = re.escape(str(question.category)) +\
             r",(?P<score>\d+),(?P<possible>\d+),"
-
         match = re.search(to_find, self.score, re.IGNORECASE)
-
         if match:
             updated_score = int(match.group('score')) + abs(score_to_add)
             updated_possible = int(match.group('possible')) +\
                 abs(possible_to_add)
-
             new_score = ",".join(
                 [
                     str(question.category),
                     str(updated_score),
                     str(updated_possible), ""
                 ])
-
             # swap old score for the new one
             self.score = self.score.replace(match.group(), new_score)
             self.save()
-
         else:
             #  if not present but existing, add with the points passed in
             self.score += ",".join(
@@ -299,7 +266,6 @@ class Progress(models.Model):
                     ""
                 ])
             self.save()
-
     def show_exams(self):
         """
         Finds the previous quizzes marked as 'exam papers'.
@@ -307,9 +273,7 @@ class Progress(models.Model):
         """
         return Sitting.objects.filter(user=self.user, complete=True)
 
-
 class SittingManager(models.Manager):
-
     def new_sitting(self, user, quiz):
         if quiz.random_order is True:
             question_set = quiz.question_set.all() \
@@ -355,26 +319,7 @@ class SittingManager(models.Manager):
             sitting = self.filter(user=user, quiz=quiz, complete=False)[0]
         return sitting
 
-
 class Sitting(models.Model):
-    """
-    Used to store the progress of logged in users sitting a quiz.
-    Replaces the session system used by anon users.
-
-    Question_order is a list of integer pks of all the questions in the
-    quiz, in order.
-
-    Question_list is a list of integers which represent id's of
-    the unanswered questions in csv format.
-
-    Incorrect_questions is a list in the same format.
-
-    Sitting deleted when quiz finished unless quiz.exam_paper is true.
-
-    User_answers is a json object in which the question PK is stored
-    with the answer the user gave.
-    """
-
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"), on_delete=models.CASCADE)
 
     quiz = models.ForeignKey(Quiz, verbose_name=_("Quiz"), on_delete=models.CASCADE)
@@ -417,11 +362,6 @@ class Sitting(models.Model):
         return str(self.quiz)
 
     def get_first_question(self):
-        """
-        Returns the next question.
-        If no question is found, returns False
-        Does NOT remove the question from the front of the list.
-        """
         if not self.question_list:
             return False
 
@@ -550,54 +490,32 @@ class Sitting(models.Model):
 
 @python_2_unicode_compatible
 class Question(models.Model):
-    """
-    Base class for all question types.
-    Shared properties placed here.
-    """
-
     quiz = models.ManyToManyField(Quiz,
                                   verbose_name=_("Quiz"),
                                   blank=True)
-
     category = models.ForeignKey(Category,
                                  verbose_name=_("Category"),
                                  blank=True,
                                  null=True,
                                  on_delete=models.CASCADE)
-
     sub_category = models.ForeignKey(SubCategory,
                                      verbose_name=_("Sub-Category"),
                                      blank=True,
                                      null=True,
                                      on_delete=models.CASCADE)
-
     figure = models.ImageField(upload_to='uploads/%Y/%m/%d',
                                blank=True,
                                null=True,
                                verbose_name=_("Figure"))
-
-    # content = models.CharField(max_length=1000,
-    #                            blank=False,
-    #                            help_text=_("Enter the question text that "
-    #                                        "you want displayed"),
-    #                            verbose_name=_('Question'))
     content = RichTextField(config_name='question-post',blank=False, null=True, help_text=_("Enter the question text that "
                                             "you want displayed"),
                                             verbose_name=_('Question'))
-
-    # explanation = models.TextField(max_length=2000,
-    #                                blank=True,
-    #                                help_text=_("Explanation to be shown "
-    #                                            "after the question has "
-    #                                            "been answered."),
-    #                                verbose_name=_('Explanation'))
     explanation = RichTextField(config_name='question-post',
                                    blank=True,
                                    help_text=_("Explanation to be shown "
                                                "after the question has "
                                                "been answered."),
                                    verbose_name=_('Explanation'))
-
     objects = InheritanceManager()
 
     class Meta:
@@ -606,4 +524,4 @@ class Question(models.Model):
         ordering = ['category']
 
     def __str__(self):
-        return self.content
+        return mark_safe(self.content)

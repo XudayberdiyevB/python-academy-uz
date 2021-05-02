@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'blogs',
     'jobs',
     'books',
+    'problems',
     'ckeditor',
     'ckeditor_uploader',
     # quiz app

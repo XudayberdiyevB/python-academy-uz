@@ -52,7 +52,6 @@ class MCQuestion(Question):
         verbose_name = _("Multiple Choice Question")
         verbose_name_plural = _("Multiple Choice Questions")
 
-
 @python_2_unicode_compatible
 class Answer(models.Model):
     question = models.ForeignKey(MCQuestion, verbose_name=_("Question"), on_delete=models.CASCADE)

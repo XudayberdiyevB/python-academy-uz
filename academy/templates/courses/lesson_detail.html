@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Course Detail {% endblock title %}
 
 {% block content %}
 
 <div class="container mt-4">
-
     <div class="card mx-auto course-detail-info" style="width: 70%;">
         <div class="card-body">
           <h1 class="card-title fs-3">{{lesson.video_title}}</h1>
@@ -19,14 +19,15 @@
       <div class="card-body">
         <h5 class="card-title">{{course_list.kurs_name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">
-          <p class="card-text"><small class="text-muted">10 Videos | <i class="far fa-clock"> 1 soat 20 min</i></small></p>
+          <p class="card-text"><small class="text-muted">{{course_list.count_of_videos}} Videos |
+              <i class="far fa-clock"> {{course_list.hour_of_course}} soat {{course_list.minut_of_course}} min</i></small></p>
         </h6>
         <p class="card-text">
           <ol class="list-group list-group-flush">
           {% for i in course_list.course_video.all %}
           <li class="list-group-item">
               <a href="{% url 'courses:lesson' pn=i.id %}" class="a text-decoration-none">
-                  <i class="far fa-play-circle"></i> {{i.video_title}}
+                  <i class="far fa-play-circle"></i> {{i.video_title}} | {{i.video_time}}
               </a>
           </li>
           {% endfor %}
@@ -42,38 +43,75 @@
               <div class="headings d-flex justify-content-between align-items-center mb-3">
                   <h5>Izohlar</h5>                      
               </div>
-              {% for i in course.comment.all %}
+              {% for i in course_list.comment.all %}
                   <div class="card p-3">
-
-
                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> {{i.author}} </a></small> <br> <small class="font-weight-bold">{{i.text}}</small></span> </div> <small>{{i.created_date}}
-                       </small>
+                            <div class="user d-flex flex-row align-items-center">
+                                <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2">
+                                <span>
+                                    <small class="font-weight-bold">
+                                        <a href="#" class="text-decoration-none text-primary"> {{i.author}} </a>
+                                        <small class="reply-color">| {{i.created_date|timesince}} oldin</small>
+                                    </small> <br>
+                                    <small class="font-weight-bold">{{i.text}}</small>
+                                </span>
+                            </div>
                        </div>
-                         <div class="action d-flex justify-content-between mt-2 align-items-center">
-                            <div class="reply px-4"> <small><a href="#">Reply</a></small> </div>
-                            <div class="icons align-items-center"> <i class="fa fa-star text-warning"></i> <i class="fa fa-check-circle-o check-icon"></i> </div>
+                         <div class="action justify-content-between mt-2 align-items-center">
+                            <div class="reply reply-color px-4"> <small>Reply</small> </div>
+                            <div class="reply-comment replydisplay">
                              {% for j in i.reply_comment.all  %}
-                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2"> <span><small class="font-weight-bold text-primary"><a href="#" class="text-decoration-none"> {{j.author}} </a></small> <br> <small class="font-weight-bold">{{j.text}}</small></span> </div> <small>{{i.reply_comment.created_date}}
-                                   </small>
+                                 <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div class="user d-flex flex-row align-items-center">
+                                        <img src="https://i.imgur.com/hczKIze.jpg" width="30" class="user-img rounded-circle mr-2">
+                                        <span>
+                                            <small class="font-weight-bold">
+                                            <a href="#" class="text-decoration-none text-primary"> {{j.author}} </a>
+                                            <small class="reply-color">| {{j.created_date|timesince}} oldin </small>
+                                            </small> <br>
+                                        <small class="font-weight-bold">{{j.text}}</small></span> </div>
                                  </div>
                              {% endfor %}
+                                {% if request.user.is_authenticated %}
+                                <div class="form-floating mt-3">
+                                <form action="" method="POST">
+                                    {% csrf_token %}
+                                    <div class="comment-input">
+                                        <input type="hidden" value="{{i.id}}" name="comment_id">
+                                        <input type="text" placeholder="Izohga javob qoldirish" name="reply_comment" class="reply-inputype">
+                                    </div>
+                                    <div class="comment-send-icon-reply text-muted">
+                                        <input type="image" src="{% static 'img/send.png' %}" width="20" height="20">
+                                    </div>
+                                </form>
+                             </div>
+                                {% endif %}
+                            </div>
                          </div>
                   </div>
               {% endfor %}
-            <div class="form-floating mt-2">
-              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-              <label for="floatingTextarea">Izoh qoldirish</label>
-            </div>
-              
+              {% if request.user.is_authenticated %}
+                <div class="form-floating mt-3">
+                  <form method="POST" id="commentpost">
+                       {% csrf_token %}
+                        <div class="comment-input">
+                            <input type="text" id="id-checkbox" placeholder="Izoh qoldirish" name="comment" class="comment-inputype">
+                        </div>
+                        <div class="comment-send-icon text-muted">
+                            <input type="image" id="id-checkbox" src="{% static 'img/send.png' %}" width="25" height="25">
+                        </div>
+                      <input type="submit" style="visibility:hidden">
+                  </form>
+                </div>
+              {% endif %}
           </div>
       </div>
   </div>
-  <!-- end comment section -->
+<!--    end comment section-->
   <div class="mx-auto" style="width: 70%;">
     <a class="btn btn-outline-primary mt-4" href="{% url 'courses:course_detail' course_list.pk %}" role="button"><i class="fas fa-arrow-left"></i> Orqaga</a>
   </div>
 </div>      
 
+<script src="{% static 'js/coursecomments.js' %}"></script>
 {% endblock content %}

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from home.models import TagModel
 from .video_title import video_name, video_duration
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class CourseModel(models.Model):    
@@ -20,7 +21,7 @@ class CourseListModel(models.Model):
     course = models.ManyToManyField(CourseModel,related_name='course_count')
     kurs_name = models.CharField(max_length=100)
     kurs_info = models.CharField(max_length=1000)
-    content = models.TextField()
+    content = RichTextUploadingField(blank=True, null=True)
     image = models.ImageField(upload_to='img')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_of_kurs = models.DateField(default=datetime.now())
