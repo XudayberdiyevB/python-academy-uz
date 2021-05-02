@@ -5,11 +5,10 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView, TemplateView, FormView
-
+from django.db.models import Count
 from .forms import QuestionForm, EssayForm
 from .models import Quiz, Category, Progress, Sitting, Question
 from essay.models import Essay_Question
-
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)
@@ -32,10 +31,9 @@ class CategoryByQuizList(ListView):
     template_name = 'category_by_quizlist.html'
     context_object_name = 'categorys'
 
-def category_quiz_filter(request,pk):
-    categ=Category.objects.get(id=pk)
+def category_quiz_filter(request,slug):
+    categ=Category.objects.get(category=slug)
     quizs=Quiz.objects.filter(category=categ)
-    print(quizs.count())
 
     return render(request,'quiz/quiz_list.html',{'quizs':quizs})
 
@@ -61,8 +59,6 @@ class QuizDetailView(DetailView):
 
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
-
-
 
 #
 # class ViewQuizListByCategory(ListView):
@@ -102,7 +98,8 @@ class QuizUserProgressView(TemplateView):
         context = super(QuizUserProgressView, self).get_context_data(**kwargs)
         progress, c = Progress.objects.get_or_create(user=self.request.user)
         context['cat_scores'] = progress.list_all_cat_scores
-        context['exams'] = progress.show_exams()
+        context['exams'] = progress.show_exams().order_by('-end')
+
         return context
 
 
@@ -150,7 +147,7 @@ class QuizTake(FormView):
     single_complete_template_name = 'single_complete.html'
 
     def dispatch(self, request, *args, **kwargs):
-        self.quiz = get_object_or_404(Quiz, url=self.kwargs['pk'])
+        self.quiz = get_object_or_404(Quiz, id=self.kwargs['pk'])
         if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):
             raise PermissionDenied
 
@@ -212,6 +209,8 @@ class QuizTake(FormView):
             context['previous'] = self.previous
         if hasattr(self, 'progress'):
             context['progress'] = self.progress
+            progresspercent = int((self.progress[0]/self.progress[1])*100)
+            context['progresspercent'] = progresspercent
         return context
 
     def form_valid_user(self, form):

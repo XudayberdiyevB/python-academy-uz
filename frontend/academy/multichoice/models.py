@@ -3,7 +3,7 @@ from six import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from quiz.models import Question
-
+from ckeditor.fields import RichTextField
 
 ANSWER_ORDER_OPTIONS = (
     ('content', _('Content')),
@@ -13,7 +13,6 @@ ANSWER_ORDER_OPTIONS = (
 
 
 class MCQuestion(Question):
-
     answer_order = models.CharField(
         max_length=30, null=True, blank=True,
         choices=ANSWER_ORDER_OPTIONS,
@@ -53,13 +52,16 @@ class MCQuestion(Question):
         verbose_name = _("Multiple Choice Question")
         verbose_name_plural = _("Multiple Choice Questions")
 
-
 @python_2_unicode_compatible
 class Answer(models.Model):
     question = models.ForeignKey(MCQuestion, verbose_name=_("Question"), on_delete=models.CASCADE)
 
-    content = models.CharField(max_length=1000,
-                               blank=False,
+    # content = models.CharField(max_length=1000,
+    #                            blank=False,
+    #                            help_text=_("Enter the answer text that "
+    #                                        "you want displayed"),
+    #                            verbose_name=_("Content"))
+    content = RichTextField(config_name='answer-post',blank=False,null=True,
                                help_text=_("Enter the answer text that "
                                            "you want displayed"),
                                verbose_name=_("Content"))

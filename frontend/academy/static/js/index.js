@@ -14,9 +14,19 @@ dropx.addEventListener('click',function(){
    
 })
 
-var btnMenu = document.querySelector('.btn-menu')
-var menuShow = document.querySelector('.menu-show')
-console.log(menuShow);
-// btnMenu.addEventListener('click',function(){
-    
+// let a = document.querySelector('.a')
+
+// a.addEventListener('click',function(event){
+//     if(this.hash !== ""){
+//         event.preventDefault();
+//         var hash = this.hash
+
+//         function(){
+//             window.location.hash = hash
+//         }
+//     }
 // })
+
+// -------------------------
+// jquiry smooth scroll
+// Add smooth scrolling to all links
