@@ -1,0 +1,61 @@
+.text-dark{
+  width: 10%;
+}
+.btn-show {
+  display: none;
+}
+.cent{
+  justify-content: center;
+  width: 100%;
+}
+.navbar-nav{
+  display: flex;
+  flex-direction: row;
+}
+.btn-show {
+  display: none;
+}
+body.noScroll{
+  overflow: hidden;
+}
+@media(max-width:1024px){
+  .form-control{
+    display: none;
+  }
+  .navbar-light .navbar-toggler{
+    
+    color: rgba(233, 232, 232, 0.972);
+    border-color: rgba(243, 236, 236, 0.883);
+    background-color: #fff;
+  }
+}
+@media(max-width:990px){
+  .container.loginforma{
+    width: 85%;
+  }
+  .navbar-collapse{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar-collapse.isActive{
+    display: block;
+  }
+  .navbar-collapse ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+  .navbar-toggler.isShow{
+    display: block;
+    z-index: 4;
+  }
+}
