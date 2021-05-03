@@ -75,19 +75,19 @@
 {% endif %}
 
 <form action="" method="POST" class="mt-3" >{% csrf_token %}
-  <input type=hidden name="question_id" value="{{ question.id }}">
-
+  <input type='hidden' name="question_id" value="{{ question.id }}">
+  
   <ul class="list-group">
 	{% for answer in form.answers %}
-      {% autoescape off %}
+      
 	  <li class="list-group-item">
-          {{ answer|escape }}
+         {{answer|safe}}
 	  </li>
-      {% endautoescape %}
+      
 	{% endfor %}
 
   </ul>
-  <input type="submit" value={% trans "Yuborish" %} class="btn btn-large btn-block btn-warning mt-3">
+  <input type="submit" value='{% trans "Yuborish" %}' class="btn btn-large btn-block btn-primary mt-3">
 </form>
 
 {% endif %}

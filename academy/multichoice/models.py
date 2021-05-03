@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from quiz.models import Question
 from ckeditor.fields import RichTextField
+from django.utils.safestring import mark_safe
 
 ANSWER_ORDER_OPTIONS = (
     ('content', _('Content')),
@@ -40,9 +41,9 @@ class MCQuestion(Question):
 
     def get_answers(self):
         return self.order_answers(Answer.objects.filter(question=self))
-
+    
     def get_answers_list(self):
-        return [(answer.id, answer.content) for answer in
+        return [(answer.id, mark_safe(answer.content)) for answer in
                 self.order_answers(Answer.objects.filter(question=self))]
 
     def answer_choice_to_string(self, guess):

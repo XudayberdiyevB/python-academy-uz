@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 class ProblemModel(models.Model):
     sequence_number = models.CharField(max_length=10)
@@ -22,3 +23,16 @@ class ProblemModel(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         return super().save(*args, **kwargs)
+
+class ProblemAnswerModelUser(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    problem=models.ForeignKey(ProblemModel,on_delete=models.CASCADE)
+    answer_code_text=models.TextField()
+    answer_send_date=models.DateTimeField(auto_now_add=True)
+    is_correct=models.BooleanField(default=False)
+    answer_error_text=models.TextField()
+
+    def __str__(self):
+        return f"{self.user}-{self.problem}-{self.is_correct}"
+
+

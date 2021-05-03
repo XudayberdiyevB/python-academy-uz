@@ -10,9 +10,13 @@
     <div class="content-task mt-3">
         {{problem.content|safe}}
     </div>
-    <div class="editor">
-        <iframe src="https://trinket.io/embed/python3/3c0fc608e2?showInstructions=true" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-    </div>
+   
+        <form method="POST">
+                {% csrf_token %}
+            <textarea name="code"></textarea>
+            <input value='save' type="submit">
+        </form>
+ 
 
 </div>
 {% endblock content %}

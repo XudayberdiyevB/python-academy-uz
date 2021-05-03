@@ -74,41 +74,14 @@
                         <div class="sidebar-widget">
                             <div class="inner">
                                 <h6 class="title">Search Keywords</h6>
-                                <form action="#">
-                                    <input type="text" placeholder="e.g. django">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="text" name='search_job' placeholder="e.g. junior">
+                                    <input type="submit" value="search" class='btn btn-primary btn-sm'>
                                 </form>
                             </div>
                         </div>
-                        <!-- Sidebar (Search) End -->
-
-                        <!-- Sidebar (Category) Start -->
-                        <!-- <div class="sidebar-widget">
-                            <div class="inner">
-                                <h6 class="title">Category</h6>
-                                <form action="#">
-                                    <select>
-                                        <option value="1">Any category</option>
-                                        <option value="2">Web Designer</option>
-                                        <option value="3">Web Developer</option>
-                                        <option value="4">Graphic Designer</option>
-                                        <option value="5">App Developer</option>
-                                        <option value="6">UI &amp; UX Expert</option>
-                                    </select>
-                                </form>
-                            </div>
-                        </div> -->
-                        <!-- Sidebar (Category) End -->
-
-                        <!-- Sidebar (Location) Start -->
-                        <div class="sidebar-widget">
-                            <div class="inner">
-                                <h6 class="title">Location</h6>
-                                <form action="#">
-                                    <input type="text" placeholder="Location">
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Sidebar (Location) End -->
+                       
 
                         <!-- Sidebar (Job Type) Start -->
                         <div class="sidebar-widget">

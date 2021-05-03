@@ -12,11 +12,11 @@
   	  {% for answer in previous.answers %}
         {% if answer.correct %}
   	    <tr class="success">
-  		  <td>{{ answer.content }}</td>
+  		  <td>{{ answer.content|safe }}</td>
   		  <td><i class="far fa-hand-point-left"></i><strong>{% trans " Bu to'g'ri javob ✅" %}</strong></td>
         {% else %}
   		<tr>
-      	  <td>{{ answer.content }}</td>
+      	  <td>{{ answer.content|safe }}</td>
   		  <td>
   			{% if previous.question_type.MCQuestion %}
   			  {% if answer.id|add:"0" == previous.previous_answer|add:"0" %}

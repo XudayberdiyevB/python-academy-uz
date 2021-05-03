@@ -13,4 +13,7 @@ def problem_detail(request, slug):
     context = {
         'problem':problem
     }
+    if request.method=='POST':
+        code=request.POST['code']
+        print(eval(code))
     return render(request, 'problems/problem_detail.html', context)
