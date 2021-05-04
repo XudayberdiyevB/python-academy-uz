@@ -5,7 +5,7 @@
 {% block content %}
 
     <!-- Recent Jobs Start -->
-    <div class="section section-padding">
+    <div class="section " style="padding-top: 10px">
         <div class="container">
             <div class="row mb-n5">
 
@@ -22,15 +22,19 @@
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="salary-range">{{job.salary}}</span>
-                                <span class="badge bg-success">{{job.job_time}}</span>
+                                  {% for l in job.level.all %}
+                                <span class="badge  bg-success">{{l.level}}</span>
+                                    {% endfor %}
+                                
                             </div>
                             <div class="content col">
-                                <h5 class="title">{{job.title}}</h5>
+                                <h5 class="title">{{job.title}} <span class="badge bg-info">{{job.status}}</span></h5>
+
                                 <ul class="meta">
                                     <li><strong class="text-primary">{{job.company_name}}</strong></li>
                                     <li><i class="fa fa-map-marker-alt"></i> {{job.location}}</li>
                                     <li><i class="far fa-calendar-alt"></i>{{job.date}}</li>
-                                    <li><i class="far fa-comment-dots"></i>100</li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -41,8 +45,17 @@
                             <p>empty</p>
                             <h6 class="mb-3 mt-4">Education + Experience</h6>
                             <p>{{job.experience}}</p>
-                            <h6 class="mb-3 mt-4">Benefits</h6>
-                            <p>{{job.benifits}}</p>
+                            <h6 class="mb-3 mt-4">Aloqa</h6>
+                            <p>{% if job.phone_number %}
+                                            <p><i class="fas fa-phone-alt"></i> {{job.phone_number}}</p>
+                                        
+                                        {% endif %}
+                                        {% if job.email %}
+                                            <p><i class="fas fa-at"></i> {{job.email}}</p>
+                                        {% endif %}
+                                        {% if job.telegram_profile %}
+                                        <a href="https://t.me/{{job.telegram_profile}}"><i class="fab fa-telegram"></i> {{job.telegram_profile}}</a>
+                                       {% endif%}</p>
                         </div>
                     </div>
                 </div>
@@ -53,13 +66,23 @@
                     <div class="sidebar-wrap">
                         <!-- Sidebar (Apply Buttons) Start -->
                         <div class="sidebar-widget">
+
                             <div class="inner">
+                                Aloqa <i class="fas fa-id-card-alt"></i>
                                 <div class="row m-n2">
+
                                     <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                        <a href="#" class="d-block btn btn-outline-secondary"><i class="fa fa-heart-o mr-1"></i> Save Job</a>
-                                    </div>
-                                    <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                        <a href="#" class="d-block btn btn-primary">Apply Now</a>
+
+                                       {% if job.phone_number %}
+                                            <p><i class="fas fa-phone-alt"></i> {{job.phone_number}}</p>
+                                        
+                                        {% endif %}
+                                        {% if job.email %}
+                                            <p><i class="fas fa-at"></i> {{job.email}}</p>
+                                        {% endif %}
+                                        {% if job.telegram_profile %}
+                                        <a href="https://t.me/{{job.telegram_profile}}"><i class="fab fa-telegram"></i> {{job.telegram_profile}}</a>
+                                       {% endif%}
                                     </div>
                                 </div>
                             </div>
@@ -83,13 +106,7 @@
                         </div>
                         <!-- Sidebar (Job Overview) End -->
 
-                        <!-- Sidebar (Job Location) Start -->
-                        <div class="sidebar-widget">
-                            <div class="inner">
-                                <h6 class="title">Job Location</h6>
-                                <div class="job-location-map google-map" id="job-location-map" data-lat="-37.8172835" data-long="144.9560768" data-zoom="12" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Oops! Something went wrong.</div><div class="gm-err-message">This page didn't load Google Maps correctly. See the JavaScript console for technical details.</div></div></div></div></div>
-                            </div>
-                        </div>
+   
                         <!-- Sidebar (Job Location) End -->
                     </div>
                 </div>
