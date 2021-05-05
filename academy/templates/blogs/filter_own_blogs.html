@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %} Jobs {% endblock title %}
+
+{% block content %}
+
+    <!-- Recent Jobs Start -->
+    <div class="container mt-5">
+            <div class="row mb-n5">
+
+                <div class="col-lg-8 col-12 mb-5 pr-lg-5">
+
+                    <div class="job-list-wrap">
+                        {% for blog in filter_user %}
+                        <!-- Job List Start -->
+                        <a href="{% url 'blogs:blog_own_user_detail' blog.pk %}" class="job-list">
+                            <div class="company-logo col-auto">
+                                <img src="{{blog.image.url}}" alt="Logo"
+                                     style="
+                                     width:70px;
+                                     height:70px;
+                                     border-radius:50%">
+                            </div>
+                            &nbsp;
+                            <div class="salary-type col-auto order-sm-3">
+                                <span class="salary-range">{{blog.author}}</span>
+                                
+                              
+                           
+                                {% if blog.is_publish %}
+                                 <span class="badge  bg-success">
+                                ommaga taqdim etilgan
+                                </span>
+                                {% else %}
+                                <span class="badge  bg-danger">
+                                ommaga taqdim etilmagan
+                                </span>
+                                {% endif %}
+                            
+                                    
+                            </div>
+                            <div class="content col">
+
+                                <h6 class="title">{{blog.title}} <br>
+                                    <p style="font-size: 0.8rem" class="text-muted">{{blog.create_date}}</p>
+                            
+                                </h6> 
+
+
+                                <ul class="meta">
+                                    <!-- li><strong class="text-primary">{{job.company_name}}</strong></li>
+                                    <li><i class="fa fa-map-marker-alt"></i> {{job.location}}</li>
+                                    <li><i class="far fa-calendar-alt"></i>{{job.date}}</li> -->
+
+                                </ul>
+                            </div>
+                        </a>
+                        <!-- Job List Start -->
+                        {% endfor %}
+                    </div>
+                    <!-- Job List Wrap Start -->
+
+                    <!-- Pagination Start -->
+
+                    <br>
+                   <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                          <li class="page-item">
+                             {% if filter_user.has_previous %}
+                                <a class="page-link" href="?page={{ filter_user.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            {% endif %}
+                        </li>
+                          {% for page in filter_user.paginator.page_range %}
+                                <li class="page-item {% if page == filter_user.number %}active{% endif %}">
+                                    <a class="page-link" href="?page={{page}}">{{page}}</a>
+                                </li>
+                          {% endfor %}
+                        <li class="page-item">
+                             {% if jobs.has_next %}
+                                <a class="page-link" href="?page={{ filter_user.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            {% endif %}
+                        </li>
+                      </ul>
+                    </nav>
+
+                    <!-- Pagination End -->
+             
+                <!-- Job Sidebar Wrap End -->
+            </div>
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    <!-- Recent Jobs End -->
+
+{% endblock content %}

@@ -54,48 +54,14 @@ INSTALLED_APPS = [
 ]
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
 CKEDITOR_CONFIGS = {
-    'default':{
-        #'toolbar':'full'
-        'toolbar':'full',
-        'height':500,
-        'extraPlugins': ','.join(
-            [
-                'codesnippet',
-            ]),
+    'default':{   
+        'toolbar':'basic',
+        'height':300,
+        
     },
-    'question-post':{
-        'toolbar':'Custom',
-        'toolbar_Custom': [
-                    ['Bold', 'Italic', 'Underline'],
-                    ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-                    ['Link', 'Unlink'],
-                    ['RemoveFormat', 'Source'],
-                    ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
-                    ['CodeSnippet'],
-                ],
-        'extraPlugins': ','.join(
-                    [
-                        'codesnippet',
-                    ]),
-         },
-    'answer-post':{
-        'toolbar':'Custom',
-        'width':700,
-        'height':200,
-        'toolbar_Custom': [
-                    ['Bold', 'Italic', 'Underline'],
-                    ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-                    ['Link', 'Unlink'],
-                    ['RemoveFormat', 'Source'],
-                    ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
-                    ['CodeSnippet'],
-                ],
-        'extraPlugins': ','.join(
-                    [
-                        'codesnippet',
-                    ]),
-         }
+   
     }
 
 MIDDLEWARE = [

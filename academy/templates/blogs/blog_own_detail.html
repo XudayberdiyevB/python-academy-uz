@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} BUser write blog {% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+    {% if request.user.is_authenticated %}
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.media}}
+        {{form.as_p}}
+
+        <input value="saqlash" type="submit" class="btn btn-success"  >
+
+        <hr width="75">
+        <p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Maqolani o'zgartrganingizdan so'ng adminga xabar bering !</p>
+
+        </form>
+    {% else %}
+        <p><i class="fas fa-info-circle"></i> Maqola yozish uchun ro'yxatdan o'tishingiz kerak
+        </p>
+        <a class='btn btn-outline-primary' href="{% url 'account:register' %}">Ro'yxatdan o'tish</a>
+
+    {% endif %}
+    </div>
+
+
+<script type="text/javascript">
+    function result_blog() {
+  alert('Yozgan blogingiz adminga yuborildi tekshirilgandan so`ng saytga chiqariladi.Raxmat');
+}
+</script>
+
+{% endblock content %}

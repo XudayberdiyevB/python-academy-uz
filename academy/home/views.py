@@ -29,8 +29,8 @@ def homepage(request):
         blogs = random.sample(blogs, 2)
     else:
         blogs = random.sample(blogs, 3)
-
-    context = {'card':card,'blogs':blogs, 'courses':courses}
+    tags=TagModel.objects.all()
+    context = {'card':card,'blogs':blogs, 'courses':courses,'tags':tags}
 
     return render(request, 'home/index.html',context)
 

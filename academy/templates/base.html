@@ -43,9 +43,19 @@
                       <li class="nav-item" style="padding-top: 6px;">
                         <a class="nav-link active" aria-current="page" href="{% url 'courses:course' %}" id="colornav">Kurslar</a>
                       </li>
-                      <li class="nav-item" style="padding-top: 0;">
-                        <a class="nav-link active" aria-current="page" href="{% url 'blogs:blogs' %}" id="colornav">Maqola</a>
+                    
+
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
+                           Maqolalar
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'blogs:blogs' %}" >Maqola</a></li>
+                            
+                            <li><a class="dropdown-item" href="{% url 'blogs:blog_write_user' %}" >Maqola yozish</a></li>
+                        </ul>
                       </li>
+
                       <li class="nav-item" style="padding-top: 0;">
                         <a class="nav-link active" aria-current="page" href="{% url 'problems:all' %}" id="colornav">Masala</a>
                       </li>
@@ -71,7 +81,7 @@
 <!--                        </ul>-->
 <!--                      </li>-->
                       <li class="nav-item">
-                        <a class="nav-link nav-item-err" href="{% url 'jobs:jobs' %}" id="colornav">Jobs</a>
+                        <a class="nav-link nav-item-err" href="{% url 'jobs:jobs' %}" id="colornav">Ishlar</a>
                       </li>
 <!--                      <li class="nav-item">-->
 <!--                        <a class="nav-link nav-item-err" href="#" id="colornav">Forum</a>-->
@@ -81,7 +91,8 @@
                       </li>
                     </ul>
                     <form class="d-flex" style="padding-top: 6px;">
-                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      <input class="form-control me-2" 
+                     style="width: 170px" type="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form> &nbsp;&nbsp;&nbsp;
                     <ul class="navbar-nav">
@@ -91,8 +102,8 @@
                           Account
                         </a>
                         <ul class="dropdown-menu boxX" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="" >Your profile</a></li>
-                          <li><a class="dropdown-item" href="#" >Your posts</a></li>
+                          <li><a class="dropdown-item" href="{% url 'blogs:blog_own_user' %}" >Mening maqolalarim</a></li>
+                          <li><a class="dropdown-item" href="{% url 'quiz_progress' %}" >Testlardagi natijalarim</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="{% url 'account:logout' %}" >Logout</a></li>
                         </ul>
@@ -111,6 +122,9 @@
               </nav>
         </div>
     </header>
+
+        <a style="display:block;font-size:16px;width:900px;margin-left: 200px;text-align:center;border-radius:8px;padding:5px;background:#389ce9;text-decoration:none;color:#fff;" href="https://t.me/PythonAcademy_Uz" target="_blank"><svg style="width:30px;height:20px;vertical-align:middle;margin:0px 5px;" viewBox="0 0 21 18"><g fill="none"><path fill="#ffffff" d="M0.554,7.092 L19.117,0.078 C19.737,-0.156 20.429,0.156 20.663,0.776 C20.745,0.994 20.763,1.23 20.713,1.457 L17.513,16.059 C17.351,16.799 16.62,17.268 15.88,17.105 C15.696,17.065 15.523,16.987 15.37,16.877 L8.997,12.271 C8.614,11.994 8.527,11.458 8.805,11.074 C8.835,11.033 8.869,10.994 8.905,10.958 L15.458,4.661 C15.594,4.53 15.598,4.313 15.467,4.176 C15.354,4.059 15.174,4.037 15.036,4.125 L6.104,9.795 C5.575,10.131 4.922,10.207 4.329,10.002 L0.577,8.704 C0.13,8.55 -0.107,8.061 0.047,7.614 C0.131,7.374 0.316,7.182 0.554,7.092 Z"></path></g></svg>Bizga Telegramda qo'shiling!</a>
+    
     <!-- HEADER OXIRI -->
 
     {% block content %}
