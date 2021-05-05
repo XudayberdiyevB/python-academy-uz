@@ -3,7 +3,7 @@
 {% block title %} Jobs {% endblock title %}
 
 {% block content %}
-
+{% if filter_user %}
     <!-- Recent Jobs Start -->
     <div class="container mt-5">
             <div class="row mb-n5">
@@ -95,5 +95,11 @@
     </div>
     <div class="clearfix"></div>
     <!-- Recent Jobs End -->
-
+{% else %}
+<div class="container">
+    <h4>Siz hali maqola yozmadingiz maqola yozish uchun quyidagi linkni bosing
+        <a class='btn btn-danger btn-sm' href="{% url 'blogs:blog_write_user' %}">maqola yozish</a>
+    </h4>
+</div>
+{% endif %}
 {% endblock content %}
