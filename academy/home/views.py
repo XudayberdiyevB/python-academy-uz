@@ -15,6 +15,7 @@ def homepage(request):
     card = CardModel.objects.order_by("-id")[0]
 
     courses = list(CourseListModel.objects.all())
+    
     if len(courses) == 1:
         courses = random.sample(courses, 1)
     elif len(courses) == 2:
@@ -29,6 +30,7 @@ def homepage(request):
         blogs = random.sample(blogs, 2)
     else:
         blogs = random.sample(blogs, 3)
+
     tags=TagModel.objects.all()
     context = {'card':card,'blogs':blogs, 'courses':courses,'tags':tags}
 

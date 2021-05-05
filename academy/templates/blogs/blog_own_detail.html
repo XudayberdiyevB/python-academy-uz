@@ -4,7 +4,7 @@
 {% block title %} BUser write blog {% endblock title %}
 
 {% block content %}
-
+{% if not blog.is_publish %}
     <div class="container">
     {% if request.user.is_authenticated %}
     {% if form.errors %}
@@ -29,7 +29,7 @@
         <input value="saqlash" type="submit" class="btn btn-success"  >
 
         <hr width="75">
-        <p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Maqolani o'zgartrganingizdan so'ng adminga xabar bering !</p>
+        <p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Maqolani o'zgartrganingizdan so'ng admin tekshiradi keyin ommaga taqdim etiladi!</p>
 
         </form>
     {% else %}
@@ -47,4 +47,16 @@
 }
 </script>
 
+{% else %}
+    <div class="container">
+        <p>Maqola ommaga taqdim etilga endi uzgartra olmaysiz xatolik topgan bo'lsangiz adminga murojaat qiling!
+                <br>
+            Admin: <a href="https://t.me/Shaxzad99">telegram</a></p>
+
+    </div>
+
+
+
+
+{% endif %}
 {% endblock content %}

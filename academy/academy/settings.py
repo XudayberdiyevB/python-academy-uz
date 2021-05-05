@@ -46,13 +46,14 @@ INSTALLED_APPS = [
     'problems',
     'ckeditor',
     'ckeditor_uploader',
-    # quiz app
+    'crispy_forms',
     'quiz',
     'multichoice',
     'true_false',
     'essay'
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_CONFIGS = {

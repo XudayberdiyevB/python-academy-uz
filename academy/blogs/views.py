@@ -21,7 +21,7 @@ def blog_own_user_detail(request,pk):
             form.save()
             return redirect('blogs:blog_own_user')
     form=BlogUserModelForm(instance=blog)
-    return render(request,'blogs/blog_own_detail.html',{'form':form})
+    return render(request,'blogs/blog_own_detail.html',{'form':form,'blog':blog})
 
 
 def blog_own_user(request):
