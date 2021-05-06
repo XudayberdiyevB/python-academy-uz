@@ -6,18 +6,18 @@ from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 def job_homepage(request):
     if request.method=='POST':
         search=request.POST['search_job']
-        job=JobsModel.objects.filter(experience__icontains=search)
-        paginator = Paginator(job, 1) # Show 25 contacts per page
+        jobs=JobsModel.objects.filter(experience__icontains=search)
+        # paginator = Paginator(job, 1) # Show 25 contacts per page
 
-        page = request.GET.get('page')
-        try:
-            jobs = paginator.page(page)
-        except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-            jobs = paginator.page(1)
-        except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
-            jobs = paginator.page(paginator.num_pages)
+        # page = request.GET.get('page')
+        # try:
+        #     jobs = paginator.page(page)
+        # except PageNotAnInteger:
+        #     # If page is not an integer, deliver first page.
+        #     jobs = paginator.page(1)
+        # except EmptyPage:
+        #     # If page is out of range (e.g. 9999), deliver last page of results.
+        #     jobs = paginator.page(paginator.num_pages)
         context = {'jobs':jobs}
         return render(request, 'jobs/job_list.html', context)
 

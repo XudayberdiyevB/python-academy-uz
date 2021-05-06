@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import BlogModel, CommentBlogModel, ReplyCommentBlogModel,BlogUserModel
+from .models import BlogModel, CommentBlogModel, ReplyCommentBlogModel
 from datetime import datetime
 from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 
@@ -7,17 +7,17 @@ from home.models import TagModel
 from .forms import BlogUserModelForm
 
 def blogs(request):
-    blogs = BlogModel.objects.all()
+    blogs = BlogModel.objects.filter(is_publish=True)
+    
     return render(request, 'blogs/blogs.html', {'blogs':blogs})
 
 def blog_own_user_detail(request,pk):
     blog=BlogUserModel.objects.get(id=pk)
+
     
     if request.method=='POST':
         form=BlogUserModelForm(request.POST,request.FILES,instance=blog)
         if form.is_valid():
-            # blog=form.save(commit=False)
-            # blog.author=request.user
             form.save()
             return redirect('blogs:blog_own_user')
     form=BlogUserModelForm(instance=blog)
@@ -25,7 +25,7 @@ def blog_own_user_detail(request,pk):
 
 
 def blog_own_user(request):
-    filter_user=BlogUserModel.objects.filter(author=request.user)
+    filter_user=BlogModel.objects.filter(author=request.user)
     paginator = Paginator(filter_user, 5) 
 
     page = request.GET.get('page')
@@ -46,6 +46,7 @@ def blog_write_user(request):
         if form.is_valid():
             blog=form.save(commit=False)
             blog.author=request.user
+            blog.is_publish=False
             blog.create_date=datetime.now()
             if request.FILES['image']:
                 blog.image=request.FILES['image']
@@ -57,6 +58,7 @@ def blog_write_user(request):
 
 def blog_detail(request, pk):
     blog = BlogModel.objects.get(id=pk)
+
     blog.count_of_view+=1
     blog.count_of_comment=blog.comment_blog.count()
     blog.save()

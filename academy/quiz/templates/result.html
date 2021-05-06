@@ -63,7 +63,7 @@
 
   {% if questions %}
     {% for question in questions %}
-      <p class="lead">
+      <p class="lead"><b>{{ forloop.counter }}-savol</b>
 		{{ question.content|safe }}
 	  </p>
 	  {% correct_answer_for_all question %}
@@ -72,10 +72,12 @@
       {% endif %}
 
 	  <p><strong>{% trans "Izoh" %}:</strong></p>
+
 	  <div class="well " style="background-color: #fcf8e3;">
 		<p>{{ question.explanation|safe }}</p>
 	  </div>
 	  <hr>
+    <br>
   {% endfor %}
   {% endif %}
 

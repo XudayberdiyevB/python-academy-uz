@@ -11,30 +11,17 @@ from home.models import TagModel
 class BlogModel(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='img')
-    #text = RichTextField(blank=True, null=True)
     text = RichTextUploadingField(blank=True, null=True,config_name='default')
     create_date = models.DateField(default=datetime.now())
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     count_of_view=models.IntegerField(default=0)
     count_of_comment=models.IntegerField(default=0)
     tag = models.ManyToManyField(TagModel, verbose_name='list_tag')
-
+    is_publish=models.BooleanField(default=True)
     def __str__(self):
         return self.title
 
-class BlogUserModel(models.Model):
-    title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='img')
-    text = RichTextUploadingField(blank=True, null=True)
-    create_date = models.DateField(default=datetime.now())
-    author = models.ForeignKey(User,on_delete=models.CASCADE)
-    count_of_view=models.IntegerField(default=0)
-    count_of_comment=models.IntegerField(default=0)
-    tag = models.ManyToManyField(TagModel, verbose_name='list_tag',null=True,blank=True)
-    is_publish=models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.title
 
 
 class CommentBlogModel(models.Model):

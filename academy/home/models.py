@@ -20,7 +20,20 @@ class CardModel(models.Model):
         return self.title
 
 
-class AdminSendMessage(models.Model):
+class OperatorgaXabar(models.Model):
     text=models.TextField()
-    image=models.ImageField(default='message.jpeg',upload_to='message/')
-    send_date=models.DateField(default=datetime.now())
+    author=models.ForeignKey(User,on_delete=models.CASCADE)
+    send_date=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.author)+ '-' +self.text
+
+class UsergaJavob(models.Model):
+    send_to=models.ForeignKey(User,on_delete=models.CASCADE)
+    savol=models.ForeignKey(OperatorgaXabar,on_delete=models.CASCADE)
+    javob=models.TextField()
+    send_date=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.send_to)+ '-' +self.javob
+

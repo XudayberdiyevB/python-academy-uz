@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
     <link rel="stylesheet" href="{% static 'css/team.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/operator.css' %}">
 
 <!--     ckeditor codesnippet-->
     <!-- highlight.js-->
@@ -142,6 +143,39 @@
 
     {% block content %}
     {% endblock content%}
+
+
+
+
+<!-- operator form start -->
+<input style="border-radius: 50%" height='50' width='5' type="image" class="open-button btn" onclick="openForm()"  src="{% static 'img/support.png' %}"></input>
+
+
+<div class="chat-popup" id="myForm">
+  <form action="" class="form-container">
+    <h3>Operator</h3>
+
+    <label for="msg"><b>Xabar</b></label>
+    <textarea placeholder="sizga qanday yordam bera olamz." name="msg" required></textarea>
+
+    <button type="submit" class="btn btn-btn-danger btn-sm">Yuborish</button>
+    <button type="button" class="btn cancel btn-outline-secondary btn-sm" onclick="closeForm()">Yopish</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+<!-- operator form end -->
+
+
 
     <!-- Footer qismi -->
 <hr style="margin-top: 100px;">
