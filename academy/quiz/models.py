@@ -74,10 +74,13 @@ class Quiz(models.Model):
     description = models.TextField(
         verbose_name=_("Description"),
         blank=True, help_text=_("a description of the quiz"))
+    rating_quiz=models.IntegerField(default=0,null=True,blank=True)
+
+    author=models.CharField(max_length=100,null=True,blank=True)
 
     url = models.SlugField(
-        max_length=60, blank=False,
-        help_text=_("a user friendly url"),
+        max_length=60,null=True,blank=True,
+        help_text=_("shart emas"),
         verbose_name=_("user friendly url"))
 
     category = models.ForeignKey(
@@ -507,10 +510,10 @@ class Question(models.Model):
                                blank=True,
                                null=True,
                                verbose_name=_("Figure"))
-    content = RichTextField(config_name='question-post',blank=False, null=True, help_text=_("Enter the question text that "
+    content = RichTextField(config_name='default',blank=False, null=True, help_text=_("Enter the question text that "
                                             "you want displayed"),
                                             verbose_name=_('Question'))
-    explanation = RichTextField(config_name='question-post',
+    explanation = RichTextField(config_name='default',
                                    blank=True,
                                    help_text=_("Explanation to be shown "
                                                "after the question has "

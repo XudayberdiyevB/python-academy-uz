@@ -31,6 +31,7 @@ class CourseListModel(models.Model):
     count_of_videos=models.IntegerField(default=0)
     count_of_comments=models.IntegerField(default=0)
     tag = models.ManyToManyField(TagModel, verbose_name='tag_list')
+    author_name=models.CharField(max_length=100,null=True,blank=True)
 
 
     def __str__(self):

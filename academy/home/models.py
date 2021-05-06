@@ -13,7 +13,7 @@ class CardModel(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='img')
     text = RichTextUploadingField(blank=True, null=True)
-    create_date = models.DateField(default=datetime.now())
+    create_date = models.DateField(auto_now_add=True)
     tag = models.ManyToManyField(TagModel, verbose_name='tag_list')
 
     def __str__(self):

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import BlogModel, CommentBlogModel, ReplyCommentBlogModel
+from .models import BlogModel, CommentBlogModel, ReplyCommentBlogModel,CategoryBlog
 from datetime import datetime
 from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 
@@ -7,12 +7,18 @@ from home.models import TagModel
 from .forms import BlogUserModelForm
 
 def blogs(request):
-    blogs = BlogModel.objects.filter(is_publish=True)
-    
-    return render(request, 'blogs/blogs.html', {'blogs':blogs})
+    # blogs = BlogModel.objects.filter(is_publish=True)
+    blogs_by_category=CategoryBlog.objects.all()
+    return render(request, 'blogs/blogs.html', {'blogs':blogs_by_category})
+
+def blogs_category(request,pk):
+    category=CategoryBlog.objects.get(id=pk)
+    blogs=BlogModel.objects.filter(category_blog=category,is_publish=True)
+    return render(request,'blogs/blog_list_category.html',{'blogs':blogs})
+
 
 def blog_own_user_detail(request,pk):
-    blog=BlogUserModel.objects.get(id=pk)
+    blog=BlogModel.objects.get(id=pk)
 
     
     if request.method=='POST':
@@ -57,6 +63,7 @@ def blog_write_user(request):
     return render(request,'blogs/blog_write_user.html',{'form':form})
 
 def blog_detail(request, pk):
+    most_blogs=BlogModel.objects.filter(is_publish=True).order_by('-count_of_view')
     blog = BlogModel.objects.get(id=pk)
 
     blog.count_of_view+=1
@@ -78,4 +85,4 @@ def blog_detail(request, pk):
 
         return redirect('blogs:blog_detail',pk=pk)
 
-    return render(request, 'blogs/blog_detail.html', {'blog':blog})
+    return render(request, 'blogs/blog_detail.html', {'blog':blog,'most_blogs':most_blogs})

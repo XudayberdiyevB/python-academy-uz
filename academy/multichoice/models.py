@@ -62,7 +62,7 @@ class Answer(models.Model):
     #                            help_text=_("Enter the answer text that "
     #                                        "you want displayed"),
     #                            verbose_name=_("Content"))
-    content = RichTextField(config_name='answer-post',blank=False,null=True,
+    content = RichTextField(config_name='answer-config',blank=False,null=True,
                                help_text=_("Enter the answer text that "
                                            "you want displayed"),
                                verbose_name=_("Content"))

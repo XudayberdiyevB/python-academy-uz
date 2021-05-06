@@ -34,13 +34,13 @@
                               E'lonlar <span class="badge bg-secondary">4</span>
                             </button>
                             <div class="card">
-                              <div class="card-header">
-                                Featured
-                              </div>
+                              
                               <ul class="list-group list-group-flush">
-                                <li class="list-group-item list-group-item-action cursor1">An item</li>
-                                <li class="list-group-item list-group-item-action cursor1">A second item</li>
-                                <li class="list-group-item list-group-item-action cursor1">A third item</li>
+                                {% for m_blog in most_blogs %}
+                                <li class="list-group-item list-group-item-action cursor1"><a href="{% url 'blogs:blog_detail' m_blog.pk %}"><i class="fas fa-star"></i> {{m_blog.title}} | {{m_blog.count_of_view}} marta o'qilgan</a></li>
+                                
+                                {% endfor %}
+                                <li class="list-group-item list-group-item-action cursor1"><a href="{% url 'blogs:blog_write_user' %}"><i class="fas fa-feather-alt"></i> Maqola yozish</a></li>
                               </ul>
                             </div>
 

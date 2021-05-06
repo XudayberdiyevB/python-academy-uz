@@ -57,10 +57,29 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_CONFIGS = {
+
     'default':{   
         'toolbar':'basic',
         'height':300,
-        
+        'extraPlugins': ','.join(
+            [
+                'codesnippet',
+            ]),
+    },
+    'answer-config':{   
+        'toolbar': 'Custom',
+        'height':100,
+        'width':500,
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source','CodeSnippet']
+        ],
+        'extraPlugins': ','.join(
+            [
+                'codesnippet',
+            ]),
     },
    
     }

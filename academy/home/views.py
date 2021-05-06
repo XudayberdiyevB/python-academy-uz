@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from home.models import CardModel,TagModel
 from blogs.models import BlogModel
 from courses.models import CourseListModel
-
+from quiz.models import Quiz
 # Create your views here.
 
 def card_detail(request, pk):
@@ -16,6 +16,15 @@ def homepage(request):
 
     courses = list(CourseListModel.objects.all())
     
+    quizes=list(Quiz.objects.all())
+
+    if len(quizes) == 1:
+        quizes = random.sample(quizes, 1)
+    elif len(quizes) == 2:
+        quizes = random.sample(quizes, 2)
+    else:
+        quizes = random.sample(quizes, 3)
+
     if len(courses) == 1:
         courses = random.sample(courses, 1)
     elif len(courses) == 2:
@@ -23,7 +32,7 @@ def homepage(request):
     else:
         courses = random.sample(courses, 3)
 
-    blogs = list(BlogModel.objects.all())
+    blogs = list(BlogModel.objects.filter(is_publish=True))
     if len(blogs) == 1:
         blogs = random.sample(blogs, 1)
     elif len(blogs) == 2:
@@ -32,7 +41,7 @@ def homepage(request):
         blogs = random.sample(blogs, 3)
 
     tags=TagModel.objects.all()
-    context = {'card':card,'blogs':blogs, 'courses':courses,'tags':tags}
+    context = {'card':card,'blogs':blogs, 'courses':courses,'tags':tags,'quizes':quizes}
 
     return render(request, 'home/index.html',context)
 
