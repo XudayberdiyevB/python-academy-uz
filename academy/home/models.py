@@ -18,3 +18,9 @@ class CardModel(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class AdminSendMessage(models.Model):
+    text=models.TextField()
+    image=models.ImageField(default='message.jpeg',upload_to='message/')
+    send_date=models.DateField(default=datetime.now())

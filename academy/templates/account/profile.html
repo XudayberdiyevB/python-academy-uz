@@ -16,7 +16,7 @@
       <form method="POST" enctype="multipart/form-data" style="width: 400px">
           {% csrf_token %}
           <fieldset class="form-group">
-              <legend class="border-bottom mb-4">Shaxsiy kabinet malumotlari</legend>
+              <legend class="border-bottom mb-4"><i class="fas fa-user-shield"></i> Shaxsiy malumotlar </legend>
               {{ u_form|crispy }}
                
               {{ p_form|crispy }}
