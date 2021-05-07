@@ -16,7 +16,7 @@
       {% for exercise in exercises %}
         <tr>
           <th scope="row">{{forloop.counter}}</th>
-          <td><a href="{% url 'problems:detail' slug=exercise.slug %}" class="text-primary">{{exercise.name}}</td></a>
+          <td><a href="{% url 'problems:detail' pk=exercise.pk %}" class="text-primary">{{exercise.name}}</td></a>
           <td>{{exercise.sequence_number}}</td>
           <td><span class="badge bg-success">{{exercise.difficulty}}</span></td>
           <td>{{exercise.topic}}</td>

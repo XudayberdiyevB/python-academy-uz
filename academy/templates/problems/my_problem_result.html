@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-3">
+  {% if request.user.is_authenticated %}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">№</th>
+          <th scope="col">Masala nomi</th>
+          <th scope="col">Natija</th>
+          <th scope="col">Til</th>
+          <th scope="col">Vaqti</th>
+          <th scope="col">Xatolik</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for result in all_result %}
+        <tr>
+          <td >{{forloop.counter}}</td>
+          <td><a href="{% url 'problems:answer_detail' result.pk %}" class="text-primary">{{result.problem.name}}</td></a>
+          <td>
+            {% if result.is_correct %}
+             <span class="badge bg-success">To'g'ri</span>
+             
+            {% elif result.is_waiting %}
+              <span class="badge bg-primary">Kuting</span> 
+            {% else %}
+              <span class="badge bg-danger">Xato</span> 
+            {% endif %}
+          </td>
+          <td>Python3</td>
+          <td>{{result.send_answer_date}}</td>
+          <td>{% if result.is_correct %}
+                <b style="color: green">xato yo'q</b>
+              {% else %}
+              <b style="color: red">{{result.answer_error_text}}</b>
+              {% endif %}
+            
+          
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+  <p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Masalalar bo'yicha natijalaringizni ko'rish uchun <a href="">tizimga kiring</a> yoki <a href="">ro'yxatdan o'ting</a>!</p>
+  {% endif %}
+</div>
+{% endblock content %}

@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/code_python.css' %}">
+{% endblock %}
+   
 {% block content %}
+
 <div class="container mt-5" style="width:70%">
     <h3 class="mb-1"><strong>{{problem.sequence_number}}. {{problem.name}}</strong></h3>
     <div class="extrainfo">
@@ -11,7 +16,41 @@
         {{problem.content|safe}}
     </div>
    
- 
+   <hr width="50">
+
+<div class="container">
+	{% if request.user.is_authenticated %}
+	<form method="POST" action="{% url 'problems:detail' problem.pk %}" novalidate>
+		{% csrf_token %}
+		<input type="hidden" name="id_problem" value="{{problem.pk}}">
+		<label for='code' ><h6>Masalani yechimini <b>python3</b> dasturlash tilida jo'nating</h6></label>
+
+		<div class=wrap><div class=border><textarea name="name_code"  id="code" placeholder="bu yerga masala yechimi yani kodingizni yozing"></textarea></div></div>
+
+  <br>
+		<input type="submit" value="yuborish" class="btn btn-primary">
+	</form>
+	<hr width="35">
+		<p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Masalani yechimini yuborganingizdan keyin yechim adminga yuboriladi va tekshirilgandan so'ng saytda natijangizni ko'rishingiz mumkin!</p>
+	{% else %}
+	<p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Masalani yechimini yuborish uchun saytdan ro'yxatdan o'ting</p>
+	{% endif %}
+</div> 
+
 
 </div>
+
+<script>
+ var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: {name: "python",
+               version: 3,
+               singleLineStringErrors: false},
+        lineNumbers: true,
+        indentUnit: 4,
+        matchBrackets: true
+    });
+
+
+    
+</script>
 {% endblock content %}

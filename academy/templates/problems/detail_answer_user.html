@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/code_python.css' %}">
+{% endblock %}
+   
+{% block content %}
+
+<div class="container mt-5" style="width:70%">
+    <h3 class="mb-1"><strong>{{res.problem.sequence_number}}. {{res.problem.name}}</strong></h3>
+    <div class="extrainfo">
+        <span class="badge bg-success">{{res.problem.difficulty}}</span>
+    </div>
+    <div class="clearfix"></div>
+    <div class="content-task mt-3">
+        {{res.problem.content|safe}}
+    </div>
+   
+   <hr width="50">
+
+<div class="container">
+	{% if request.user.is_authenticated %}
+
+ <p>{% if res.is_waiting  %}
+        Masalaga bergan yechimingiz adminlar tomonidan tekshirilyapti 
+
+        <b>Yechim xolati:</b> <span class="badge bg-primary">Kuting</span>
+        
+        
+        {% endif %}
+      
+        {% if res.is_correct %}
+          <b>Yechim xolati:</b> <span class="badge bg-success">To'g'ri</span>
+            <br>
+         <b>Xatolik:</b> <i>Xatolik yo'q</i>
+
+        {% else %}
+
+          <b>Yechim xolati:</b> <span class="badge bg-danger">Xato</span>
+<br>
+          <b>Xatolik:</b> <i>{{res.answer_error_text}}</i>
+        {% endif %}
+    </p>
+
+
+		<label for='code' ><h6>Sizning bu masalaga bergan yechimingiz</h6></label>
+
+   
+		<div class=wrap><div class=border><textarea name="name_code" value='{{res.answer_code_text}}' id="code">{{res.answer_code_text}}</textarea></div></div>
+  <br>
+		
+	<hr width="35">
+		<p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Bu yerda masalaga bergan yechimingizni ko'rishingiz mumkin uni o'zgartra olmaysiz!</p>
+	{% else %}
+	<p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Masalani yechimini yuborish uchun saytdan ro'yxatdan o'ting</p>
+	{% endif %}
+</div> 
+
+
+</div>
+
+<script>
+ var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: {name: "python",
+               version: 3,
+               singleLineStringErrors: false},
+        lineNumbers: true,
+        indentUnit: 4,
+        matchBrackets: true,
+        readOnly:true
+    });
+
+
+    
+</script>
+{% endblock content %}

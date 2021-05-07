@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/operator.css' %}">
 
-<!--     ckeditor codesnippet-->
-    <!-- highlight.js-->
+    {% block css %}
+    {% endblock %}
+    
+
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -25,6 +27,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <!--    jquery-->
+<!-- codemirror -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/codemirror.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/theme/shadowfox.min.css'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/codemirror.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/mode/python/python.min.js'></script>
+
+<!-- END -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -58,9 +68,18 @@
                         </ul>
                       </li>
 
-                      <li class="nav-item" style="padding-top: 0;">
-                        <a class="nav-link active" aria-current="page" href="{% url 'problems:all' %}" id="colornav">Masala</a>
+
+                       <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
+                           Masala
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'problems:all' %}" ><i class="fas fa-trophy"></i> Masalalar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'problems:my_result' %}" ><i class="fas fa-poll"></i> Masala Natijalarim</a></li>
+                        </ul>
                       </li>
+                     
+
                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
                            Test
@@ -127,7 +146,7 @@
                               <a class="nav-link btn btn-danger btn-sm"  id='colornav' href="{% url 'account:login' %}">Kirish</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link"  id='colornav' href="{% url 'account:register' %}">Ro'yxatdan o'tish</a>
+                              <a class="nav-link"  id='colornav' href="{% url 'account:register' %}">Register</a>
                           </li>
                       {% endif %}
             		    </ul>
@@ -137,8 +156,22 @@
         </div>
     </header>
 
-        <a style="display:block;font-size:16px;width:900px;margin-left: 200px;text-align:center;border-radius:8px;padding:5px;background:#389ce9;text-decoration:none;color:#fff;" href="https://t.me/PythonAcademy_Uz" target="_blank"><svg style="width:30px;height:20px;vertical-align:middle;margin:0px 5px;" viewBox="0 0 21 18"><g fill="none"><path fill="#ffffff" d="M0.554,7.092 L19.117,0.078 C19.737,-0.156 20.429,0.156 20.663,0.776 C20.745,0.994 20.763,1.23 20.713,1.457 L17.513,16.059 C17.351,16.799 16.62,17.268 15.88,17.105 C15.696,17.065 15.523,16.987 15.37,16.877 L8.997,12.271 C8.614,11.994 8.527,11.458 8.805,11.074 C8.835,11.033 8.869,10.994 8.905,10.958 L15.458,4.661 C15.594,4.53 15.598,4.313 15.467,4.176 C15.354,4.059 15.174,4.037 15.036,4.125 L6.104,9.795 C5.575,10.131 4.922,10.207 4.329,10.002 L0.577,8.704 C0.13,8.55 -0.107,8.061 0.047,7.614 C0.131,7.374 0.316,7.182 0.554,7.092 Z"></path></g></svg>Bizga Telegramda qo'shiling!</a>
-    
+      <!--   <a style="display:block;font-size:16px;width:900px;margin-left: 200px;text-align:center;border-radius:8px;padding:5px;background:#389ce9;text-decoration:none;color:#fff;" href="https://t.me/PythonAcademy_Uz" target="_blank"><svg style="width:30px;height:20px;vertical-align:middle;margin:0px 5px;" viewBox="0 0 21 18"><g fill="none"><path fill="#ffffff" d="M0.554,7.092 L19.117,0.078 C19.737,-0.156 20.429,0.156 20.663,0.776 C20.745,0.994 20.763,1.23 20.713,1.457 L17.513,16.059 C17.351,16.799 16.62,17.268 15.88,17.105 C15.696,17.065 15.523,16.987 15.37,16.877 L8.997,12.271 C8.614,11.994 8.527,11.458 8.805,11.074 C8.835,11.033 8.869,10.994 8.905,10.958 L15.458,4.661 C15.594,4.53 15.598,4.313 15.467,4.176 C15.354,4.059 15.174,4.037 15.036,4.125 L6.104,9.795 C5.575,10.131 4.922,10.207 4.329,10.002 L0.577,8.704 C0.13,8.55 -0.107,8.061 0.047,7.614 C0.131,7.374 0.316,7.182 0.554,7.092 Z"></path></g></svg>Bizga Telegramda qo'shiling!</a>
+     -->
+{% if messages %}
+<div class="container">
+    <div class="row">
+        <div class="col mx-auto my-0" style="padding-top: 0">
+                {% for message in messages %}
+                                    <div class="alert {{message.tags}} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>                   
+                {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
     <!-- HEADER OXIRI -->
 
     {% block content %}
@@ -288,4 +321,5 @@ function closeForm() {
 </body>
 <script src="{% static 'js/password.js' %}"></script>
 <script src="{% static 'js/index.js' %}"></script>
+
 </html>

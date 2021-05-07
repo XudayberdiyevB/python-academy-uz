@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class ProblemModel(models.Model):
     sequence_number = models.CharField(max_length=10)
     name = models.CharField(max_length=1000)
-    content = RichTextUploadingField(config_name='question-post', blank=True, null=True)
+    content = RichTextUploadingField(blank=True, null=True)
     difficulty = models.CharField(max_length=20)
     topic = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -30,7 +30,11 @@ class ProblemAnswerModelUser(models.Model):
     answer_code_text=models.TextField()
     answer_send_date=models.DateTimeField(auto_now_add=True)
     is_correct=models.BooleanField(default=False)
-    answer_error_text=models.TextField()
+    is_waiting=models.BooleanField(default=True)
+    answer_error_text=models.TextField(null=True,blank=True)
+    send_answer_date=models.DateTimeField(auto_now_add=True)
+    
+
 
     def __str__(self):
         return f"{self.user}-{self.problem}-{self.is_correct}"
