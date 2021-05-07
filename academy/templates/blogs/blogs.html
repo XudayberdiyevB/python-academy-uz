@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
-
+{% load filter_count %}
 {% block title %} Blog {% endblock title %}
 
 {% block content %}
 
 <div class="container mt-3">        
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-        {% for blog in blogs %}
-        {% if not blog %}
-        <p>blog yo'q</p>
+        {% for category in blogs %}
+        {% if not category %}
+        <p>category yo'q</p>
         {% else %} 
         <div class="col mb-4">
             <div class="card shadow">
-             <img src="{{blog.image.url}}" class="card-img-top" alt="...">
+             <img src="{{category.image.url}}" class="card-img-top" alt="...">
              <div class="card-body">
-               <h5><a class="card-title text-decoration-none">{{blog.category_name}}</a></h5>
-               <p class="card-text">{{blog.category_info}}</p>                              
-               <a href="{% url 'blogs:category_blog' blog.pk %}" class="btn btn-outline-primary mb-2">Kirish</a>
+               <h5><a class="card-title text-decoration-none">{{category.category_name}}</a></h5>
+               <p class="card-text">{{category.category_info}}</p>                              
+               <a href="{% url 'blogs:category_blog' category.pk %}" class="btn btn-outline-primary mb-2">Kirish</a>
                <p class="card-tags">
                     <small>
-                        <i class="fas fa-laptop-code"></i> {{ blog.category_blog.all.count }} ta maqola
+                        <i class="fas fa-laptop-code"></i> {{ category.id|filter_count }} ta maqola
                     </small>
                </p>
               </div>

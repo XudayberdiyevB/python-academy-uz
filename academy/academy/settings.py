@@ -108,6 +108,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+            'problem_tags': 'problems.templatetags.problem_tags',
+            'filter_count':'blogs.templatetags.filter_count',
+
+            }
         },
     },
 ]

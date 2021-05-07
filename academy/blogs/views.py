@@ -65,7 +65,7 @@ def blog_write_user(request):
 def blog_detail(request, pk):
     most_blogs=BlogModel.objects.filter(is_publish=True).order_by('-count_of_view')
     blog = BlogModel.objects.get(id=pk)
-
+    print(blog.blog_count())
     blog.count_of_view+=1
     blog.count_of_comment=blog.comment_blog.count()
     blog.save()

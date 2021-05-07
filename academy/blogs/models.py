@@ -14,6 +14,7 @@ class CategoryBlog(models.Model):
     category_info=models.CharField(max_length=200)
     image=models.ImageField(upload_to='category_photo',null=True,blank=True)
 
+
     def __str__(self):
         return self.category_name
 
@@ -30,6 +31,8 @@ class BlogModel(models.Model):
     tag = models.ManyToManyField(TagModel, verbose_name='list_tag')
     is_publish=models.BooleanField(default=True)
 
+    def blog_count(self):
+        return BlogModel.objects.filter(is_publish=True).count()
 
     def __str__(self):
         return str(self.category_blog)+' - '+self.title

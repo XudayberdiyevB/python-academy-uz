@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
+{% load problem_tags %}
 
 {% block content %}
 <div class="container mt-3">
     <table class="table table-hover">
+      <form action="" method="POST">
+        {%csrf_token%}
+                    <div class="m-2">
+                        <div class="input-group">
+                            <input style='border: 1px solid #eee' type="text" class="form-control" placeholder="Izlash..." value="" name="search">
+                            <div class="input-group-append">
+                                <button class="btn btn-danger" type="submit" id="search"><i class="fas fa-search"></i> Izlash</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+      </form>
       <thead>
         <tr>
           <th scope="col">№</th>
@@ -15,8 +28,16 @@
       <tbody>
       {% for exercise in exercises %}
         <tr>
+
           <th scope="row">{{forloop.counter}}</th>
-          <td><a href="{% url 'problems:detail' pk=exercise.pk %}" class="text-primary">{{exercise.name}}</td></a>
+          <td> {% if exercise.id|problem_check_filter:user == 3 %}
+                  <i style="color: green" class="fas fa-check-circle"></i>
+                {% elif exercise.id|problem_check_filter:user == 1 %}
+                
+                {% else %}
+                   <i style="color: red" class="fas fa-times-circle"></i>
+               {% endif %}
+            <a href="{% url 'problems:detail' pk=exercise.pk %}" class="text-primary">{{exercise.name}}</td></a>
           <td>{{exercise.sequence_number}}</td>
           <td><span class="badge bg-success">{{exercise.difficulty}}</span></td>
           <td>{{exercise.topic}}</td>
@@ -24,5 +45,29 @@
       {% endfor %}
       </tbody>
     </table>
+
+      <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                          <li class="page-item">
+                             {% if exercises.has_previous %}
+                                <a class="page-link" href="?page={{ exercises.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            {% endif %}
+                        </li>
+                          {% for page in exercises.paginator.page_range %}
+                                <li class="page-item {% if page == exercises.number %}active{% endif %}">
+                                    <a class="page-link" href="?page={{page}}">{{page}}</a>
+                                </li>
+                          {% endfor %}
+                        <li class="page-item">
+                             {% if exercises.has_next %}
+                                <a class="page-link" href="?page={{ exercises.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            {% endif %}
+                        </li>
+                      </ul>
+                    </nav>
 </div>
 {% endblock content %}

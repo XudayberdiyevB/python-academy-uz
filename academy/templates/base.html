@@ -89,18 +89,7 @@
                             <li><a class="dropdown-item" href="{% url 'quiz_progress' %}" ><i class="fas fa-poll"></i> Test Natijalari</a></li>
                         </ul>
                       </li>
-<!--                        Manabalar-->
-<!--                      <li class="nav-item dropdown dropx">-->
-<!--                        <a id="colornav" class="nav-link dropdown-toggle nav-item-err" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                          Manbalar-->
-<!--                        </a>-->
-<!--                        <ul class="dropdown-menu boxX" aria-labelledby="navbarDropdown">-->
-<!--                          <li><a class="dropdown-item" href="{% url 'books:book-list' %}" >Kitoblar</a></li>-->
-<!--                          <li><a class="dropdown-item" href="#" >Dasturlar</a></li>-->
-<!--                          <li><hr class="dropdown-divider"></li>-->
-<!--                          <li><a class="dropdown-item" href="#" >Foydali havolalar</a></li>-->
-<!--                        </ul>-->
-<!--                      </li>-->
+
                       <li class="nav-item">
                         <a class="nav-link nav-item-err" href="{% url 'jobs:jobs' %}" id="colornav">Vakansiya</a>
                       </li>
@@ -126,15 +115,16 @@
                         <a id="colornav" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           
                         <img style="vertical-align: middle;
-                              width: 40px;
-                              height: 40px;
+                              width: 35px;
+                              height: 35px;
                               border-radius: 50%;"   src="{{request.user.profile.image.url}}">
                           {{request.user.username}}
                         </a>
                         <ul class="dropdown-menu boxX" aria-labelledby="navbarDropdown">
                           <li><a class="dropdown-item" href="{% url 'account:profile' %}" ><i class="fas fa-user"></i> Shaxsiy kabinet</a></li>
                           <li><a class="dropdown-item" href="{% url 'blogs:blog_own_user' %}" ><i class="fas fa-money-check"></i> Mening maqolalarim</a></li>
-                          <li><a class="dropdown-item" href="{% url 'quiz_progress' %}" ><i class="fas fa-poll-h"></i> Testlardagi natijalarim</a></li>
+                          <li><a class="dropdown-item" href="{% url 'quiz_progress' %}" ><i class="fas fa-poll-h"></i> Test | natijalarim</a></li>
+                          <li><a class="dropdown-item" href="{% url 'problems:my_result' %}" ><i class="fas fa-poll-h"></i> Masala | natijalarim</a></li>
                           <li><a class="dropdown-item" href="{% url 'account:profile' %}" ><i class="fas fa-comment-dots"></i> Sizga xabar bor</a></li>
                           <li><hr class="dropdown-divider"></li>
 
@@ -181,8 +171,15 @@
 
 
 <!-- operator form start -->
-<input style="border-radius: 50%" height='50' width='5' type="image" class="open-button btn" onclick="openForm()"  src="{% static 'img/support.png' %}"></input>
-
+<div style="width: 100px;
+  height: 100px;
+  background: red;
+  border-radius: 50%">
+<button style="background-image: url('')" class="open-button btn" onclick="openForm()"><img style="width: 100px;
+  height: 100px;
+  background: red;
+  border-radius: 50%" src="{% static 'img/support.png' %}" alt=""></button>
+</div>
 
 <div class="chat-popup" id="myForm">
   <form action="" class="form-container">

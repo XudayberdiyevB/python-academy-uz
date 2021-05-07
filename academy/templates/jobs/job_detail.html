@@ -40,11 +40,9 @@
                             </div>
                         </div>
                         <div class="job-details-body">
-                            <h6 class="mb-3">Job Description</h6>
+                            <h6 class="mb-3">Ish haqida</h6>
                             <p>{{job.description}}</p>
-                            <h6 class="mb-3 mt-4">Responsibilities</h6>
-                            <p>empty</p>
-                            <h6 class="mb-3 mt-4">Education + Experience</h6>
+                            <h6 class="mb-3 mt-4">Talab etiladigan bilimlar</h6>
                             <p>{{job.experience}}</p>
                             <h6 class="mb-3 mt-4">Aloqa</h6>
                             <p>{% if job.phone_number %}
@@ -93,15 +91,15 @@
                         <!-- Sidebar (Job Overview) Start -->
                         <div class="sidebar-widget">
                             <div class="inner">
-                                <h6 class="title">Job Overview</h6>
+                                <h6 class="title">Ish haqida</h6>
                                 <ul class="job-overview list-unstyled">
-                                    <li><strong>Published on:</strong> {{job.date}}</li>
-                                    <li><strong>Job Status:</strong> {{job.status}}</li>
-                                    <li><strong>Job Time:</strong> {{job.job_time}}</li>
-                                    <li><strong>Experience:</strong> {{job.experience_time}}</li>
-                                    <li><strong>Job Location:</strong> {{job.location}}</li>
-                                    <li><strong>Salary:</strong> {{job.salary}}</li>
-                                    <li><strong>Application Deadline:</strong> {{job.dedline}}</li>
+                                    <li><strong>E'lon berilgan sana:</strong> {{job.date}}</li>
+                                    
+                                    <li><strong>Ish vaqti:</strong> {{job.job_time}}</li>
+                                    <li><strong>Tajriba:</strong> {{job.experience_time}} yil</li>
+                                    <li><strong>Ish manzili:</strong> {{job.location}}</li>
+                                    <li><strong>Maosh:</strong> {{job.salary}}</li>
+                                    <li><strong>Oxirgi muddat:</strong> {{job.dedline}}</li>
                                 </ul>
                             </div>
                         </div>
