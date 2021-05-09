@@ -38,10 +38,16 @@ class ProblemAnswerModelUser(models.Model):
         return f"{self.user}-{self.problem}-{self.is_correct}"
 
 class UserRatingSystem(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,unique=True,on_delete=models.CASCADE)
     problems=models.ManyToManyField(ProblemAnswerModelUser)
     all_problem=models.IntegerField(default=0)
     rating_ball=models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        if self.all_problem == 0:
+            all_problem=ProblemModel.objects.all().count()
+
+        super(UserRatingSystem, self).save(*args, **kwargs)
 
     def __str(self):
         return str(self.user)+' - '+str(self.rating_ball)

@@ -6,12 +6,19 @@ from blogs.models import BlogModel
 from courses.models import CourseListModel
 from quiz.models import Quiz
 # Create your views here.
+from problems.models import UserRatingSystem
 
 def card_detail(request, pk):
     card = get_object_or_404(CardModel, id=pk)
     return render(request, 'home/card_detail.html', {'card':card})
 
 def homepage(request):
+    if request.user.is_authenticated:
+        f=UserRatingSystem.objects.filter(user=request.user)
+        if not f:
+
+            rating=UserRatingSystem.objects.create(user=request.user)
+
     card = CardModel.objects.order_by("-id")[0]
 
     courses = list(CourseListModel.objects.all())

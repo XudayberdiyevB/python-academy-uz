@@ -9,10 +9,10 @@
                               width: 75px;
                               height: 75px;
                               border-radius: 50%;" 
-             src="{{ user.profile.image.url }}"> {{ user.username }}</h2>
+             src="{{ current_odam.profile.image.url }}"> {{ current_odam.username }}</h2>
           <p class="text-muted">{{ user.email }}</p>
         
-      
+      {% if request.user == current_odam and current_odam.is_authenticated %}
       <form method="POST" enctype="multipart/form-data" style="width: 400px">
           {% csrf_token %}
           <fieldset class="form-group">
@@ -26,6 +26,21 @@
               <button class="btn btn-primary" type="submit">Saqlash</button>
           </div>
       </form>
+
+      {% endif %}
+    </div>
+</div>
+
+<div class="container" style="padding-left: 100px;padding-right: 100px;width: 800px">
+  <div class="content-section">
+      
+      <p>Reytingda : {% if filter_us %}
+      {{filter_us.rating_ball}}/{{all_prob}}-ta masala ishlagan</p>
+      {% else %}
+      <p>Reytingda: 0/{{all_prob}} </p>
+      {% endif %}
+  
+        
     </div>
 </div>
     

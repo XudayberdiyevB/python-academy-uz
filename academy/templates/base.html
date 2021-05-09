@@ -121,11 +121,12 @@
                           {{request.user.username}}
                         </a>
                         <ul class="dropdown-menu boxX" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="{% url 'account:profile' %}" ><i class="fas fa-user"></i> Shaxsiy kabinet</a></li>
+                          <li><a class="dropdown-item" href="{% url 'account:profile' user=request.user.username %}" ><i class="fas fa-user"></i> Shaxsiy kabinet</a></li>
+                          <li><a class="dropdown-item" href="{% url 'account:all_users' %}" ><i class="fas fa-users"></i> Foydalanuvchilar</a></li>
                           <li><a class="dropdown-item" href="{% url 'blogs:blog_own_user' %}" ><i class="fas fa-money-check"></i> Mening maqolalarim</a></li>
                           <li><a class="dropdown-item" href="{% url 'quiz_progress' %}" ><i class="fas fa-poll-h"></i> Test | natijalarim</a></li>
                           <li><a class="dropdown-item" href="{% url 'problems:my_result' %}" ><i class="fas fa-poll-h"></i> Masala | natijalarim</a></li>
-                          <li><a class="dropdown-item" href="{% url 'account:profile' %}" ><i class="fas fa-comment-dots"></i> Sizga xabar bor</a></li>
+                          <li><a class="dropdown-item" href="" ><i class="fas fa-comment-dots"></i> Sizga xabar bor</a></li>
                           <li><hr class="dropdown-divider"></li>
 
                           <li><a class="dropdown-item" href="{% url 'account:logout' %}" >Chiqish</a></li>
