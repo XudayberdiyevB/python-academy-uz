@@ -61,7 +61,7 @@ def blog_write_user(request):
             return redirect('blogs:blogs')
    
     return render(request,'blogs/blog_write_user.html',{'form':form})
-
+from django.http import HttpResponse
 def blog_detail(request, pk):
     most_blogs=BlogModel.objects.filter(is_publish=True).order_by('-count_of_view')
     blog = BlogModel.objects.get(id=pk)
@@ -70,18 +70,17 @@ def blog_detail(request, pk):
     blog.count_of_comment=blog.comment_blog.count()
     blog.save()
     if request.method == 'POST':
-        if request.POST.get('comment')=='':
+        if request.POST['comment']=='':
             redirect('blogs:blog_detail',pk=pk)
         else:
             if request.POST.get('comment_id') is not None:
                 comment=CommentBlogModel.objects.get(id=request.POST.get('comment_id'))
                 reply_com=ReplyCommentBlogModel(reply_comment=comment,author=request.user,text=request.POST.get('reply_comment'))
                 reply_com.save()
-            elif request.POST.get('comment') is not None:
-                com=CommentBlogModel(blog=blog)
-                com.author=request.user
-                com.text=request.POST.get('comment')
-                com.save()
+            elif request.POST['comment'] is not None:
+                CommentBlogModel.objects.create(blog=blog,author=request.user,text=request.POST['comment'])
+                return HttpResponse('create')
+
 
         return redirect('blogs:blog_detail',pk=pk)
 

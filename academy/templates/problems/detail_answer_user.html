@@ -22,12 +22,12 @@
 	{% if request.user.is_authenticated %}
 
  <p>{% if res.is_waiting  %}
-        Masalaga bergan yechimingiz adminlar tomonidan tekshirilyapti 
+        <p>Masalaga bergan yechimingiz adminlar tomonidan tekshirilyapti </p>
 
-        <b>Yechim xolati:</b> <span class="badge bg-primary">Kuting</span>
+        <b>Yechim xolati:</b> <span class="badge bg-primary">Kuting</span> 
         
         
-        {% endif %}
+      {% else %}
       
         {% if res.is_correct %}
           <b>Yechim xolati:</b> <span class="badge bg-success">To'g'ri</span>
@@ -40,6 +40,7 @@
 <br>
           <b>Xatolik:</b> <i>{{res.answer_error_text}}</i>
         {% endif %}
+         {% endif %}
     </p>
 
 

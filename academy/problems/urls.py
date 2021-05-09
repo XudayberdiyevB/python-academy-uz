@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import problems, problem_detail,my_result_problem,detail_answer_user
+from .views import problems, problem_detail,my_result_problem,detail_answer_user,rating_user
 
 app_name='problems'
 urlpatterns = [
@@ -7,4 +7,5 @@ urlpatterns = [
     path('<int:pk>/', problem_detail, name='detail'),
     path('problem-all-result/',my_result_problem,name='my_result'),
     path('answer-problem-detail/<int:pk>',detail_answer_user,name='answer_detail'),
+    path('res/',rating_user,name='rating_user')
 ]

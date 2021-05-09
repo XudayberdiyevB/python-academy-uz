@@ -119,7 +119,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'academy.wsgi.application'
 
-
+CSRF_USE_SESSIONS=False
+CSRF_COOKIE_HTTPONLY=False
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 

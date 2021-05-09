@@ -37,6 +37,7 @@
                 {% else %}
                    <i style="color: red" class="fas fa-times-circle"></i>
                {% endif %}
+               &nbsp;
             <a href="{% url 'problems:detail' pk=exercise.pk %}" class="text-primary">{{exercise.name}}</td></a>
           <td>{{exercise.sequence_number}}</td>
           <td><span class="badge bg-success">{{exercise.difficulty}}</span></td>

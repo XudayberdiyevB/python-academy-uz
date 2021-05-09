@@ -3,8 +3,9 @@
 {% block content %}
 
 <div class="container mt-3">
+
   {% if request.user.is_authenticated %}
-    <table class="table table-hover">
+    <table class="table table-hover" style="width: 800px">
       <thead>
         <tr>
           <th scope="col">№</th>
@@ -19,7 +20,7 @@
       {% for result in all_result %}
         <tr>
           <td >{{forloop.counter}}</td>
-          <td><a href="{% url 'problems:answer_detail' result.pk %}" class="text-primary">{{result.problem.name}}</td></a>
+          <td><a href="{% url 'problems:detail' result.pk %}" class="text-primary">{{result.problem.name}}</td></a>
           <td>
             {% if result.is_correct %}
              <span class="badge bg-success">To'g'ri</span>
@@ -45,7 +46,7 @@
       </tbody>
     </table>
 
-      <nav aria-label="Page navigation example">
+      <nav aria-label="Page navigation example" style="padding-right: 450px">
                       <ul class="pagination justify-content-center">
                           <li class="page-item">
                              {% if all_result.has_previous %}

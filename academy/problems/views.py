@@ -39,9 +39,31 @@ def problems(request):
 def problem_detail(request,pk):
     problem = ProblemModel.objects.get(id=pk)
     print(pk)
+    
+
+    all_result=ProblemAnswerModelUser.objects.filter(user=request.user,problem=problem)
+    paginator = Paginator(all_result, 10) 
+
+    page = request.GET.get('page')
+    try:
+        all_result = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        all_result = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        all_result = paginator.page(paginator.num_pages)
+    all_prob=ProblemModel.objects.all().count()
+    filter_prob=ProblemAnswerModelUser.objects.filter(user=request.user,is_correct=True).count()
     context = {
-        'problem':problem
+        'problem':problem,
+        'all_result':all_result
     }
+
+
+
+
+
     if request.method=='POST':
         code=request.POST['name_code']
         if code=='':
@@ -59,7 +81,7 @@ def problem_detail(request,pk):
 
 @login_required
 def my_result_problem(request):
-    all_result=ProblemAnswerModelUser.objects.filter(user=request.user)
+    all_result=ProblemAnswerModelUser.objects.filter(user=request.user,is_waiting=False)
     paginator = Paginator(all_result, 10) 
 
     page = request.GET.get('page')
@@ -71,9 +93,20 @@ def my_result_problem(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         all_result = paginator.page(paginator.num_pages)
-    return render(request,'problems/my_problem_result.html',{'all_result':all_result})
+    all_prob=ProblemModel.objects.all().count()
+    filter_prob=ProblemAnswerModelUser.objects.filter(user=request.user,is_correct=True).count()
+    
+    return render(request,'problems/my_problem_result.html',{'all_result':all_result,'all':all_prob,'filter':filter_prob})
 
 @login_required
 def detail_answer_user(request,pk):
     res=ProblemAnswerModelUser.objects.get(id=pk)
     return render(request,'problems/detail_answer_user.html',{'res':res})
+
+
+
+def rating_user(request):
+    all_prob=ProblemModel.objects.all().count()
+    filter_prob=ProblemAnswerModelUser.objects.filter(user=request.user,is_correct=True)
+    
+    return render(request,'problems/res.html',{'all':all_prob,'filter':filter_prob})
