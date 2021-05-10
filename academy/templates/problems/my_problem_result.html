@@ -5,70 +5,93 @@
 <div class="container mt-3">
 
   {% if request.user.is_authenticated %}
-    <table class="table table-hover" style="width: 800px">
-      <thead>
-        <tr>
-          <th scope="col">№</th>
-          <th scope="col">Masala nomi</th>
-          <th scope="col">Natija</th>
-          <th scope="col">Til</th>
-          <th scope="col">Vaqti</th>
-          <th scope="col">Xatolik</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for result in all_result %}
-        <tr>
-          <td >{{forloop.counter}}</td>
-          <td><a href="{% url 'problems:detail' result.pk %}" class="text-primary">{{result.problem.name}}</td></a>
-          <td>
-            {% if result.is_correct %}
-             <span class="badge bg-success">To'g'ri</span>
-             
-            {% elif result.is_waiting %}
-              <span class="badge bg-primary">Kuting</span> 
-            {% else %}
-              <span class="badge bg-danger">Xato</span> 
-            {% endif %}
-          </td>
-          <td>Python3</td>
-          <td>{{result.send_answer_date}}</td>
-          <td>{% if result.is_correct %}
-                <b style="color: green">xato yo'q</b>
-              {% else %}
-              <b style="color: red">{{result.answer_error_text}}</b>
-              {% endif %}
-            
-          
-          </td>
-        </tr>
-      {% endfor %}
-      </tbody>
-    </table>
+    {% if all_result %}
+    <div class="row">
+        <div class="col-8">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">№</th>
+                  <th scope="col">Masala nomi</th>
+                  <th scope="col">Natija</th>
+                  <th scope="col">Til</th>
+                  <th scope="col">Vaqti</th>
+                  <th scope="col">Xatolik</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for result in all_result %}
+                <tr>
+                  <td >{{forloop.counter}}</td>
+                  <td><a href="{% url 'problems:detail' result.pk %}" class="text-primary">{{result.problem.name}}</td></a>
+                  <td>
+                    {% if result.is_correct %}
+                     <span class="badge bg-success">To'g'ri</span>
 
-      <nav aria-label="Page navigation example" style="padding-right: 450px">
-                      <ul class="pagination justify-content-center">
-                          <li class="page-item">
-                             {% if all_result.has_previous %}
-                                <a class="page-link" href="?page={{ all_result.previous_page_number }}" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            {% endif %}
+                    {% elif result.is_waiting %}
+                      <span class="badge bg-primary">Kuting</span>
+                    {% else %}
+                      <span class="badge bg-danger">Xato</span>
+                    {% endif %}
+                  </td>
+                  <td>Python3</td>
+                  <td>{{result.send_answer_date}}</td>
+                  <td>{% if result.is_correct %}
+                        <b style="color: green">xato yo'q</b>
+                      {% else %}
+                      <b style="color: red">{{result.answer_error_text}}</b>
+                      {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                     {% if all_result.has_previous %}
+                        <a class="page-link" href="?page={{ all_result.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    {% endif %}
+                </li>
+                  {% for page in all_result.paginator.page_range %}
+                        <li class="page-item {% if page == all_result.number %}active{% endif %}">
+                            <a class="page-link" href="?page={{page}}">{{page}}</a>
                         </li>
-                          {% for page in all_result.paginator.page_range %}
-                                <li class="page-item {% if page == all_result.number %}active{% endif %}">
-                                    <a class="page-link" href="?page={{page}}">{{page}}</a>
-                                </li>
-                          {% endfor %}
-                        <li class="page-item">
-                             {% if exercises.has_next %}
-                                <a class="page-link" href="?page={{ all_result.next_page_number }}" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            {% endif %}
-                        </li>
+                  {% endfor %}
+                <li class="page-item">
+                     {% if exercises.has_next %}
+                        <a class="page-link" href="?page={{ all_result.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    {% endif %}
+                </li>
+              </ul>
+            </nav>
+        </div>
+        <div class="col-lg-4 col-4">
+            <div class="sidebar-wrap">
+                <div class="col-12">
+                    <div class="card">
+                    <button type="button" class="btn btn-primary">
+                      Natijalar
+                    </button>
+                    <div class="card">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-item-action cursor1">Umumiy masalalar soni: <b>{{all}}</b></li>
+                        <li class="list-group-item list-group-item-action cursor1">Yechilgan masalalar soni: <b>{{filter}}</b></li>
+                        <li class="list-group-item list-group-item-action cursor1">Urunishlar soni: <b>{{urinish}}</b></li>
                       </ul>
-                    </nav>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Siz hali bironta masala ishladingiz. Masala ishlash uchun bu yerga <a href="{% url 'problems:all' %}" style="color:blue"><i class="far fa-hand-point-right"></i>Barcha masalalar</a></p>
+        {% endif %}
+    </div>
   {% else %}
   <p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Masalalar bo'yicha natijalaringizni ko'rish uchun <a href="">tizimga kiring</a> yoki <a href="">ro'yxatdan o'ting</a>!</p>
   {% endif %}

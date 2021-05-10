@@ -3,15 +3,12 @@
 {% block content %}
 <div class="container" style="padding-left: 100px;padding-right: 100px;width: 800px">
   <div class="content-section">
-      
-        
           <h2 class=""> <img style="vertical-align: middle;
                               width: 75px;
                               height: 75px;
                               border-radius: 50%;" 
              src="{{ current_odam.profile.image.url }}"> {{ current_odam.username }}</h2>
-          <p class="text-muted">{{ user.email }}</p>
-        
+          <p class="text-muted">{{ current_odam.email }}</p>
       {% if request.user == current_odam and current_odam.is_authenticated %}
       <form method="POST" enctype="multipart/form-data" style="width: 400px">
           {% csrf_token %}
@@ -29,19 +26,17 @@
 
       {% endif %}
     </div>
-</div>
-
-<div class="container" style="padding-left: 100px;padding-right: 100px;width: 800px">
-  <div class="content-section">
-      
-      <p>Reytingda : {% if filter_us %}
-      {{filter_us.rating_ball}}/{{all_prob}}-ta masala ishlagan</p>
+    <div class="list-group">
+      <a href="" class="list-group-item list-group-item-action active" aria-current="true">
+        Maqolalarim
+      </a>
+      {% if my_blogs %}
+      {% for blog in my_blogs %}
+      <a href="{% url 'blogs:blog_detail' blog.pk %}" class="list-group-item list-group-item-action">{{forloop.counter}}. {{blog.title}}</a>
+      {% endfor %}
       {% else %}
-      <p>Reytingda: 0/{{all_prob}} </p>
+        <p class="list-group-item list-group-item-action">Maqolalar mavjud emas</p>
       {% endif %}
-  
-        
     </div>
 </div>
-    
 {% endblock content %}

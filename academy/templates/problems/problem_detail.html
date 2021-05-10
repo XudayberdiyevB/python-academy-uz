@@ -71,10 +71,10 @@
           <td>{% if result.is_correct %}
                 <b style="color: green">xato yo'q</b>
               {% else %}
+              {% if result.answer_error_text != None %}
               <b style="color: red">{{result.answer_error_text}}</b>
               {% endif %}
-            
-          
+              {% endif %}
           </td>
         </tr>
       {% endfor %}

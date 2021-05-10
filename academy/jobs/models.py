@@ -18,7 +18,7 @@ class JobsModel(models.Model):
     dedline = models.DateTimeField()
     salary = models.CharField(max_length=50)
     job_time = models.CharField(max_length=100)
-    status = models.CharField(max_length=50)
+    status = models.CharField(max_length=50, blank=True,null=True)
     description = models.TextField()
     experience = models.TextField()
     experience_time = models.CharField(max_length=50)

@@ -20,7 +20,6 @@ def blogs_category(request,pk):
 def blog_own_user_detail(request,pk):
     blog=BlogModel.objects.get(id=pk)
 
-    
     if request.method=='POST':
         form=BlogUserModelForm(request.POST,request.FILES,instance=blog)
         if form.is_valid():
@@ -51,6 +50,8 @@ def blog_write_user(request):
         form=BlogUserModelForm(request.POST,request.FILES)
         if form.is_valid():
             blog=form.save(commit=False)
+            if request.user.is_superuser:
+                blog.is_publish=True
             blog.author=request.user
             blog.is_publish=False
             blog.create_date=datetime.now()

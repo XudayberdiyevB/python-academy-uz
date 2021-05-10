@@ -20,10 +20,10 @@ class CategoryBlog(models.Model):
 
 
 class BlogModel(models.Model):
-    category_blog=models.ForeignKey(CategoryBlog, on_delete=models.CASCADE,related_name='category_blog')
-    title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='img')
-    text = RichTextUploadingField(blank=True, null=True,config_name='default')
+    category_blog=models.ForeignKey(CategoryBlog, on_delete=models.CASCADE,related_name='category_blog',verbose_name="Maqola qaysi bo'limga tegishli? ")
+    title = models.CharField(max_length=100, verbose_name="Maqola nomi")
+    image = models.ImageField(upload_to='img', verbose_name="Rasm", help_text="<i>Maqolangizga mos rasmni yuklang!</i>")
+    text = RichTextUploadingField(blank=True, null=True,config_name='blog-config', verbose_name="Maqola yozish")
     create_date = models.DateField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     count_of_view=models.IntegerField(default=0)

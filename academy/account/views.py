@@ -10,6 +10,11 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from problems.models import UserRatingSystem,ProblemModel,ProblemAnswerModelUser
 
+from blogs.models import BlogModel
+
+from quiz.models import Progress
+
+
 def register(request):
     if request.method=='POST':
         username=request.POST['username']
@@ -42,9 +47,7 @@ def logout_view(request):
 
 @login_required
 def profile(request,user):
-
     filter_user=User.objects.filter(username=user)[0]
-
     all_prob=ProblemModel.objects.all().count()
     filter_prob=ProblemAnswerModelUser.objects.filter(user=filter_user,is_correct=True).count()
     fil_ans=ProblemAnswerModelUser.objects.filter(user=filter_user)
@@ -62,24 +65,30 @@ def profile(request,user):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            
-            return redirect('account:profile')
+            return redirect('account:profile',request.user.username)
 
     else:
         u_form = UserUpdateForm(instance=filter_user)
         p_form = ProfileUpdateForm(instance=filter_user)
+
+    my_blogs = BlogModel.objects.filter(author=filter_user)
+    exam_results = Progress.objects.filter(user=filter_user)[0]
+    print(exam_results.show_exams())
 
     context = {
         'u_form': u_form,
         'p_form': p_form,
         'current_odam':filter_user,
         'filter_us':filter_us,
-        'all_prob':all_prob
+        'all_prob':all_prob,
+        'my_blogs':my_blogs
     }
-
     return render(request, 'account/profile.html', context)
-
 
 def all_users(request):
     al_users=User.objects.all()
+    if request.method == 'POST':
+        text=request.POST['search']
+        filter_users=User.objects.filter(username__icontains=text)
+        return render(request,'account/all_users.html',{'all_users':filter_users})
     return render(request,'account/all_users.html',{'all_users':al_users})

@@ -28,8 +28,8 @@
                                 
                             </div>
                             <div class="content col">
-                                <h5 class="title">{{job.title}} <span
-                                style='font-size: 0.8rem' class="badge bg-info">{{job.status}}</span></h5>
+                                <h5 class="title">{{job.title}}
+                                    {% if job.status != None %}<span style='font-size: 0.8rem' class="badge bg-info">{{job.status}}</span>{% endif %}</h5>
 
                                 <ul class="meta">
                                     <li><strong class="text-primary">{{job.company_name}}</strong></li>
@@ -99,7 +99,7 @@
                                     <li><strong>Tajriba:</strong> {{job.experience_time}} yil</li>
                                     <li><strong>Ish manzili:</strong> {{job.location}}</li>
                                     <li><strong>Maosh:</strong> {{job.salary}}</li>
-                                    <li><strong>Oxirgi muddat:</strong> {{job.dedline}}</li>
+                                    <li><strong>Oxirgi muddat:</strong> {{job.dedline|date:'d-M, Y'}}-yil</li>
                                 </ul>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 import re
 import json
+
 from django.db import models
 from django.core.exceptions import ValidationError, ImproperlyConfigured
 from django.core.validators import (
@@ -13,8 +14,9 @@ from django.utils.timezone import now
 from six import python_2_unicode_compatible
 from django.conf import settings
 from model_utils.managers import InheritanceManager
-from home.models import TagModel
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+from home.models import TagModel
 
 class CategoryManager(models.Manager):
 
@@ -510,10 +512,10 @@ class Question(models.Model):
                                blank=True,
                                null=True,
                                verbose_name=_("Figure"))
-    content = RichTextField(config_name='default',blank=False, null=True, help_text=_("Enter the question text that "
+    content = RichTextUploadingField(config_name='blog-config',blank=False, null=True, help_text=_("Enter the question text that "
                                             "you want displayed"),
                                             verbose_name=_('Question'))
-    explanation = RichTextField(config_name='default',
+    explanation = RichTextField(config_name='blog-config',
                                    blank=True,
                                    help_text=_("Explanation to be shown "
                                                "after the question has "

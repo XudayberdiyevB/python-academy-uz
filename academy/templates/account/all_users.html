@@ -20,19 +20,18 @@
         <tr>
           <th scope="col">№</th>
           <th scope="col">Ism</th>
-          <th scope="col">Reyting</th>
+          <th scope="col">E-mail</th>
         </tr>
       </thead>
       <tbody>
       {% for odam in all_users %}
         <tr>
-
           <th scope="row">{{forloop.counter}}</th>
           <td><img style="vertical-align: middle;
                               width: 35px;
                               height: 35px;
                               border-radius: 50%;"   src="{{odam.profile.image.url}}"> <a href="{% url 'account:profile' odam.username %}">{{odam.username}}</a></td>
-          <td>77</td>
+          <td>{{odam.email}}</td>
         </tr>
       {% endfor %}
       </tbody>

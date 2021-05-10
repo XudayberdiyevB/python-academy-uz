@@ -37,8 +37,6 @@ def category_quiz_filter(request,slug):
 
     return render(request,'quiz/quiz_list.html',{'quizs':quizs})
 
-
-
 # class QuizListView(ListView):
 #     model = Quiz
 #
@@ -99,9 +97,7 @@ class QuizUserProgressView(TemplateView):
         progress, c = Progress.objects.get_or_create(user=self.request.user)
         context['cat_scores'] = progress.list_all_cat_scores
         context['exams'] = progress.show_exams().order_by('-end')
-        print(context['exams'] )
         return context
-
 
 class QuizMarkingList(QuizMarkerMixin, SittingFilterTitleMixin, ListView):
     model = Sitting
@@ -115,7 +111,6 @@ class QuizMarkingList(QuizMarkerMixin, SittingFilterTitleMixin, ListView):
             queryset = queryset.filter(user__username__icontains=user_filter)
 
         return queryset
-
 
 class QuizMarkingDetail(QuizMarkerMixin, DetailView):
     model = Sitting
@@ -138,7 +133,6 @@ class QuizMarkingDetail(QuizMarkerMixin, DetailView):
         context['questions'] =\
             context['sitting'].get_questions(with_answers=True)
         return context
-
 
 class QuizTake(FormView):
     form_class = QuestionForm

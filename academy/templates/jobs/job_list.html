@@ -29,7 +29,7 @@
                                     {% endfor %}
                             </div>
                             <div class="content col">
-                                <h6 class="title">{{job.title}} <span class="badge badge-pill bg-info">{{job.status}}</span></h6> 
+                                <h6 class="title">{{job.title}} {% if job.status != None %}<span class="badge badge-pill bg-info">{{job.status}}</span>{% endif %}</h6>
                                 <ul class="meta">
                                     <li><strong class="text-primary">{{job.company_name}}</strong></li>
                                     <li><i class="fa fa-map-marker-alt"></i> {{job.location}}</li>

@@ -57,7 +57,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_CONFIGS = {
-
     'default':{   
         'toolbar':'basic',
         'height':300,
@@ -74,14 +73,28 @@ CKEDITOR_CONFIGS = {
             ['Bold', 'Italic', 'Underline'],
             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
             ['Link', 'Unlink'],
-            ['RemoveFormat', 'Source','CodeSnippet']
+            ['CodeSnippet'],
         ],
         'extraPlugins': ','.join(
             [
                 'codesnippet',
             ]),
     },
-   
+    'blog-config':{
+            'toolbar': 'Custom',
+            'toolbar_Custom': [
+                ['Bold', 'Italic', 'Underline', 'Strike'],
+                ['NumberedList', 'BulletedList', 'Checkbox', 'Radio', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                ['Link', 'Unlink', 'Blockquote'],
+                ['Templates','Undo','Redo'],
+                ['Image', 'Table', 'HorizontalRule','Smiley','SpecialChar', 'CodeSnippet', '/'],
+                ['Styles', 'Format', 'Font', 'FontSize', 'Color', 'TextColor', 'BGColor', '-', 'Maximize', 'Preview']
+            ],
+            'extraPlugins': ','.join(
+                [
+                    'codesnippet',
+                ]),
+        },
     }
 
 MIDDLEWARE = [
