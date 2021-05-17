@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/team.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/operator.css' %}">
+    <link rel="stylesheet" href="{% static 'css/faqs.css' %}">
 
     {% block css %}
     {% endblock %}
@@ -99,7 +100,7 @@
                            Ko'proq
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="" ><i class="fas fa-question"></i> Savol-Javoblar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'home:faqs' %}" ><i class="fas fa-question"></i> Savol-Javoblar</a></li>
                             <li><a class="dropdown-item" href="{% url 'home:team' %}" ><i class="fas fa-users"></i> Bizning jamoa</a></li>
                         </ul>
                       </li>

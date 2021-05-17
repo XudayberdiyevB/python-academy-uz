@@ -84,7 +84,6 @@ def my_result_problem(request):
     all_prob=ProblemModel.objects.all().count()
     filter_prob=ProblemAnswerModelUser.objects.filter(user=request.user,is_correct=True).values('problem').distinct().count()
     urinish=ProblemAnswerModelUser.objects.filter(user=request.user).count()
-    print(filter_prob)
     return render(request,'problems/my_problem_result.html',{'all_result':all_result,'all':all_prob,'filter':filter_prob,'urinish':urinish})
 
 @login_required

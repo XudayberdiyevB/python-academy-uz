@@ -1,10 +1,11 @@
 import random
 
-from django.shortcuts import render, get_object_or_404
-from home.models import CardModel,TagModel
+from django.shortcuts import render, get_object_or_404, redirect
+from home.models import CardModel,TagModel,FAQModel
 from blogs.models import BlogModel
 from courses.models import CourseListModel
 from quiz.models import Quiz
+from .forms import FAQModelForm
 # Create your views here.
 from problems.models import UserRatingSystem
 
@@ -55,7 +56,6 @@ def homepage(request):
 def team(requst):
     return render(requst, 'team.html')
 
-
 def tag_filter(request,name):
     tag=get_object_or_404(TagModel,name=name)
     filters_result_course=CourseListModel.objects.filter(tag=tag)
@@ -63,3 +63,16 @@ def tag_filter(request,name):
     filter_result_card=CardModel.objects.filter(tag=tag)
     context={'results_course': filters_result_course, 'results_blog':filters_result_blog,'result_home':filter_result_card}
     return render(request,'home/all_filter.html',context)
+
+def faqs(request):
+    faqs = FAQModel.objects.all()
+    return render(request, 'home/faqs.html', {'faqs':faqs})
+def addfaq(request):
+    form = FAQModelForm()
+    if request.method == 'POST':
+        form = FAQModelForm(request.POST)
+        if form.is_valid():
+            faq = form.save(commit=False)
+            faq.save()
+            return redirect('home:faqs')
+    return render(request, 'home/faqs_add.html', {'form':form})

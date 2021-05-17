@@ -4,7 +4,6 @@ var dropx = document.querySelector('.dropx')
 var boxX = document.querySelector('.boxX')
 
 dropx.addEventListener('click',function(){
-    console.log('bosildo');
     if(boxX.classList.contains('active')){
         boxX.classList.remove('active')
     }
@@ -14,19 +13,21 @@ dropx.addEventListener('click',function(){
    
 })
 
-// let a = document.querySelector('.a')
+// #### FAQs
+const items = document.querySelectorAll(".accordion button");
 
-// a.addEventListener('click',function(event){
-//     if(this.hash !== ""){
-//         event.preventDefault();
-//         var hash = this.hash
+function toggleAccordion() {
+  const itemToggle = this.getAttribute('aria-expanded');
 
-//         function(){
-//             window.location.hash = hash
-//         }
-//     }
-// })
+  for (i = 0; i < items.length; i++) {
+    items[i].setAttribute('aria-expanded', 'false');
+  }
 
-// -------------------------
-// jquiry smooth scroll
-// Add smooth scrolling to all links
+  if (itemToggle == 'false') {
+    this.setAttribute('aria-expanded', 'true');
+    console.log('ok')
+  }
+}
+
+items.forEach(item => item.addEventListener('click', toggleAccordion));
+// #### FAQs

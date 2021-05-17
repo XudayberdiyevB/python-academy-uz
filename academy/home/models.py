@@ -19,7 +19,6 @@ class CardModel(models.Model):
     def __str__(self):
         return self.title
 
-
 class OperatorgaXabar(models.Model):
     text=models.TextField()
     author=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -37,3 +36,9 @@ class UsergaJavob(models.Model):
     def __str__(self):
         return str(self.send_to)+ '-' +self.javob
 
+class FAQModel(models.Model):
+    question = models.TextField(verbose_name='Savol')
+    answer = models.TextField(verbose_name='Javob')
+
+    def __str__(self):
+        return self.question[:50]
