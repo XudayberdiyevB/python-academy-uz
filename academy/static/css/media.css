@@ -1,0 +1,125 @@
+.text-dark{
+  width: 10%;
+}
+.cent{
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width:1400px) {
+
+}
+
+@media (min-width:1200px) and (max-width:1400px) {
+    .index-alltags {
+        margin-top:19%;
+    }
+    .footer-social {
+        width:40%;
+        margin:auto;
+    }
+}
+
+@media (min-width:992px) and (max-width:1200px) {
+    .index-alltags {
+        margin-top:24%;
+    }
+    .footer-social {
+        width:50%;
+        margin:auto;
+    }
+}
+/* profile menu */
+@media (min-width:992px) and (max-width:1020px) {
+    .profile-menu {
+        font-size:0.77rem;
+        padding:0;
+    }
+}
+@media (min-width:1021px) and (max-width:1040px) {
+    .profile-menu {
+        font-size:0.85rem;
+        padding:0;
+    }
+}
+@media (min-width:1041px) and (max-width:1100px) {
+    .profile-menu {
+        font-size:0.9rem;
+        padding:0;
+    }
+}
+@media (min-width:1200px) and (max-width:1220px) {
+    .profile-menu {
+        font-size:0.85rem;
+        padding:0;
+    }
+}
+@media (min-width:1220px) and (max-width:1270px) {
+    .profile-menu {
+        font-size:0.9rem;
+        padding:0;
+    }
+}
+/* profile menu end */
+
+@media (min-width:768px) and (max-width:991px) {
+  .mynav-menu {
+    padding-left:5%;
+    padding-bottom:5%;
+  }
+  .profile-menu {
+    width: 220%!important;
+  }
+  .myprof-menu-logo {
+    margin-left:-12%;
+  }
+  .mydrop-menu {
+    width:40%;
+  }
+  .footer-social {
+        width:60%;
+        margin:auto;
+  }
+}
+
+@media (min-width:576px) and (max-width:768px){
+  .container.loginforma{
+    width: 85%;
+  }
+  .mynav-menu {
+    padding-left:5%;
+    padding-bottom:5%;
+  }
+  .profile-menu {
+    width: 220%!important;
+  }
+  .myprof-menu-logo {
+    margin-left:-12%;
+  }
+  .mydrop-menu {
+    width:55%;
+  }
+}
+
+@media(max-width:576px){
+    .mynav-menu {
+        padding-left:5%;
+        padding-bottom:5%;
+    }
+    .profile-menu {
+        width: 200%!important;
+    }
+    .myprof-menu-logo {
+        margin-left:-12%;
+    }
+    .mydrop-menu {
+        width:60%;
+    }
+    .header {
+        padding-left:7%;
+    }
+    .card-detail {
+        width: 95%;
+        border:none;
+    }
+}

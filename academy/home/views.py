@@ -1,12 +1,10 @@
 import random
-
 from django.shortcuts import render, get_object_or_404, redirect
-from home.models import CardModel,TagModel,FAQModel
+from home.models import CardModel,TagModel,FAQModel, AdmingaXabar, UsergaJavob
 from blogs.models import BlogModel
 from courses.models import CourseListModel
 from quiz.models import Quiz
 from .forms import FAQModelForm
-# Create your views here.
 from problems.models import UserRatingSystem
 
 def card_detail(request, pk):
@@ -14,10 +12,13 @@ def card_detail(request, pk):
     return render(request, 'home/card_detail.html', {'card':card})
 
 def homepage(request):
+    usermsg=None
+    adminmsg=None
     if request.user.is_authenticated:
+        usermsg = AdmingaXabar.objects.filter(user=request.user)
+        adminmsg = UsergaJavob.objects.filter(send_to=request.user)
         f=UserRatingSystem.objects.filter(user=request.user)
         if not f:
-
             rating=UserRatingSystem.objects.create(user=request.user)
 
     card = CardModel.objects.order_by("-id")[0]
@@ -39,7 +40,6 @@ def homepage(request):
         courses = random.sample(courses, 2)
     else:
         courses = random.sample(courses, 3)
-
     blogs = list(BlogModel.objects.filter(is_publish=True))
     if len(blogs) == 1:
         blogs = random.sample(blogs, 1)
@@ -47,7 +47,6 @@ def homepage(request):
         blogs = random.sample(blogs, 2)
     else:
         blogs = random.sample(blogs, 3)
-
     tags=TagModel.objects.all()
     context = {'card':card,'blogs':blogs, 'courses':courses,'tags':tags,'quizes':quizes}
 
@@ -76,3 +75,21 @@ def addfaq(request):
             faq.save()
             return redirect('home:faqs')
     return render(request, 'home/faqs_add.html', {'form':form})
+
+def support(request):
+    usermsg=None
+    adminmsg=None
+    if request.user.is_authenticated:
+        usermsg = AdmingaXabar.objects.filter(user=request.user)
+        adminmsg = UsergaJavob.objects.filter(send_to=request.user)
+    if request.method=='POST' and 'supportchat' in request.method:
+        msg=request.POST.get['supportchat']
+        u=AdmingaXabar(user=request.user,text=msg)
+        u.save()
+        print(u)
+        print(request.POST)
+    context = {
+        'usermsg':usermsg,
+        'adminmsg':adminmsg
+    }
+    return render(request, 'base.html', context)

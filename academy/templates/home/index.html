@@ -8,13 +8,13 @@
 <!-- section -->
 <section class="container">
     <div class="row">
-      <div class="col-8 mt-4 col-lg-6 col-md-12 col-sm-12 col-xl-8 col-12">
+      <div class="col-8 mt-4 col-lg-8 col-md-12 col-sm-12 col-xl-8 col-12">
         <a href="{% url 'home:card_detail' card.pk %}" class="text-decoration-none">
         <h5 class="card-title mb-3">{{card.title}}</h5>
-        <div class="card mb-3">
+        <div class="card mb-3 shadow">
           <img src="{{card.image.url}}" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-text">{{card.text|safe}}</p>
+            <p class="card-text">{{card.text|truncatechars:200|safe}}</p>
             <div class="row">
               <div class="col-4"><p class="card-text"><small class="text-muted"><i class="fas fa-calendar-alt"></i> {{card.create_date}}</small></p></div>
             <div class="col-8">
@@ -22,7 +22,7 @@
                 <small class="text-muted">
                 <span class="fa fa-tags"></span>
                     {% for i in card.tag.all %}
-                    <a href="{% url 'home:filter' i.name %}" class="text-muted"><span class="badge rounded-pill bg-tags text-muted ms-1">{{i.name}}</span></a>
+                    <a href="{% url 'home:filter' i.name %}" class="text-muted"><span class="badge bg-tags text-muted ms-1">{{i.name}}</span></a>
                     {%endfor%}
                 </small>
                 </p>
@@ -33,24 +33,18 @@
       </a>
       </div>
       </a>
-      <div class="col-4 mt-5 col-lg-6 col-md-12 col-sm-12 col-xl-4 col-12">
-        <div class="card" >
-
+      <div class="col-4 col-lg-4 col-md-12 col-sm-12 col-xl-4 col-12">
+        <div class="card index-alltags">
           <p class="card-tags" style="padding-left: 5px;padding-right: 10px;padding-top: 10px">
-                 &nbsp;&nbsp;  Barcha taglar <br>
-                 <small class="text-muted" style="">
-
-                 <!-- <span class="fa fa-tags"></span> -->
+                 <p class="text-muted" style="margin-left:3%"> Barcha taglar <span class="fa fa-tags"></span></p><br>                 
+                <small class="text-muted" style="margin-left:3%">
                  {% for tag in tags %}
                  <div class='mb-2' style="float: left">
-                  <a  href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge badge-light text-muted" style="font-size: 1.1em;">{{tag.name}}</span></a>
-                  &nbsp;
+                  <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge bg-tags badge-light text-muted" style="font-size: 1.1em;">{{tag.name}}</span></a>                  &nbsp;
                  </div>
-
                  {%endfor%}
                  <br class="clearfix">
                  </small>
-
           </p>
         </div>
       </div>
@@ -58,21 +52,18 @@
 </section>
 
   <!-- card qismi -->
-
-
 <div class="container">
 <h2>Kurslar</h2>
-
 <div class="home_rows">
   <div class="row row-cols-1 row-cols-sm-2 .col-lg- row-cols-md-3 mb-5">
     {% for course in courses %}
         <div class="col mb-4 col-md-6 col-sm-12 col-xl-4">
-            <div class="card shadow">
-              <div class="imgs-card">
+            <div class="hvr-grow-shadow card shadow">
+              <div class="imgss-card">
                 <img src="{{course.image.url}}" class="card-img-top" alt="...">
               </div>
              <div class="card-body">
-               <h5><a  style="text-decoration:none" class="card-title">{{course.kurs_name}}</a></h5>
+               <h5><a style="text-decoration:none" class="card-title">{{course.kurs_name}}</a></h5>
                <p class="card-text">{{course.kurs_info|truncatechars:70}}</p>
                <a href="{% url 'courses:course_detail' course.pk %}" class="btn btn-outline-primary mb-2">Boshlash</a>
                <p class="card-text">
@@ -89,7 +80,7 @@
                  <small class="text-muted">
                  <span class="fa fa-tags"></span>
                  {% for tag in course.tag.all %}
-                 <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
+                 <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge bg-tags text-muted">{{tag.name}}</span></a>
                  {%endfor%}
                  </small>
                  </p>
@@ -102,16 +93,14 @@
   <a href="{% url 'courses:course' %}"><button type="button" class="btn btn-outline-primary homebtn_detail mb-4">Barcha kurslar <i class="fas fa-angle-double-right"></i></button></a>
   <hr>
 </div>
-
 <h2>Python dasturlash tili bo'yicha maqolalar</h2>
-
 <div class="home_rows">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-5">
     {% for blog in blogs %}
     <div class="col mb-4 col-md-6 mt-4 col-sm-12 col-xl-4">
-        <div class="card shadow">
-         <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>
-         <div class="imgs-card">
+        <div class="card shadow hvr-grow-shadow">
+<!--         <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>-->
+         <div class="imgss-card">
           <img src="{{blog.image.url}}" class="card-img-top" alt="..." >
          </div>
          <div class="card-body">
@@ -130,7 +119,7 @@
              <small class="text-muted">
              <span class="fa fa-tags"></span>
              {% for tag in blog.tag.all %}
-                 <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
+                 <a href="{% url 'home:filter' tag.name %}" class="text-muted"><span class="badge bg-tags text-muted">{{tag.name}}</span></a>
              {%endfor%}
              </small>
              </p>
@@ -147,10 +136,6 @@
 <h2>Testlar</h2>
 <div class="home_rows">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-5">
-
-
-    <!-- <h2>{% trans "Category list" %}</h2> -->
-    
         {% for quiz in quizes %}
         <div class="col mb-4">
             <div class="card shadow">
@@ -168,7 +153,7 @@
                  <small class="text-muted">
                  <span class="fa fa-tags"></span>
                  {% for tag in quiz.tag.all %}
-                        <a href="{% url 'home:filter' tag.name %}"   class="text-muted"><span class="badge rounded-pill bg-tags text-muted">{{tag.name}}</span></a>
+                        <a href="{% url 'home:filter' tag.name %}"   class="text-muted"><span class="badge bg-tags text-muted">{{tag.name}}</span></a>
                  {%endfor%}
                  </small>
                </p>

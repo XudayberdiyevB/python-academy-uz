@@ -4,7 +4,6 @@
 {% block title %} BUser write blog {% endblock title %}
 
 {% block content %}
-
     <div class="container">
     {% if request.user.is_authenticated %}
     {% if form.errors %}
@@ -25,8 +24,7 @@
         {% csrf_token %}
         {{form.media}}
         {{form.as_p}}
-
-        <input value="Yuborish" type="submit" class="btn btn-success"  >
+        <input value="Yuborish" type="submit" class="btn btn-success" name="blogwrite">
         <hr width="75">
         <p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Maqola yozib bo'lganingizdan keyin maqola adminga yuboriladi va tekshirilgandan so'ng saytga chiqariladi!</p>
         </form>
@@ -34,7 +32,6 @@
         <p><i class="fas fa-info-circle"></i> Maqola yozish uchun ro'yxatdan o'tishingiz kerak
         </p>
         <a class='btn btn-outline-primary' href="{% url 'account:register' %}">Ro'yxatdan o'tish</a>
-
     {% endif %}
     </div>
 

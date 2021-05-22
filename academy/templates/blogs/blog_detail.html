@@ -34,18 +34,15 @@
                               Eng ko'p o'qilgan maqolalar
                             </button>
                             <div class="card">
-                              
                               <ul class="list-group list-group-flush">
                                 {% for m_blog in most_blogs %}
                                 <li class="list-group-item list-group-item-action cursor1"><a href="{% url 'blogs:blog_detail' m_blog.pk %}"><i class="fas fa-star"></i> {{m_blog.title}} | {{m_blog.count_of_view}} marta o'qilgan</a></li>
-                                
                                 {% endfor %}
                                 <li class="list-group-item list-group-item-action cursor1"><a href="{% url 'blogs:blog_write_user' %}"><i class="fas fa-feather-alt"></i> Maqola yozish</a></li>
                               </ul>
                             </div>
-
                             </div>
-                            </div>
+                        </div>
                         <div class="sidebar-widget">
                             <div class="inner">
                                 <div class="row m-n2">
@@ -129,13 +126,9 @@
                             <div class="comment-send-icon text-muted">
                                 <input type="image" src="{% static 'img/send.png' %}" width="25" height="25">
                             </div>
-                            
                       </form>
                     </div>
-
-
                 {% endif %}
-
                 </div>
             </div>
         </div>

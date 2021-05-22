@@ -16,11 +16,9 @@ def blogs_category(request,pk):
     blogs=BlogModel.objects.filter(category_blog=category,is_publish=True)
     return render(request,'blogs/blog_list_category.html',{'blogs':blogs})
 
-
 def blog_own_user_detail(request,pk):
     blog=BlogModel.objects.get(id=pk)
-
-    if request.method=='POST':
+    if request.method=='POST' and 'saqlash' in request.POST:
         form=BlogUserModelForm(request.POST,request.FILES,instance=blog)
         if form.is_valid():
             form.save()
@@ -31,13 +29,11 @@ def blog_own_user_detail(request,pk):
 
 def blog_own_user(request):
     filter_user=BlogModel.objects.filter(author=request.user)
-    paginator = Paginator(filter_user, 5) 
-
+    paginator = Paginator(filter_user, 5)
     page = request.GET.get('page')
     try:
         filter_user = paginator.page(page)
     except PageNotAnInteger:
-      
         filter_user = paginator.page(1)
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
@@ -46,7 +42,7 @@ def blog_own_user(request):
 
 def blog_write_user(request): 
     form=BlogUserModelForm() 
-    if request.method=='POST':
+    if request.method=='POST' 'blogwrite' in request.POST:
         form=BlogUserModelForm(request.POST,request.FILES)
         if form.is_valid():
             blog=form.save(commit=False)
@@ -58,7 +54,6 @@ def blog_write_user(request):
             if request.FILES['image']:
                 blog.image=request.FILES['image']
             blog.save()
-            
             return redirect('blogs:blogs')
    
     return render(request,'blogs/blog_write_user.html',{'form':form})
@@ -66,7 +61,6 @@ from django.http import HttpResponse
 def blog_detail(request, pk):
     most_blogs=BlogModel.objects.filter(is_publish=True).order_by('-count_of_view')
     blog = BlogModel.objects.get(id=pk)
-    print(blog.blog_count())
     blog.count_of_view+=1
     blog.count_of_comment=blog.comment_blog.count()
     blog.save()
@@ -81,8 +75,6 @@ def blog_detail(request, pk):
             elif request.POST['comment'] is not None:
                 CommentBlogModel.objects.create(blog=blog,author=request.user,text=request.POST['comment'])
                 return HttpResponse('create')
-
-
         return redirect('blogs:blog_detail',pk=pk)
 
     return render(request, 'blogs/blog_detail.html', {'blog':blog,'most_blogs':most_blogs})

@@ -9,11 +9,8 @@ from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from problems.models import UserRatingSystem,ProblemModel,ProblemAnswerModelUser
-
 from blogs.models import BlogModel
-
 from quiz.models import Progress
-
 
 def register(request):
     if request.method=='POST':
@@ -44,7 +41,6 @@ def logout_view(request):
     logout(request)
     return redirect('home:homepage')
 
-
 @login_required
 def profile(request,user):
     filter_user=User.objects.filter(username=user)[0]
@@ -56,7 +52,6 @@ def profile(request,user):
         filter_us=UserRatingSystem.objects.get(user=filter_user)
         filter_us.rating_ball=filter_prob
         filter_us.save()
-
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=filter_user)
         p_form = ProfileUpdateForm(request.POST,
@@ -66,15 +61,11 @@ def profile(request,user):
             u_form.save()
             p_form.save()
             return redirect('account:profile',request.user.username)
-
     else:
         u_form = UserUpdateForm(instance=filter_user)
         p_form = ProfileUpdateForm(instance=filter_user)
-
     my_blogs = BlogModel.objects.filter(author=filter_user)
     exam_results = Progress.objects.filter(user=filter_user)[0]
-    print(exam_results.show_exams())
-
     context = {
         'u_form': u_form,
         'p_form': p_form,

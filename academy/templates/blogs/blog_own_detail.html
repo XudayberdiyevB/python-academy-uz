@@ -22,15 +22,12 @@
     {% endfor %}
 {% endif %}
         <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.media}}
-        {{form.as_p}}
-
-        <input value="saqlash" type="submit" class="btn btn-success"  >
-
-        <hr width="75">
-        <p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Maqolani o'zgartrganingizdan so'ng admin tekshiradi keyin ommaga taqdim etiladi!</p>
-
+            {% csrf_token %}
+            {{form.media}}
+            {{form.as_p}}
+            <input value="saqlash" name="saqlash" type="submit" class="btn btn-success">
+            <hr width="75">
+            <p class="text-muted"> <i class="fas fa-info-circle"></i> Eslatma:Maqolani o'zgartirganingizdan so'ng admin tekshiradi keyin ommaga taqdim etiladi!</p>
         </form>
     {% else %}
         <p><i class="fas fa-info-circle"></i> Maqola yozish uchun ro'yxatdan o'tishingiz kerak
@@ -49,14 +46,8 @@
 
 {% else %}
     <div class="container">
-        <p>Maqola ommaga taqdim etilga endi uzgartra olmaysiz xatolik topgan bo'lsangiz adminga murojaat qiling!
-                <br>
-            Admin: <a href="https://t.me/Shaxzad99">telegram</a></p>
-
+        <p>Maqola ommaga taqdim etildi, endi o'zgartra olmaysiz xatolik topgan bo'lsangiz ekranigizning pastki,o'ng tomondan adminga murojaat qiling!
     </div>
-
-
-
 
 {% endif %}
 {% endblock content %}

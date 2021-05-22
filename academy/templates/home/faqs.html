@@ -18,5 +18,19 @@
     <a href="{% url 'home:add_faq' %}"><button type="button" class="btn btn-success mt-4">FAQs qo'shish</button></a>
     {% endif %}
 </div>
-
+<!-- #### FAQs-->
+<script type="text/javascript">
+  const items = document.querySelectorAll(".accordion button");
+  function toggleAccordion() {
+    const itemToggle = this.getAttribute('aria-expanded');
+    for (i = 0; i < items.length; i++) {
+      items[i].setAttribute('aria-expanded', 'false');
+    }
+    if (itemToggle == 'false') {
+      this.setAttribute('aria-expanded', 'true');
+      console.log('ok')
+    }
+  }
+  items.forEach(item => item.addEventListener('click', toggleAccordion));
+</script>
 {% endblock content %}

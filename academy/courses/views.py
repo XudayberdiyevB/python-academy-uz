@@ -61,7 +61,6 @@ def course_detail_view(request,pk):
                 com.author=request.user
                 com.text=request.POST.get('comment')
                 com.save()
-
         return redirect('courses:course_detail',pk=pk)
 
     return render(request,'courses/course_detail.html',

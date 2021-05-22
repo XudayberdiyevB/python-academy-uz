@@ -6,7 +6,7 @@ from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 
 def problems(request):
     
-    if request.method=='POST':
+    if request.method=='POST' and 'search' in request.POST:
         s=request.POST['search']
         exercises=ProblemModel.objects.filter(content__icontains=s)
         context = {
@@ -35,26 +35,29 @@ def problems(request):
 
 def problem_detail(request,pk):
     problem = ProblemModel.objects.get(id=pk)
-    all_result=ProblemAnswerModelUser.objects.filter(user=request.user,problem=problem)
-    paginator = Paginator(all_result, 10) 
+    all_result=None
+    if request.user.is_authenticated:
 
-    page = request.GET.get('page')
-    try:
-        all_result = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        all_result = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        all_result = paginator.page(paginator.num_pages)
-    all_prob=ProblemModel.objects.all().count()
-    filter_prob=ProblemAnswerModelUser.objects.filter(user=request.user,is_correct=True).count()
+        all_result=ProblemAnswerModelUser.objects.filter(user=request.user,problem=problem)
+        paginator = Paginator(all_result, 10)
+
+        page = request.GET.get('page')
+        try:
+            all_result = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            all_result = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            all_result = paginator.page(paginator.num_pages)
+        all_prob=ProblemModel.objects.all().count()
+        filter_prob=ProblemAnswerModelUser.objects.filter(user=request.user,is_correct=True).count()
     context = {
         'problem':problem,
         'all_result':all_result
     }
 
-    if request.method=='POST':
+    if request.method=='POST' and 'name_code' in request.POST:
         code=request.POST['name_code']
         if code=='':
             messages.warning(request,'Xatolik')
