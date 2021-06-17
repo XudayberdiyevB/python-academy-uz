@@ -6,12 +6,12 @@
 {% block content %}
 
 <!-- section -->
-<section class="container">
+<section class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row">
       <div class="col-8 mt-4 col-lg-8 col-md-12 col-sm-12 col-xl-8 col-12">
         <a href="{% url 'home:card_detail' card.pk %}" class="text-decoration-none">
         <h5 class="card-title mb-3">{{card.title}}</h5>
-        <div class="card mb-3 shadow">
+        <div class="card mb-3">
           <img src="{{card.image.url}}" class="card-img-top" alt="...">
           <div class="card-body">
             <p class="card-text">{{card.text|truncatechars:200|safe}}</p>
@@ -32,7 +32,8 @@
         </div>
       </a>
       </div>
-      </a>
+        </div>
+        <div class="clearfix"></div>
       <div class="col-4 col-lg-4 col-md-12 col-sm-12 col-xl-4 col-12">
         <div class="card index-alltags">
           <p class="card-tags" style="padding-left: 5px;padding-right: 10px;padding-top: 10px">
@@ -59,7 +60,7 @@
     {% for course in courses %}
         <div class="col mb-4 col-md-6 col-sm-12 col-xl-4">
             <div class="hvr-grow-shadow card shadow">
-              <div class="imgss-card">
+              <div class="imgs-card">
                 <img src="{{course.image.url}}" class="card-img-top" alt="...">
               </div>
              <div class="card-body">
@@ -100,7 +101,7 @@
     <div class="col mb-4 col-md-6 mt-4 col-sm-12 col-xl-4">
         <div class="card shadow hvr-grow-shadow">
 <!--         <div class="ribbon ribbon-top-right" ><span>Yangi</span></div>-->
-         <div class="imgss-card">
+         <div class="imgs-card">
           <img src="{{blog.image.url}}" class="card-img-top" alt="..." >
          </div>
          <div class="card-body">

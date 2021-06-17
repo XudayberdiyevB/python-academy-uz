@@ -449,6 +449,7 @@ i.fa-eye-slash {
 }
 .imgs-card {
     position:relative;
+    height:200px;
 }
 .imgs-card img {
     position:absolute;
@@ -458,7 +459,9 @@ i.fa-eye-slash {
     height:100%;
     object-fit:cover;
 }
-
+.card {
+    width:100%;
+}
 /* Grow Shadow */
 .hvr-grow-shadow {
   display: inline-block;
