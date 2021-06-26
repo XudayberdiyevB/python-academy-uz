@@ -120,7 +120,6 @@
                           <li><a class="dropdown-item mydrop-item" href="{% url 'problems:my_result' %}" ><i class="fas fa-poll-h"></i> Masala | natijalarim</a></li>
                           <li><a class="dropdown-item mydrop-item" href="" ><i class="fas fa-comment-dots"></i> Sizga xabar bor</a></li>
                           <li><hr class="dropdown-divider"></li>
-
                           <li><a class="dropdown-item mydrop-item" href="{% url 'account:logout' %}" >Chiqish <i class="fas fa-sign-out-alt"></i></a></li>
                         </ul>
                       </li>
@@ -143,12 +142,12 @@
 <div class="container">
     <div class="row">
         <div class="col mx-auto my-0" style="padding-top: 0">
-                {% for message in messages %}
-                                    <div class="alert {{message.tags}} alert-dismissible fade show" role="alert">
-                                        {{ message }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>                   
-                {% endfor %}
+            {% for message in messages %}
+                <div class="alert {{message.tags}} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>

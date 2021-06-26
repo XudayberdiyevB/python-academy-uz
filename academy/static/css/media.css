@@ -80,6 +80,9 @@
         width:60%;
         margin:auto;
   }
+  .myprof-menu-logo {
+        margin-left:-40%;
+  }
 }
 
 @media (min-width:576px) and (max-width:768px){
@@ -98,6 +101,9 @@
   }
   .mydrop-menu {
     width:55%;
+  }
+  .myprof-menu-logo {
+        margin-left:-40%;
   }
 }
 
@@ -121,5 +127,9 @@
     .card-detail {
         width: 95%;
         border:none;
+    }
+    .card-mob {
+        width:92%;
+        margin:auto;
     }
 }
