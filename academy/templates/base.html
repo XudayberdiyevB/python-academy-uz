@@ -2,33 +2,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> {% block title %} {% endblock title %} </title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
-    <link rel="stylesheet" href="{% static 'css/team.css' %}">
-    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-    <link rel="stylesheet" href="{% static 'css/operator.css' %}">
-    <link rel="stylesheet" href="{% static 'css/faqs.css' %}">
-    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> {% block title %} {% endblock title %} </title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
+		<link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+		<link rel="stylesheet" href="{% static 'css/team.css' %}">
+		<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+		<link rel="stylesheet" href="{% static 'css/operator.css' %}">
+		<link rel="stylesheet" href="{% static 'css/faqs.css' %}">
+		<link rel="stylesheet" href="{% static 'css/media.css' %}">
 
-    {% block css %}
-    {% endblock %}
-    
+		{% block css %}
+		{% endblock %}
 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <!-- highlight.js -->
+
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<!-- highlight.js -->
 <!--    <script>hljs.initHighlightingOnLoad();</script>-->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <!--    jquery-->
 <!-- codemirror -->
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/codemirror.min.css'>
@@ -38,287 +38,297 @@
 
 <!-- END -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <!-- HEADER QISMI -->
-    <header class="header-color sticky-top">
-        <div class="container" style="padding-top: 5px;">
-            <nav class="navbar navbar-expand-lg navbar-light" style="font-size: 16px;">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="{% url 'home:homepage' %}" style="padding-top: 10px;">
-                        <img src="{% static 'img/python-seeklogo.com.svg' %}" alt="" width="30" height="24" class="pylogo">
-                    </a>
-                    <a class="navbar-brand" href="{% url 'home:homepage' %}" id="colornav" style="padding-top: 10px;">Python Academy Uz</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse mynav-menu" id="navbarSupportedContent" style="background-color:#18354C">
-                    <ul class="navbar-nav me-auto mb-4 mb-lg-0">
-                      <li class="nav-item" style="padding-top: 6px;">
-                        <a class="nav-link active" aria-current="page" href="{% url 'courses:course' %}" id="colornav">Kurslar</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
-                           Maqola
-                        </a>
-                        <ul class="dropdown-menu mydrop-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item mydrop-item" href="{% url 'blogs:blogs' %}" ><i class="far fa-newspaper"></i> Maqolalar</a></li>
-                            <li><a class="dropdown-item mydrop-item" href="{% url 'blogs:blog_write_user' %}" ><i class="fas fa-feather-alt"></i> Maqola yozish</a></li>
-                        </ul>
-                      </li>
+		<!-- HEADER QISMI -->
+		<header class="header-color sticky-top">
+				<div class="container" style="padding-top: 5px;">
+						<nav class="navbar navbar-expand-lg navbar-light" style="font-size: 16px;">
+								<div class="container-fluid">
+										<a class="navbar-brand" href="{% url 'home:homepage' %}" style="padding-top: 10px;">
+												<img src="{% static 'img/python-seeklogo.com.svg' %}" alt="" width="30" height="24" class="pylogo">
+										</a>
+										<a class="navbar-brand" href="{% url 'home:homepage' %}" id="colornav" style="padding-top: 10px;">Python Academy Uz</a>
+									<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+										<span class="navbar-toggler-icon"></span>
+									</button>
+									<div class="collapse navbar-collapse mynav-menu" id="navbarSupportedContent" style="background-color:#18354C">
+										<ul class="navbar-nav me-auto mb-4 mb-lg-0">
+											<li class="nav-item" style="padding-top: 6px;">
+												<a class="nav-link active" aria-current="page" href="{% url 'courses:course' %}" id="colornav">Kurslar</a>
+											</li>
+											<li class="nav-item dropdown">
+												<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
+													 Maqola
+												</a>
+												<ul class="dropdown-menu mydrop-menu" aria-labelledby="navbarDropdown">
+														<li><a class="dropdown-item mydrop-item" href="{% url 'blogs:blogs' %}" ><i class="far fa-newspaper"></i> Maqolalar</a></li>
+														<li><a class="dropdown-item mydrop-item" href="{% url 'blogs:blog_write_user' %}" ><i class="fas fa-feather-alt"></i> Maqola yozish</a></li>
+												</ul>
+											</li>
 
-                       <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
-                           Masala
-                        </a>
-                        <ul class="dropdown-menu mydrop-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item mydrop-item" href="{% url 'problems:all' %}" ><i class="fas fa-trophy"></i> Masalalar</a></li>
-                            <li><a class="dropdown-item mydrop-item" href="{% url 'problems:my_result' %}" ><i class="fas fa-poll"></i> Masala Natijalarim</a></li>
-                        </ul>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
-                           Test
-                        </a>
-                        <ul class="dropdown-menu mydrop-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item mydrop-item" href="{% url 'quiz_index' %}" ><i class="fas fa-trophy"></i> Testlar</a></li>
-                            <li><a class="dropdown-item mydrop-item" href="{% url 'quiz_progress' %}" ><i class="fas fa-poll"></i> Test Natijalari</a></li>
-                        </ul>
-                      </li>
+											 <li class="nav-item dropdown">
+												<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
+													 Masala
+												</a>
+												<ul class="dropdown-menu mydrop-menu" aria-labelledby="navbarDropdown">
+														<li><a class="dropdown-item mydrop-item" href="{% url 'problems:all' %}" ><i class="fas fa-trophy"></i> Masalalar</a></li>
+														<li><a class="dropdown-item mydrop-item" href="{% url 'problems:my_result' %}" ><i class="fas fa-poll"></i> Masala Natijalarim</a></li>
+												</ul>
+											</li>
+											<li class="nav-item dropdown">
+												<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
+													 Test
+												</a>
+												<ul class="dropdown-menu mydrop-menu" aria-labelledby="navbarDropdown">
+														<li><a class="dropdown-item mydrop-item" href="{% url 'quiz_index' %}" ><i class="fas fa-trophy"></i> Testlar</a></li>
+														<li><a class="dropdown-item mydrop-item" href="{% url 'quiz_progress' %}" ><i class="fas fa-poll"></i> Test Natijalari</a></li>
+												</ul>
+											</li>
 
-                      <li class="nav-item">
-                        <a class="nav-link nav-item-err" href="{% url 'jobs:jobs' %}" id="colornav">Vakansiya</a>
-                      </li>
+											<li class="nav-item">
+												<a class="nav-link nav-item-err" href="{% url 'jobs:jobs' %}" id="colornav">Vakansiya</a>
+											</li>
 
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
-                           Ko'proq
-                        </a>
-                        <ul class="dropdown-menu mydrop-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item mydrop-item" href="{% url 'home:faqs' %}" ><i class="fas fa-question"></i> Savol-Javoblar</a></li>
-                            <li><a class="dropdown-item mydrop-item" href="{% url 'home:team' %}" ><i class="fas fa-users"></i> Bizning jamoa</a></li>
-                        </ul>
-                      </li>
-                    </ul>
+											<li class="nav-item dropdown">
+												<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#fff">
+													 Ko'proq
+												</a>
+												<ul class="dropdown-menu mydrop-menu" aria-labelledby="navbarDropdown">
+														<li><a class="dropdown-item mydrop-item" href="{% url 'home:faqs' %}" ><i class="fas fa-question"></i> Savol-Javoblar</a></li>
+														<li><a class="dropdown-item mydrop-item" href="{% url 'home:team' %}" ><i class="fas fa-users"></i> Bizning jamoa</a></li>
+												</ul>
+											</li>
+										</ul>
 
-                    <ul class="navbar-nav">
-		                {% if request.user.is_authenticated %}
-                         <li class="nav-item dropdown dropx">
-                        <a id="colornav" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img class="myprof-menu-logo" style="vertical-align: middle;
-                              width: 35px;
-                              height: 35px;
-                              border-radius: 50%;"   src="{{request.user.profile.image.url}}">
-                          {{request.user.username}}
-                        </a>
-                        <ul class="dropdown-menu boxX mydrop-menu profile-menu" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item mydrop-item" href="{% url 'account:profile' user=request.user.username %}" ><i class="fas fa-user"></i> Shaxsiy kabinet</a></li>
-                          <li><a class="dropdown-item mydrop-item" href="{% url 'account:all_users' %}" ><i class="fas fa-users"></i> Foydalanuvchilar</a></li>
-                          <li><a class="dropdown-item mydrop-item" href="{% url 'blogs:blog_own_user' %}" ><i class="fas fa-money-check"></i> Mening maqolalarim</a></li>
-                          <li><a class="dropdown-item mydrop-item" href="{% url 'quiz_progress' %}" ><i class="fas fa-poll-h"></i> Test | natijalarim</a></li>
-                          <li><a class="dropdown-item mydrop-item" href="{% url 'problems:my_result' %}" ><i class="fas fa-poll-h"></i> Masala | natijalarim</a></li>
-                          <li><a class="dropdown-item mydrop-item" href="" ><i class="fas fa-comment-dots"></i> Sizga xabar bor</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item mydrop-item" href="{% url 'account:logout' %}" >Chiqish <i class="fas fa-sign-out-alt"></i></a></li>
-                        </ul>
-                      </li>
-                      {% else %}
-                          <li class="nav-item" style="margin-top: 6px;">
-                              <a class="nav-link btn btn-danger btn-sm"  id='colornav' href="{% url 'account:login' %}">Kirish</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link"  id='colornav' href="{% url 'account:register' %}">Register</a>
-                          </li>
-                      {% endif %}
-            		    </ul>
-                  </div>
-                </div>
-              </nav>
-        </div>
-    </header>
+										<ul class="navbar-nav">
+										{% if request.user.is_authenticated %}
+												 <li class="nav-item dropdown dropx">
+												<a id="colornav" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												<img class="myprof-menu-logo" style="vertical-align: middle;
+															width: 35px;
+															height: 35px;
+															border-radius: 50%;"   src="{{request.user.profile.image.url}}">
+													{{request.user.username}}
+												</a>
+												<ul class="dropdown-menu boxX mydrop-menu profile-menu" aria-labelledby="navbarDropdown">
+													<li><a class="dropdown-item mydrop-item" href="{% url 'account:profile' user=request.user.username %}" ><i class="fas fa-user"></i> Shaxsiy kabinet</a></li>
+													<li><a class="dropdown-item mydrop-item" href="{% url 'account:all_users' %}" ><i class="fas fa-users"></i> Foydalanuvchilar</a></li>
+													<li><a class="dropdown-item mydrop-item" href="{% url 'blogs:blog_own_user' %}" ><i class="fas fa-money-check"></i> Mening maqolalarim</a></li>
+													<li><a class="dropdown-item mydrop-item" href="{% url 'quiz_progress' %}" ><i class="fas fa-poll-h"></i> Test | natijalarim</a></li>
+													<li><a class="dropdown-item mydrop-item" href="{% url 'problems:my_result' %}" ><i class="fas fa-poll-h"></i> Masala | natijalarim</a></li>
+													<li><a class="dropdown-item mydrop-item" href="" ><i class="fas fa-comment-dots"></i> Sizga xabar bor</a></li>
+													<li><hr class="dropdown-divider"></li>
+													<li><a class="dropdown-item mydrop-item" href="{% url 'account:logout' %}" >Chiqish <i class="fas fa-sign-out-alt"></i></a></li>
+												</ul>
+											</li>
+											{% else %}
+													<li class="nav-item" style="margin-top: 6px;">
+															<a class="nav-link btn btn-danger btn-sm"  id='colornav' href="{% url 'account:login' %}">Kirish</a>
+													</li>
+													<li class="nav-item">
+															<a class="nav-link"  id='colornav' href="{% url 'account:register' %}">Register</a>
+													</li>
+											{% endif %}
+										</ul>
+									</div>
+								</div>
+							</nav>
+				</div>
+		</header>
+
+		<!-- success saving message admin -->
+		{% if msg %}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<p>{{msg}}</p>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+		{% endif %}
+		<!-- end -->
 
 {% if messages %}
 <div class="container">
-    <div class="row">
-        <div class="col mx-auto my-0" style="padding-top: 0">
-            {% for message in messages %}
-                <div class="alert {{message.tags}} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+		<div class="row">
+				<div class="col mx-auto my-0" style="padding-top: 0">
+						{% for message in messages %}
+								<div class="alert {{message.tags}} alert-dismissible fade show" role="alert">
+										{{ message }}
+										<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+								</div>
+						{% endfor %}
+				</div>
+		</div>
 </div>
 {% endif %}
-    <!-- HEADER OXIRI -->
+		<!-- HEADER OXIRI -->
 
-    {% block content %}
-    {% endblock content%}
+		{% block content %}
+		{% endblock content%}
 
 <!-- operator form start -->
 <input type="checkbox" id="check"> <label class="chat-btn-sp" for="check"> <i class="far fa-comment-dots comment" style="margin-top:60%"></i> <i class="fa fa-close close"></i> </label>
 <div class="wrapper">
-    <div class="chatheader">
-        <p> Python Academy Uz <br /><em>Qo'llab-quvvatlash xizmati <i class="fas fa-headset"></i></em></p>
-    </div>
-    <div class="clearfix"></div>
-    <div class="chat-form">
-        <div class="d-flex justify-content-between align-items-center mb-3 mychatform">
-            <div class="d-flex align-items-center" style="box-sizing:border-box">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABHVBMVEX////1zoXC6P+mcU50lsR6TzROerWWekTeuXRrkMFvkcDU3euz2PN3TTLF6//G7P9vQyzux4GQdUBAcrHM1uaSdTu/sJf71IlwPxt1STB2SSxzRCSTYkOZwON+UjaIWjymiE+LrtWcaUiOby6QckGKhHuYv+K74fqlyej18vCNbSt5m8iZejtuOxS5ppykinybc0u+nV/atXHIpmXAzuOzxN2VrtGGo8vj6fLkvHDx9Pnz7+3f1tLp4+CHYkzOwbqqkoXIurPAmGOrg1XQxbOsl3GcgU+glnqrsai2zNOnppWJel6ywsJlepiPelKtjU57d3FPd6uOlJ22poqYemqRcF25kV6EXzmkfVDOw7Dj3dKkjWKvm3emuthdeJ8mHLGaAAAPfElEQVR4nO2c+1/aSBfGBYkJaAhgkauAuhUVsQWqeKmXare73W7XdmtrW7f9//+MN5kzM5ncIJcJE/r6/LCf1kqSb845zzkzCbuw8KhHPepRv4zOzl+CzndFXwpvnV8e3F1I1X5VV8P4T79+cXfwUvRl8dHuy4PPjWqjUVcli9S6jvr51Zno64uo3Vd3etDqkpd0yrt5juTl5/4EOgJZbV2KvtBw2j2QqjY8lRH74+rFHMZx96rasLJJrXaz2dwENZvtlmRi1vtXoi84qA4aDYZOajc3F53abLYoZKN1Lvqag+iy3jDxWq50RE0JM6r9+anG3c9VytdqTqDDjC3M2D8QfeU+dUntU21Pih7DOF+IV33K5wsPqQ2M1TlA3L1oBIufNYzJr8XzOmSoKgXiMxGrCR/izqtq4AS1ItY/i2aYqHPsoWrQADKI1VeiKSYIA6qtMHyLxG4aojG8ddZQIwEuLrZQnj579eoymfNNqx62BIk2oRQbDX05eXGVuGH8c2RAPU+ZUb1erV8lKpQH1eiAOIhU9f5dchhfwiQTvgZBLUmyMV6JJiOSuADqHcO+Pm40klGPV43wfdApfYHclihkIuZxyFF1+kopCCaFrD4TzbewcIF8NJrLuIisqhrCES9hmOENuEhXVcIRW/xzlKiZiIUjhDCyj7oLt8i+UEdt8fRRL0RJIODLOENIERtX4gjv6nGGcJHUYl/YAHfWjzeEi2RVdSeK8KARm5FSiQ3ihXF6NVZAaIv1KzGAsHXBfZyxSeT+xqtGzD6DhJbGDTGbqchJ+Qxsbe9NVtQxBHkNvyTVm4L3FgGy06oIQNTu+TgpjC4eh0I9sSpidDvgVoZ4A8MjjChNGyLm72d1Tr2iaW5cuN4vYYV4wWmgYQDdU6IlaPzebfAxGgxYw4guxYj6RXX274qd8zEaDFi4xowuRwSrmf3gBlYa1WgoYKV474UIVjP7ns9losGbMYUvlVSqclNwRwTC2T96g2YRDRC/ilG40QF1xC8Fd7sR1C6uIs9sxERRBBHiNUa0/aIkZnnxLCLhJnmXRq/BVMqKaOtBiHD2u4qIMHw7xBUo1WpDCkhr0TbdtMQQ3kUhJHxS4b7IAOqIz2tOt2mJGWrCE262yQMmlZagiYjh5zeGm/RdNj1D20M7YCpVhLbI5ukc1eFm23znUq9ARwBREEcFe8uYCy9F782ybwfXCjdFN0BaiszNS2Y/3Gy22+hdYLd3n3W+rx58NE+ZIIqcadwJUbhsX0Cw4KlfvPmM2cYaRLFzqQteawKcgVd7PqpM4DNkfeAjam1x6Tp5NyVvPLVWK0hfR6lpfPpoU2PtFAhnvz5024jatPGpOhRWoSDd31wrlal4SPASGT4qvEw0c8CFMychnVRQuGpqq/3c0NebL9ejYTHlk84I4k2NOThq+CJezXS8okBauVortG+uAYnKJxuWUmAOLuzJBXouw3QtEr5C+7oYGMkexHvzoY+oBbBjNxFvehbuhxHpECFqGOBjSdkRhhpUa9fR8QwNC7QQYatNAKDVTOGJuyopfABTKbNfGMmhXogg3O0zboCLcNKoEkgV2OIQajT4VZOW2ZSlgstiKCwh9AuBM5shZnWBYN1XQyEJr4nVQBmK+S6GuWMKVdjixmesEgkhZIoQQGZfHyUpLxsFgZlu4jIU9fpenRQius+FIkdAmGr029cUWIbklSjspOo9zxCmipgQlWFf1FeiSCGiMuTpMwyhJKwbGjrD7yogwsIoDkJxj7iRvsP38aBWCgpPQEIIHvaPoLe+vm/doxzaBEKuRkMIYZ6Xt76LADzbkn9D02MzNkIJlvf3srwl4n+I8l9ZltEFtOIjhBD+Jsvl/2YPuLslyzJKU7jTsRCCSrKQIL7WQ4jTVIqXsCUbhLOvxDWDUJbiJ6zdGCcqr82c0ChDufNVjZ2wMESEnwQRDmpxE6r3RUQ4e6tBhLISewxrXxRBhFCHytda3IRDRVAdfjMIS8NRIV5C9V4ZGt2i/HrmhN+NflgaKGQrPybC2rUyKInpFrsoSzvKl1q8hIrSQVk6c8CFhQfjxCVFiZVQfY6T9HcBhFCIAwUeu8dEWBtAkgooQz1N92TkpqM4CVsKclIxa4uF3yGIxXs1NsLaDQ6hgKXFAnZTvWHAM+lYCAtDVIWCVsDYa3Q7baHH2LwJjYM+L4KRivAZQziIg8FvhjgTomMOBhBCYV+xhNlURve5xJmwRI8sYl1BBF0fFAshljBAkqcxE4qyGdDaVuyEeyKaPaNPWzETbs1+2WTT2h4m5LvnrWDCvW+iAY1NtzJ0fq6E0OnLstAaJNr9hMY3rk9mKqOSmIW9h2BA5Uo4ELUodNcb1J25EqJe/0Y0GBWabUocAVOpkthZxi5YDPM0U2Sl5QT4KBbsSnG0moqo3SdPlTkXYkXY7pOXYLnPb6opClzYu+s1346Iu6HggdQi9LiUX5pWBO4+eemBq5uK2yL11msUxFs+QQSfSZKTGuK5gsLrCtFINsHDNi5BxK0iOe0eBDvgXCoRQrglmsihNV5dH4w0OQsnKth3i94ToRcmap4h+lbmYjY4R5PU7anQKjFynsL2zINoGFeRTf4oiJVbwdv4k7UWuRRJESbPZrDeRNxXrOAdtmTmqKGzLYwYLooYUC4nauS26vVeBEQCuJewgdSqbziKIb4BhWswoY3CFH6OEdxuYGsmCc8ppokg3gbjS3XmBdBElAMUY2UIjX4uAM1niqVByh9jpXiboCdNfvQNP/wuySMfjJXUqIQBE7X3NFFr5Pm+wTiVTyYPQ5M7yji0Zr7BUJIHRc+vr1cqyqBkPrCfT0KdsdQZuUFWKsVRp8S+cjF3hCUG0oikzV0GMoOX8IHboTXYAmcY7c2jolj+sTNM1iPfqQJCRRl1WAzTWA37ZPlGijKnhIiRsujGWkT/n5MiE91S6XZo/OLcEuoamJD6Hzqdjll/+l9H+LfmmVBRhpZstWan8ksQGoF0IpYG7C/MPaEytIVRt0/l1yK0mE7JkqC/DKFRj7e6z3Q6t6Oh49/mhvD0+MXh0fipO+EkIcKn46PDF8enoiG8dLp8eJTVlctkQxNmMznjEEeHy4nDPD4cG2xYoQnJAXTO8eGxaChTxz8yJp1JOJjORTWwEgJlJhmQp4c9Kx4h1BuCb0BoJVZCBNk7FJ2ux0cOvGym93QftwWnZ7qJbEPtP+3pn7ZDHokM5PKYvSCMmk7n03+QzSh723MTWWds/aF/Mt1jjwWMY1GMFr5cbmNnA/2hm06ntT/J29/Ti5EMdHt/avonu+iY+rFyDKQYxmOGL5fZWMlr2o5xUbmdvIH4Ft7+nl6MeJorl98agHl8DE3Lr2wwkcwezbwef1C+XHZjJ60ZWF10RRvGlaa17kPZRzGSEiw/dOFjZh7ktfTO2Kzy7I+Z8j2hZ85ltrsIz7i8MS7ENLpAH8VoliA5BjrCWCPH6G7TQOZyy7MDPMpSPj18aaL8NkqxFQL8NynGWw9AutX9N0FaQUfYztNjaul1ypg9mhHfMjEBnS9vXosu2/Vpb2VSjG6ZShZUZfktuUvkHrEHzed3MvSEMwkjrcDcdtrCp18M+nmPRjWffiCd0ZmpI9IFH8zDaNAr7IdNb9MwHsbOd0osNLfR1dI2MT5BfvLXnvxuf7/sbBt6kyjv77+T9/5iDsN6leXA3Y0caRwxAx6bCeq4DNPrmRjoxfhz6f2Hf/b3rcV4u7//z4f3Sz9pCXp8nh5nh5Z+rL3xCQ2gPUE9Y6C9fbe6tLT68f2HNycnGO/k5M2H9x+NH797a/ldRw4w9GYYYyzGQwLoFkB0iWy/IJemZZeQVj/++2l4cnIy/PSvQWcoq1lvlKVXOA6+ThBfxAyYy6x4XIO9X+Af7mCepdXV1Z///tT/S/5uzUdnr7AhrmTiRcQmmhu7ZyiS6zWSIAIV8+es9U659QrrL6THuRgtlUTQ6XTsNeSs/QJ+uMNiMbA2S3HvFdZD4WKMI4ovMOD6JEAPr9BcAZeWbIfy6hWWQ+HWmH3CGxC7qKfHkHvs4vf5/HrWFTC7bhmJJvQKFhH7DW9HXfYH6BYHbaWXy7gSZnI91rMm9Qo3RK598RQAs1MBcb/I0b/n06hy3IKYtTfWib3CiZjjuWTs+alBILKtL8jU7BZC63A0rVcwiLgWOQ5wR+iIue3pgNZ+YY6TmY8OwI9kDMMD7tRewSDCYfktisFGJ7cJ8+y0X+TpEKL30BUH4cqY/uu6MdpAr8j5OkkePsvLbY6hCHvT0wfuL/YL5DAZYlDahrUnrm7gfR3074bj+OkVpqBusnxKEQ6WmeZx5PaSvSS6ptPTUL85XRthlx2mjbT21SvoWVY4luIhFOGKv1OTfjEmASRWoo0thGCZmrl874199QrrjeQy20CO+nMZJDx70QCSdmAJ4iomwc2Equf/NNhtoufpOEgRooveNq+ZbelajyE0SZhy9dcrqMCZIu9OwbTmP0fNEkEmyYxl+RUziKvM8fShzvyAn15hPU9kP80EzNE0WV8YLcKyk5NfZwjX2TumdWnjCBBCkqe9aICwZOoFOC/tF/adHMsq0bYyJI7jt1dgZTiYDfioTwvHQjaXdezkuDoN/Ux6Ixv8RDi9I4UQnD/YndX7hXXRAJezbSF0WIrhOL57BflML3IQA9sMPvF23vERzbq8yDruWj6/7b9X4I/sRA0iVGHA4kCndv7IZabx8akpgrVahPU+VHIAB/cW66RONw19VOgYoWe3J2FD6CLNvgZ2pmmow0Ilhl3uj0NVobu69u02tzQNLjyvhxxsYOsiaPV7XMm6g5BLmpKeGI7wMMhyZoocScotTWFnIFzDgMmWx2W4JCmvNMUvb4TymmOOPmNt915NP5RwwwiziIo5SXmlKXhNqLkGFrI8LsI1SfmlKWqJIdz0lGeSOpyUo5vilhicELX7OJOUW5oiNw3R9H+gMuSTSGmPp2tcjo33yoM/UewF3J6ZdA2uScq56QcuxFN4bhLPTMo3TfHLA0EJlzmWoauT8nNTXIhBOyJ6VhFk62vSFXgScmn6uCMG3XMDo+Fw/glJyitNu6GsZsxvXeHhpBzdNNQKKsOt33snKa80hZ4fcPgGK+Vzfu8k5ZSmsEEb0EzRwsLPU+2pyns6KQpil8NN1MKYKSZc4aAJSWqkKZdThCCEt0tyPDSBzxCXc4TYjnpi/yZMeE0h5HaegA3xhf3bOeFPPIWQ34lEEU4B5BfEgDvfL7K8tDpN3M4UbCPjeJmXnkwTtzOJ/h7fox71qP9j/Q9F+XYSJv32MwAAAABJRU5ErkJggg=="
-                     width="30" class="user-img rounded-circle mr-2" style="padding-bottom:20%">
-                <span>
-                    <small class="font-weight-bold">
-                        <b class="text-primary">admin: </b>Assalomu alaykum sizga qanday yordam beraolaman? Savol, talab va takliflaringizni shu yerda qoldirishingiz mumkin!
-                    </small>
-                </span>
-            </div>
-        </div>
-        {% if adminmsg is not None %}
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class=" d-flex align-items-center" style="box-sizing:border-box">
-                <img src="{{request.user.profile.image.url}}"
-                     width="30" class="user-img rounded-circle mr-2">
-                <span>
-                    <small class="font-weight-bold">
-                        <b class="text-primary">{{usermsg.user}}: </b>{{usermsg.text}}
-                    </small>
-                </span>
-            </div>
-        </div>
-        {% endif %}
-        {% if adminmsg is not None %}        
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class=" d-flex align-items-center" style="box-sizing:border-box">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABHVBMVEX////1zoXC6P+mcU50lsR6TzROerWWekTeuXRrkMFvkcDU3euz2PN3TTLF6//G7P9vQyzux4GQdUBAcrHM1uaSdTu/sJf71IlwPxt1STB2SSxzRCSTYkOZwON+UjaIWjymiE+LrtWcaUiOby6QckGKhHuYv+K74fqlyej18vCNbSt5m8iZejtuOxS5ppykinybc0u+nV/atXHIpmXAzuOzxN2VrtGGo8vj6fLkvHDx9Pnz7+3f1tLp4+CHYkzOwbqqkoXIurPAmGOrg1XQxbOsl3GcgU+glnqrsai2zNOnppWJel6ywsJlepiPelKtjU57d3FPd6uOlJ22poqYemqRcF25kV6EXzmkfVDOw7Dj3dKkjWKvm3emuthdeJ8mHLGaAAAPfElEQVR4nO2c+1/aSBfGBYkJaAhgkauAuhUVsQWqeKmXare73W7XdmtrW7f9//+MN5kzM5ncIJcJE/r6/LCf1kqSb845zzkzCbuw8KhHPepRv4zOzl+CzndFXwpvnV8e3F1I1X5VV8P4T79+cXfwUvRl8dHuy4PPjWqjUVcli9S6jvr51Zno64uo3Vd3etDqkpd0yrt5juTl5/4EOgJZbV2KvtBw2j2QqjY8lRH74+rFHMZx96rasLJJrXaz2dwENZvtlmRi1vtXoi84qA4aDYZOajc3F53abLYoZKN1Lvqag+iy3jDxWq50RE0JM6r9+anG3c9VytdqTqDDjC3M2D8QfeU+dUntU21Pih7DOF+IV33K5wsPqQ2M1TlA3L1oBIufNYzJr8XzOmSoKgXiMxGrCR/izqtq4AS1ItY/i2aYqHPsoWrQADKI1VeiKSYIA6qtMHyLxG4aojG8ddZQIwEuLrZQnj579eoymfNNqx62BIk2oRQbDX05eXGVuGH8c2RAPU+ZUb1erV8lKpQH1eiAOIhU9f5dchhfwiQTvgZBLUmyMV6JJiOSuADqHcO+Pm40klGPV43wfdApfYHclihkIuZxyFF1+kopCCaFrD4TzbewcIF8NJrLuIisqhrCES9hmOENuEhXVcIRW/xzlKiZiIUjhDCyj7oLt8i+UEdt8fRRL0RJIODLOENIERtX4gjv6nGGcJHUYl/YAHfWjzeEi2RVdSeK8KARm5FSiQ3ihXF6NVZAaIv1KzGAsHXBfZyxSeT+xqtGzD6DhJbGDTGbqchJ+Qxsbe9NVtQxBHkNvyTVm4L3FgGy06oIQNTu+TgpjC4eh0I9sSpidDvgVoZ4A8MjjChNGyLm72d1Tr2iaW5cuN4vYYV4wWmgYQDdU6IlaPzebfAxGgxYw4guxYj6RXX274qd8zEaDFi4xowuRwSrmf3gBlYa1WgoYKV474UIVjP7ns9losGbMYUvlVSqclNwRwTC2T96g2YRDRC/ilG40QF1xC8Fd7sR1C6uIs9sxERRBBHiNUa0/aIkZnnxLCLhJnmXRq/BVMqKaOtBiHD2u4qIMHw7xBUo1WpDCkhr0TbdtMQQ3kUhJHxS4b7IAOqIz2tOt2mJGWrCE262yQMmlZagiYjh5zeGm/RdNj1D20M7YCpVhLbI5ukc1eFm23znUq9ARwBREEcFe8uYCy9F782ybwfXCjdFN0BaiszNS2Y/3Gy22+hdYLd3n3W+rx58NE+ZIIqcadwJUbhsX0Cw4KlfvPmM2cYaRLFzqQteawKcgVd7PqpM4DNkfeAjam1x6Tp5NyVvPLVWK0hfR6lpfPpoU2PtFAhnvz5024jatPGpOhRWoSDd31wrlal4SPASGT4qvEw0c8CFMychnVRQuGpqq/3c0NebL9ejYTHlk84I4k2NOThq+CJezXS8okBauVortG+uAYnKJxuWUmAOLuzJBXouw3QtEr5C+7oYGMkexHvzoY+oBbBjNxFvehbuhxHpECFqGOBjSdkRhhpUa9fR8QwNC7QQYatNAKDVTOGJuyopfABTKbNfGMmhXogg3O0zboCLcNKoEkgV2OIQajT4VZOW2ZSlgstiKCwh9AuBM5shZnWBYN1XQyEJr4nVQBmK+S6GuWMKVdjixmesEgkhZIoQQGZfHyUpLxsFgZlu4jIU9fpenRQius+FIkdAmGr029cUWIbklSjspOo9zxCmipgQlWFf1FeiSCGiMuTpMwyhJKwbGjrD7yogwsIoDkJxj7iRvsP38aBWCgpPQEIIHvaPoLe+vm/doxzaBEKuRkMIYZ6Xt76LADzbkn9D02MzNkIJlvf3srwl4n+I8l9ZltEFtOIjhBD+Jsvl/2YPuLslyzJKU7jTsRCCSrKQIL7WQ4jTVIqXsCUbhLOvxDWDUJbiJ6zdGCcqr82c0ChDufNVjZ2wMESEnwQRDmpxE6r3RUQ4e6tBhLISewxrXxRBhFCHytda3IRDRVAdfjMIS8NRIV5C9V4ZGt2i/HrmhN+NflgaKGQrPybC2rUyKInpFrsoSzvKl1q8hIrSQVk6c8CFhQfjxCVFiZVQfY6T9HcBhFCIAwUeu8dEWBtAkgooQz1N92TkpqM4CVsKclIxa4uF3yGIxXs1NsLaDQ6hgKXFAnZTvWHAM+lYCAtDVIWCVsDYa3Q7baHH2LwJjYM+L4KRivAZQziIg8FvhjgTomMOBhBCYV+xhNlURve5xJmwRI8sYl1BBF0fFAshljBAkqcxE4qyGdDaVuyEeyKaPaNPWzETbs1+2WTT2h4m5LvnrWDCvW+iAY1NtzJ0fq6E0OnLstAaJNr9hMY3rk9mKqOSmIW9h2BA5Uo4ELUodNcb1J25EqJe/0Y0GBWabUocAVOpkthZxi5YDPM0U2Sl5QT4KBbsSnG0moqo3SdPlTkXYkXY7pOXYLnPb6opClzYu+s1346Iu6HggdQi9LiUX5pWBO4+eemBq5uK2yL11msUxFs+QQSfSZKTGuK5gsLrCtFINsHDNi5BxK0iOe0eBDvgXCoRQrglmsihNV5dH4w0OQsnKth3i94ToRcmap4h+lbmYjY4R5PU7anQKjFynsL2zINoGFeRTf4oiJVbwdv4k7UWuRRJESbPZrDeRNxXrOAdtmTmqKGzLYwYLooYUC4nauS26vVeBEQCuJewgdSqbziKIb4BhWswoY3CFH6OEdxuYGsmCc8ppokg3gbjS3XmBdBElAMUY2UIjX4uAM1niqVByh9jpXiboCdNfvQNP/wuySMfjJXUqIQBE7X3NFFr5Pm+wTiVTyYPQ5M7yji0Zr7BUJIHRc+vr1cqyqBkPrCfT0KdsdQZuUFWKsVRp8S+cjF3hCUG0oikzV0GMoOX8IHboTXYAmcY7c2jolj+sTNM1iPfqQJCRRl1WAzTWA37ZPlGijKnhIiRsujGWkT/n5MiE91S6XZo/OLcEuoamJD6Hzqdjll/+l9H+LfmmVBRhpZstWan8ksQGoF0IpYG7C/MPaEytIVRt0/l1yK0mE7JkqC/DKFRj7e6z3Q6t6Oh49/mhvD0+MXh0fipO+EkIcKn46PDF8enoiG8dLp8eJTVlctkQxNmMznjEEeHy4nDPD4cG2xYoQnJAXTO8eGxaChTxz8yJp1JOJjORTWwEgJlJhmQp4c9Kx4h1BuCb0BoJVZCBNk7FJ2ux0cOvGym93QftwWnZ7qJbEPtP+3pn7ZDHokM5PKYvSCMmk7n03+QzSh723MTWWds/aF/Mt1jjwWMY1GMFr5cbmNnA/2hm06ntT/J29/Ti5EMdHt/avonu+iY+rFyDKQYxmOGL5fZWMlr2o5xUbmdvIH4Ft7+nl6MeJorl98agHl8DE3Lr2wwkcwezbwef1C+XHZjJ60ZWF10RRvGlaa17kPZRzGSEiw/dOFjZh7ktfTO2Kzy7I+Z8j2hZ85ltrsIz7i8MS7ENLpAH8VoliA5BjrCWCPH6G7TQOZyy7MDPMpSPj18aaL8NkqxFQL8NynGWw9AutX9N0FaQUfYztNjaul1ypg9mhHfMjEBnS9vXosu2/Vpb2VSjG6ZShZUZfktuUvkHrEHzed3MvSEMwkjrcDcdtrCp18M+nmPRjWffiCd0ZmpI9IFH8zDaNAr7IdNb9MwHsbOd0osNLfR1dI2MT5BfvLXnvxuf7/sbBt6kyjv77+T9/5iDsN6leXA3Y0caRwxAx6bCeq4DNPrmRjoxfhz6f2Hf/b3rcV4u7//z4f3Sz9pCXp8nh5nh5Z+rL3xCQ2gPUE9Y6C9fbe6tLT68f2HNycnGO/k5M2H9x+NH797a/ldRw4w9GYYYyzGQwLoFkB0iWy/IJemZZeQVj/++2l4cnIy/PSvQWcoq1lvlKVXOA6+ThBfxAyYy6x4XIO9X+Af7mCepdXV1Z///tT/S/5uzUdnr7AhrmTiRcQmmhu7ZyiS6zWSIAIV8+es9U659QrrL6THuRgtlUTQ6XTsNeSs/QJ+uMNiMbA2S3HvFdZD4WKMI4ovMOD6JEAPr9BcAZeWbIfy6hWWQ+HWmH3CGxC7qKfHkHvs4vf5/HrWFTC7bhmJJvQKFhH7DW9HXfYH6BYHbaWXy7gSZnI91rMm9Qo3RK598RQAs1MBcb/I0b/n06hy3IKYtTfWib3CiZjjuWTs+alBILKtL8jU7BZC63A0rVcwiLgWOQ5wR+iIue3pgNZ+YY6TmY8OwI9kDMMD7tRewSDCYfktisFGJ7cJ8+y0X+TpEKL30BUH4cqY/uu6MdpAr8j5OkkePsvLbY6hCHvT0wfuL/YL5DAZYlDahrUnrm7gfR3074bj+OkVpqBusnxKEQ6WmeZx5PaSvSS6ptPTUL85XRthlx2mjbT21SvoWVY4luIhFOGKv1OTfjEmASRWoo0thGCZmrl874199QrrjeQy20CO+nMZJDx70QCSdmAJ4iomwc2Equf/NNhtoufpOEgRooveNq+ZbelajyE0SZhy9dcrqMCZIu9OwbTmP0fNEkEmyYxl+RUziKvM8fShzvyAn15hPU9kP80EzNE0WV8YLcKyk5NfZwjX2TumdWnjCBBCkqe9aICwZOoFOC/tF/adHMsq0bYyJI7jt1dgZTiYDfioTwvHQjaXdezkuDoN/Ux6Ixv8RDi9I4UQnD/YndX7hXXRAJezbSF0WIrhOL57BflML3IQA9sMPvF23vERzbq8yDruWj6/7b9X4I/sRA0iVGHA4kCndv7IZabx8akpgrVahPU+VHIAB/cW66RONw19VOgYoWe3J2FD6CLNvgZ2pmmow0Ilhl3uj0NVobu69u02tzQNLjyvhxxsYOsiaPV7XMm6g5BLmpKeGI7wMMhyZoocScotTWFnIFzDgMmWx2W4JCmvNMUvb4TymmOOPmNt915NP5RwwwiziIo5SXmlKXhNqLkGFrI8LsI1SfmlKWqJIdz0lGeSOpyUo5vilhicELX7OJOUW5oiNw3R9H+gMuSTSGmPp2tcjo33yoM/UewF3J6ZdA2uScq56QcuxFN4bhLPTMo3TfHLA0EJlzmWoauT8nNTXIhBOyJ6VhFk62vSFXgScmn6uCMG3XMDo+Fw/glJyitNu6GsZsxvXeHhpBzdNNQKKsOt33snKa80hZ4fcPgGK+Vzfu8k5ZSmsEEb0EzRwsLPU+2pyns6KQpil8NN1MKYKSZc4aAJSWqkKZdThCCEt0tyPDSBzxCXc4TYjnpi/yZMeE0h5HaegA3xhf3bOeFPPIWQ34lEEU4B5BfEgDvfL7K8tDpN3M4UbCPjeJmXnkwTtzOJ/h7fox71qP9j/Q9F+XYSJv32MwAAAABJRU5ErkJggg=="
-                     width="30" class="user-img rounded-circle mr-2">
-                <span>
-                    <small class="font-weight-bold">
-                        <b class="text-primary">admin: </b>{{adminmsg.javob}}
-                    </small>
-                </span>
-            </div>
-        </div>        
-        {% endif %}
-        <div class="form-floating mt-3">
-          <form method="POST"">
-               {% csrf_token %}
-                <div class="comment-input">
-                    <input type="text" placeholder="Xabarni kiritish..." name='supportchat' id="supportchat" class="comment-inputype">
-                </div>
-                <div class="comment-send-icon text-muted">
-                    <input type="image" src="{% static 'img/send.png' %}" width="25" height="25">
-                </div>
-            <input type="hidden" onclick="mysupportfunc()">
-          </form>
-        </div>
-    </div>
+		<div class="chatheader">
+				<p> Python Academy Uz <br /><em>Qo'llab-quvvatlash xizmati <i class="fas fa-headset"></i></em></p>
+		</div>
+		<div class="clearfix"></div>
+		<div class="chat-form">
+				<div class="d-flex justify-content-between align-items-center mb-3 mychatform">
+						<div class="d-flex align-items-center" style="box-sizing:border-box">
+								<img src="data:image/png;base64,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"
+										 width="30" class="user-img rounded-circle mr-2" style="padding-bottom:20%">
+								<span>
+										<small class="font-weight-bold">
+												<b class="text-primary">admin: </b>Assalomu alaykum sizga qanday yordam beraolaman? Savol, talab va takliflaringizni shu yerda qoldirishingiz mumkin!
+										</small>
+								</span>
+						</div>
+				</div>
+				{% if adminmsg is not None %}
+				<div class="d-flex justify-content-between align-items-center mb-3">
+						<div class=" d-flex align-items-center" style="box-sizing:border-box">
+								<img src="{{request.user.profile.image.url}}"
+										 width="30" class="user-img rounded-circle mr-2">
+								<span>
+										<small class="font-weight-bold">
+												<b class="text-primary">{{usermsg.user}}: </b>{{usermsg.text}}
+										</small>
+								</span>
+						</div>
+				</div>
+				{% endif %}
+				{% if adminmsg is not None %}
+				<div class="d-flex justify-content-between align-items-center mb-3">
+						<div class=" d-flex align-items-center" style="box-sizing:border-box">
+								<img src="data:image/png;base64,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"
+										 width="30" class="user-img rounded-circle mr-2">
+								<span>
+										<small class="font-weight-bold">
+												<b class="text-primary">admin: </b>{{adminmsg.javob}}
+										</small>
+								</span>
+						</div>
+				</div>
+				{% endif %}
+
+				<div class="form-floating mt-3">
+					<form method="POST"">
+							 {% csrf_token %}
+								<div class="comment-input">
+										<input type="text" placeholder="Xabarni kiritish..." name='supportchat' id="supportchat" class="comment-inputype">
+								</div>
+								<div class="comment-send-icon text-muted">
+										<input type="image" src="{% static 'img/send.png' %}" width="25" height="25">
+								</div>
+						<input type="hidden" onclick="mysupportfunc()">
+					</form>
+				</div>
+		</div>
 </div>
 
-    <!-- Footer qismi -->
+		<!-- Footer qismi -->
 <hr style="margin-top: 100px;">
 <footer class="bg-footer text-black text-center text-lg-start bg1-dark" >
-  <!-- Grid container -->
-  <div class="container p-4">
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Footer Content</h5>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-          molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-          voluptatem veniam, est atque cumque eum delectus sint!
-        </p>
-      </div>
-      <!--Grid column-->
+	<!-- Grid container -->
+	<div class="container p-4">
+		<!--Grid row-->
+		<div class="row">
+			<!--Grid column-->
+			<div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+				<h5 class="text-uppercase">Footer Content</h5>
+				<p>
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+					molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
+					voluptatem veniam, est atque cumque eum delectus sint!
+				</p>
+			</div>
+			<!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Links</h5>
+			<!--Grid column-->
+			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-uppercase">Links</h5>
 
-        <ul class="list-unstyled mb-0">
-          <li>
-            <a href="#!">Link 1</a>
-          </li>
-          <li>
-            <a href="#!">Link 2</a>
-          </li>
-          <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
-          </li>
-        </ul>
-      </div>
-      <!--Grid column-->
+				<ul class="list-unstyled mb-0">
+					<li>
+						<a href="#!">Link 1</a>
+					</li>
+					<li>
+						<a href="#!">Link 2</a>
+					</li>
+					<li>
+						<a href="#!">Link 3</a>
+					</li>
+					<li>
+						<a href="#!">Link 4</a>
+					</li>
+				</ul>
+			</div>
+			<!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-0">Links</h5>
+			<!--Grid column-->
+			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-uppercase mb-0">Links</h5>
 
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!">Link 1</a>
-          </li>
-          <li>
-            <a href="#!">Link 2</a>
-          </li>
-          <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
-          </li>
-        </ul>
-      </div>
-      <!--Grid column-->
-    </div>
-    <!--Grid row-->
-  </div>
-  <!-- Grid container -->
-  <div class="">
-    <!-- Section: CTA -->
-    <section class="p-0 mt-4">
-      <p class="d-flex justify-content-center align-items-center">
-        <span class="me-3">Ro'yxatdan o'tish</span>
-        <button type="button" class="btn btn-outline-success btn-rounded">
-          Sign up!
-        </button>
-      </p>
-    </section>
-    <!-- Section: CTA -->
-  </div>
-  <!-- Section: Social media -->
-  <section class="d-flex justify-content-center align-items-center p-0 mt-3 footer-social">
-    <!-- Telegram -->
-    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://t.me/PythonAcademy_Uz" role="button" data-mdb-ripple-color="dark"><i class="fab fa-telegram" style="color:white"></i></a>
-    <!-- YouTube -->
-    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.youtube.com/channel/UC2g7P3zCj2m46XnoldzuhYg" role="button" data-mdb-ripple-color="dark"><i class="fab fa-youtube" style="color:white"></i></a>
-    <!-- Instagram -->
-    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram" style="color:white"></i></a>
-    <!-- Google -->
-    <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="uzpythonacademy@gmail.com" role="button" data-mdb-ripple-color="dark"><i class="far fa-envelope" style="color:white"></i></a>
-  </section>
-  <!-- Section: Social media -->
+				<ul class="list-unstyled">
+					<li>
+						<a href="#!">Link 1</a>
+					</li>
+					<li>
+						<a href="#!">Link 2</a>
+					</li>
+					<li>
+						<a href="#!">Link 3</a>
+					</li>
+					<li>
+						<a href="#!">Link 4</a>
+					</li>
+				</ul>
+			</div>
+			<!--Grid column-->
+		</div>
+		<!--Grid row-->
+	</div>
+	<!-- Grid container -->
+	<div class="">
+		<!-- Section: CTA -->
+		<section class="p-0 mt-4">
+			<p class="d-flex justify-content-center align-items-center">
+				<span class="me-3">Ro'yxatdan o'tish</span>
+				<button type="button" class="btn btn-outline-success btn-rounded">
+					Sign up!
+				</button>
+			</p>
+		</section>
+		<!-- Section: CTA -->
+	</div>
+	<!-- Section: Social media -->
+	<section class="d-flex justify-content-center align-items-center p-0 mt-3 footer-social">
+		<!-- Telegram -->
+		<a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://t.me/PythonAcademy_Uz" role="button" data-mdb-ripple-color="dark"><i class="fab fa-telegram" style="color:white"></i></a>
+		<!-- YouTube -->
+		<a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.youtube.com/channel/UC2g7P3zCj2m46XnoldzuhYg" role="button" data-mdb-ripple-color="dark"><i class="fab fa-youtube" style="color:white"></i></a>
+		<!-- Instagram -->
+		<a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram" style="color:white"></i></a>
+		<!-- Google -->
+		<a class="btn btn-link btn-floating btn-lg text-dark m-1" href="uzpythonacademy@gmail.com" role="button" data-mdb-ripple-color="dark"><i class="far fa-envelope" style="color:white"></i></a>
+	</section>
+	<!-- Section: Social media -->
 
-  <!-- Copyright -->
-  <div class="text-center p-3 bg1-dark">
-    © 2021 All rights reserved:
-    <a style="text-decoration: none; color: black;" href="pythonacademy">Python Academy</a>
-  </div>
-  <!-- Copyright -->
+	<!-- Copyright -->
+	<div class="text-center p-3 bg1-dark">
+		© 2021 All rights reserved:
+		<a style="text-decoration: none; color: black;" href="pythonacademy">Python Academy</a>
+	</div>
+	<!-- Copyright -->
 </footer>
 
 </body>
 <script src="{% static 'js/password.js' %}"></script>
 <script src="{% static 'js/index.js' %}"></script>
 <script type="text/javascript">
-    function mysupportfunc(){
-        alert('Xabaringiz adminga yuborildi, tez fursatlarda javob beramiz!')
-    }
+		function mysupportfunc(){
+				alert('Xabaringiz adminga yuborildi, tez fursatlarda javob beramiz!')
+		}
 </script>
 </html>
