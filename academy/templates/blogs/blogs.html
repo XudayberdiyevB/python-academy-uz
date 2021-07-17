@@ -4,15 +4,17 @@
 
 {% block content %}
 
-<div class="container mt-3">        
+<div class="container card-mob mt-3">        
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
         {% for category in blogs %}
         {% if not category %}
         <p>category yo'q</p>
         {% else %} 
-        <div class="col mb-4">
-            <div class="card shadow">
-             <img src="{{category.image.url}}" class="card-img-top" alt="...">
+        <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+            <div class="card hvr-grow-shadow shadow" onclick="location.href='{% url 'blogs:category_blog' category.pk %}';" style="cursor: pointer;">
+             <div class="imgs-card">
+                <img src="{{category.image.url}}" class="card-img-top" alt="...">
+             </div>    
              <div class="card-body">
                <h5><a class="card-title text-decoration-none">{{category.category_name}}</a></h5>
                <p class="card-text">{{category.category_info}}</p>                              

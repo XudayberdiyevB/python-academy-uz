@@ -6,7 +6,7 @@
    
 {% block content %}
 
-<div class="container mt-5" style="width:70%">
+<div class="container card-mob mt-5">
     <h3 class="mb-1"><strong>{{problem.sequence_number}}. {{problem.name}}</strong></h3>
     <div class="extrainfo">
         <span class="badge bg-success">{{problem.difficulty}}</span>
@@ -40,14 +40,14 @@
 <div class="container mt-3">
 
   {% if request.user.is_authenticated %}
-    <table class="table table-hover" style="width: 800px">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">№</th>
           <th scope="col">Masala nomi</th>
           <th scope="col">Natija</th>
           <th scope="col">Til</th>
-          <th scope="col">Vaqti</th>
+          <th class="un-mob" scope="col">Vaqti</th>
           <th scope="col">Xatolik</th>
         </tr>
       </thead>
@@ -67,7 +67,7 @@
             {% endif %}
           </td>
           <td>Python3</td>
-          <td>{{result.send_answer_date}}</td>
+          <td class="un-mob">{{result.send_answer_date}}</td>
           <td>{% if result.is_correct %}
                 <b style="color: green">xato yo'q</b>
               {% else %}

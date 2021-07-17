@@ -14,10 +14,8 @@ class CategoryBlog(models.Model):
     category_info=models.CharField(max_length=200)
     image=models.ImageField(upload_to='category_photo',null=True,blank=True)
 
-
     def __str__(self):
         return self.category_name
-
 
 class BlogModel(models.Model):
     category_blog=models.ForeignKey(CategoryBlog, on_delete=models.CASCADE,related_name='category_blog',verbose_name="Maqola qaysi bo'limga tegishli? ")
@@ -36,9 +34,6 @@ class BlogModel(models.Model):
 
     def __str__(self):
         return str(self.category_blog)+' - '+self.title
-
-
-
 
 class CommentBlogModel(models.Model):
     blog = models.ForeignKey(BlogModel, on_delete=models.CASCADE, related_name='comment_blog')

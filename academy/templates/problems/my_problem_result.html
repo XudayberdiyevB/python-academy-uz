@@ -7,7 +7,7 @@
   {% if request.user.is_authenticated %}
     {% if all_result %}
     <div class="row">
-        <div class="col-8">
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <table class="table table-hover">
               <thead>
                 <tr>
@@ -15,7 +15,7 @@
                   <th scope="col">Masala nomi</th>
                   <th scope="col">Natija</th>
                   <th scope="col">Til</th>
-                  <th scope="col">Vaqti</th>
+                  <th class="un-mob" scope="col">Vaqti</th>
                   <th scope="col">Xatolik</th>
                 </tr>
               </thead>
@@ -35,7 +35,7 @@
                     {% endif %}
                   </td>
                   <td>Python3</td>
-                  <td>{{result.send_answer_date}}</td>
+                  <td class="un-mob">{{result.send_answer_date}}</td>
                   <td>{% if result.is_correct %}
                         <b style="color: green">xato yo'q</b>
                       {% else %}
@@ -70,7 +70,7 @@
               </ul>
             </nav>
         </div>
-        <div class="col-lg-4 col-4">
+        <div class="col-8 col-sm-8 col-md-4 col-lg-4 col-xl-4">
             <div class="sidebar-wrap">
                 <div class="col-12">
                     <div class="card">

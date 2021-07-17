@@ -54,6 +54,7 @@ def blog_write_user(request):
             if request.FILES['image']:
                 blog.image=request.FILES['image']
             blog.save()
+            print(blog)
             return redirect('blogs:blogs')
    
     return render(request,'blogs/blog_write_user.html',{'form':form})

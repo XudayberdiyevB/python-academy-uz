@@ -82,6 +82,7 @@ CKEDITOR_CONFIGS = {
     },
     'blog-config':{
             'toolbar': 'Custom',
+            'width':'auto',
             'toolbar_Custom': [
                 ['Bold', 'Italic', 'Underline', 'Strike'],
                 ['NumberedList', 'BulletedList', 'Checkbox', 'Radio', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],

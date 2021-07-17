@@ -3,15 +3,18 @@
 {% block title %} Blog {% endblock title %}
 
 {% block content %}
-<div class="container mt-3">
+<div class="container card-mob mt-3">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3" id="more">
           {% for i in blogs %}
-            <div class="col mb-4">
-            <div class="card">
-             <img src="{{i.image.url}}" class="card-img-top" alt="..." width="350" height="240">
+            <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+            <div class="card hvr-grow-shadow shadow" onclick="location.href='{% url 'blogs:blog_detail' i.pk %}';" style="cursor: pointer;">
+             <div class="imgs-card">
+              <img src="{{i.image.url}}" class="card-img-top" alt="..." width="350" height="240">
+             </div> 
              <div class="card-body">
                <h5><a class="card-title text-decoration-none">{{i.title}}</a></h5>
-               <p class="card-text">{{i.text|truncatechars:9|safe}}</p>
+               <p class="card-text">{{i.text|truncatechars:80|safe}}</p>
+               <div class="clearfix"></div>
                <a href="{% url 'blogs:blog_detail' i.pk %}" class="btn btn-outline-primary mb-2">O'qish</a>
                <div class="text-muted">
                    <p><i class="fa fa-user" aria-hidden="true"></i> {{i.author}} |
@@ -30,8 +33,6 @@
                         {%endfor%}
                     </small>
                </p>
-
-
              </div>
            </div>
          </div>

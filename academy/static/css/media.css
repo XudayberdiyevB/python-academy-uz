@@ -7,7 +7,33 @@
 }
 
 @media (min-width:1400px) {
-
+    .message-detail{
+        width: 65%;
+        border:none;
+    }
+    .comment-send-icon {
+      width: 30px;
+      position: absolute;
+      top: 12px;
+      right: 1%;
+      z-index: 1;
+      cursor:pointer;
+      display: flex;
+      align-items: center;
+    }
+    .comment-send-icon-reply {
+      width: 30px;
+      position: absolute;
+      top: 10px;
+      right: 20%;
+      z-index: 1;
+      cursor:pointer;
+      display: flex;
+      align-items: center;
+    }
+    .quiz-detail {
+      width: 45%;
+    }
 }
 
 @media (min-width:1200px) and (max-width:1400px) {
@@ -17,6 +43,33 @@
     .footer-social {
         width:40%;
         margin:auto;
+    }
+    .message-detail{
+        width: 65%;
+        border:none;
+    }
+    .comment-send-icon {
+      width: 30px;
+      position: absolute;
+      top: 12px;
+      right: 1%;
+      z-index: 1;
+      cursor:pointer;
+      display: flex;
+      align-items: center;
+    }
+    .comment-send-icon-reply {
+      width: 30px;
+      position: absolute;
+      top: 10px;
+      right: 20%;
+      z-index: 1;
+      cursor:pointer;
+      display: flex;
+      align-items: center;
+    }
+    .quiz-detail {
+      width: 50%;
     }
 }
 
@@ -28,7 +81,199 @@
         width:50%;
         margin:auto;
     }
+    .message-detail{
+        width: 65%;
+        border:none;
+    }
+    .comment-send-icon {
+      width: 30px;
+      position: absolute;
+      top: 12px;
+      right: 1%;
+      z-index: 1;
+      cursor:pointer;
+      display: flex;
+      align-items: center;
+    }
+    .comment-send-icon-reply {
+      width: 30px;
+      position: absolute;
+      top: 10px;
+      right: 20%;
+      z-index: 1;
+      cursor:pointer;
+      display: flex;
+      align-items: center;
+    }
+    .quiz-detail {
+      width: 60%;
+    }
 }
+
+@media (min-width:768px) and (max-width:991px) {
+  .mynav-menu {
+    padding-left:5%;
+    padding-bottom:5%;
+  }
+  .profile-menu {
+    width: 220%!important;
+  }
+  .myprof-menu-logo {
+    margin-left:-12%;
+  }
+  .mydrop-menu {
+    width:40%;
+  }
+  .footer-social {
+    width:60%;
+    margin:auto;
+  }
+  .myprof-menu-logo {
+    margin-left:-40%;
+  }
+  .login-item {
+    width:22%;
+  }
+  .signup-item{
+    width:30%;
+  }
+  .message-detail{
+    width: 70%;
+    border:none;
+  }
+  .comment-send-icon {
+    width: 30px;
+    position: absolute;
+    top: 12px;
+    right: 1%;
+    z-index: 1;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+  }
+  .comment-send-icon-reply {
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    right: 20%;
+    z-index: 1;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+  }
+  .quiz-detail {
+    width: 65%;
+  }
+}
+
+@media (min-width:576px) and (max-width:768px){
+  .loginforma{
+    width: 85%;
+  }
+  .mynav-menu {
+    padding-left:5%;
+    padding-bottom:5%;
+  }
+  .profile-menu {
+    width: 220%!important;
+  }
+  .myprof-menu-logo {
+    margin-left:-12%;
+  }
+  .mydrop-menu {
+    width:55%;
+  }
+  .myprof-menu-logo {
+    margin-left:-40%;
+  }
+  .login-item {
+    width:22%;
+  }
+  .signup-item{
+    width:37%;
+  }
+  .message-detail{
+    width: 80%;
+    border:none;
+  }
+  .comment-send-icon {
+    width: 30px;
+    position: absolute;
+    top: 12px;
+    right: 1%;
+    z-index: 1;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+  }
+  .comment-send-icon-reply {
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    right: 20%;
+    z-index: 1;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media(max-width:576px){
+    .mynav-menu {
+        padding-left:5%;
+        padding-bottom:5%;
+    }
+    .profile-menu {
+        width: 200%!important;
+    }
+    .myprof-menu-logo {
+        margin-left:-12%;
+    }
+    .mydrop-menu {
+        width:60%;
+    }
+    .header {
+        padding-left:7%;
+    }
+    .message-detail {
+        width: 85%;
+        border:none;
+    }
+    .card-mob {
+        width:92%;
+        margin:auto;
+    }
+    .login-item {
+        width:22%;
+    }
+    .signup-item{
+        width:41%;
+    }
+    .comment-send-icon {
+      width: 30px;
+      position: absolute;
+      top: 12px;
+      right: 1%;
+      z-index: 1;
+      cursor:pointer;
+      display: flex;
+      align-items: center;
+    }
+    .comment-send-icon-reply {
+      width: 30px;
+      position: absolute;
+      top: 10px;
+      right: 20%;
+      z-index: 1;
+      cursor:pointer;
+      display: flex;
+      align-items: center;
+    }
+    .un-mob {
+      display: none;
+    }
+}
+
 /* profile menu */
 @media (min-width:992px) and (max-width:1020px) {
     .profile-menu {
@@ -62,74 +307,37 @@
 }
 /* profile menu end */
 
-@media (min-width:768px) and (max-width:991px) {
-  .mynav-menu {
-    padding-left:5%;
-    padding-bottom:5%;
-  }
-  .profile-menu {
-    width: 220%!important;
-  }
-  .myprof-menu-logo {
-    margin-left:-12%;
-  }
-  .mydrop-menu {
-    width:40%;
-  }
-  .footer-social {
-        width:60%;
-        margin:auto;
-  }
-  .myprof-menu-logo {
-        margin-left:-40%;
-  }
-}
-
-@media (min-width:576px) and (max-width:768px){
-  .container.loginforma{
-    width: 85%;
-  }
-  .mynav-menu {
-    padding-left:5%;
-    padding-bottom:5%;
-  }
-  .profile-menu {
-    width: 220%!important;
-  }
-  .myprof-menu-logo {
-    margin-left:-12%;
-  }
-  .mydrop-menu {
-    width:55%;
-  }
-  .myprof-menu-logo {
-        margin-left:-40%;
-  }
-}
-
-@media(max-width:576px){
-    .mynav-menu {
-        padding-left:5%;
-        padding-bottom:5%;
+/* login signup */
+@media(max-width:400px){
+    .login-item {
+        width:28%;
     }
-    .profile-menu {
-        width: 200%!important;
-    }
-    .myprof-menu-logo {
-        margin-left:-12%;
-    }
-    .mydrop-menu {
-        width:60%;
-    }
-    .header {
-        padding-left:7%;
-    }
-    .card-detail {
-        width: 95%;
-        border:none;
-    }
-    .card-mob {
-        width:92%;
-        margin:auto;
+    .signup-item{
+        width:50%;
     }
 }
+@media(min-width:470px) and (max-width:520px){
+    .login-item {
+        width:22%;
+    }
+    .signup-item{
+        width:38%;
+    }
+}
+@media(min-width:520px) and (max-width:576px){
+    .login-item {
+        width:22%;
+    }
+    .signup-item{
+        width:36%;
+    }
+}
+@media(width:768px){
+    .login-item {
+        width:22%;
+    }
+    .signup-item{
+        width:30%;
+    }
+}
+/* end login signup */

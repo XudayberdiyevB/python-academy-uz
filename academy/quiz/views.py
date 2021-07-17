@@ -35,7 +35,7 @@ def category_quiz_filter(request,slug):
     categ=Category.objects.get(category=slug)
     quizs=Quiz.objects.filter(category=categ)
 
-    return render(request,'quiz/quiz_list.html',{'quizs':quizs})
+    return render(request,'quiz/quiz_list.html',{'quizs':quizs,'categ':categ})
 
 # class QuizListView(ListView):
 #     model = Quiz

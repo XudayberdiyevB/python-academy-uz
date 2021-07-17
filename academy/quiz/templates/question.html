@@ -7,7 +7,7 @@
 {% block description %} {{ quiz.title }} - {{ quiz.description }} {% endblock %}
 
 {% block content %}
-<div class="container" style="width:40%">
+<div class="container card-mob quiz-detail">
 {% if previous.answers %}
 
   <p class="muted"><small>{% trans "The previous question" %}:</small></p>
@@ -67,25 +67,20 @@
   <strong> <a href="{% url 'category_quiz_filter' slug=quiz.category %}">{{ quiz.category }}</a> / </strong>
   <strong> <a href="{% url 'quiz_question' pk=quiz.id %}">{{ quiz.title }}</a></strong>
 </p>
+<hr>
 
 <p class="lead">{{ question.content|safe }}</p>
-
 {% if question.figure %}
     <img src="{{ question.figure.url }}" alt="{{ question.content }}" width="300" height="200"/>
 {% endif %}
-
 <form action="" method="POST" class="mt-3" >{% csrf_token %}
   <input type='hidden' name="question_id" value="{{ question.id }}">
-  
   <ul class="list-group">
 	{% for answer in form.answers %}
-      
 	  <li class="list-group-item">
          {{answer|safe}}
 	  </li>
-      
 	{% endfor %}
-
   </ul>
   <input type="submit" value='{% trans "Yuborish" %}' class="btn btn-large btn-block btn-primary mt-3">
 </form>

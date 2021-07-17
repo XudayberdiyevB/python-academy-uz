@@ -82,7 +82,7 @@ def support(request):
     if request.user.is_authenticated:
         usermsg = AdmingaXabar.objects.filter(user=request.user)
         adminmsg = UsergaJavob.objects.filter(send_to=request.user)
-    if request.method=='POST' and 'supportchat' in request.method:
+    if request.method=='POST' and 'supportchat' in request.method and request.POST!=None:
         msg=request.POST.get['supportchat']
         u=AdmingaXabar(user=request.user,text=msg)
         u.save()

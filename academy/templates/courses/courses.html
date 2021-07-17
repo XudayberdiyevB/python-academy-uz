@@ -4,15 +4,17 @@
 
 {% block content %}
 
-<div class="container mt-3">        
+<div class="container card-mob mt-3">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
         {% for course in courses %}
         {% if not course %}
         <p>empty</p>
         {% else %} 
-        <div class="col mb-4">
-            <div class="card shadow">
-             <img src="{{course.image.url}}" class="card-img-top" alt="...">
+        <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+            <div class="card shadow hvr-grow-shadow" onclick="location.href='{% url 'courses:course_list' pk=course.pk %}';" style="cursor: pointer;">
+             <div class="imgs-card">
+                <img src="{{course.image.url}}" class="card-img-top" alt="...">
+             </div>
              <div class="card-body">
                <h5><a class="card-title text-decoration-none">{{course.course_name}}</a></h5>
                <p class="card-text">{{course.course_info}}</p>                              

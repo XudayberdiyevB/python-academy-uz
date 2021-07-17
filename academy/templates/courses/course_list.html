@@ -5,17 +5,19 @@
 {% block content %}
 
 <!-- section -->
-<div class="container mt-4">        
+<div class="container card-mob mt-4">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
       {% if not course_list %}
       <p>empty</p>
       {% else %}
         {% for i in course_list %}
-        <div class="col mb-4">
-            <div class="card shadow">
-             <img src="{{i.image.url}}" class="card-img-top" alt="...">
+        <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+            <div class="card shadow hvr-grow-shadow" onclick="location.href='{% url 'courses:course_detail' i.pk %}';" style="cursor: pointer;">
+             <div class="imgs-card">
+               <img src="{{i.image.url}}" class="card-img-top" alt="...">
+             </div>
              <div class="card-body">
-               <h5><a  style="text-decoration:none" class="card-title">{{i.kurs_name}}</a></h5>
+               <h5><a style="text-decoration:none" class="card-title">{{i.kurs_name}}</a></h5>
                <p class="card-text">{{i.kurs_info}}</p>
                <a href="{% url 'courses:course_detail' i.pk %}" class="btn btn-outline-primary mb-2">Boshlash</a>
                <p class="card-text"><small class="text-muted"><a class="text-decoration-none" href="#"><i class="fas fa-user"></i> {{i.author_name}} </a> | {{i.count_of_videos}} ta Video | <i class="far fa-clock"> {{ i.hour_of_course }} soat {{ i.minut_of_course }} minut</i></small></p>
