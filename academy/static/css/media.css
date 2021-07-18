@@ -272,6 +272,11 @@
     .un-mob {
       display: none;
     }
+    .loginforma {
+      width: 75%;
+      margin-top: 21%;
+      padding: 5px;
+    }
 }
 
 /* profile menu */

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import homepage, team, tag_filter, card_detail, faqs, addfaq, support
+from .views import homepage, team, tag_filter, card_detail, faqs, addfaq
 
 app_name='home'
 urlpatterns = [
@@ -8,6 +8,5 @@ urlpatterns = [
     path('team/', team, name="team"),
     path('filter/<str:name>/',tag_filter,name='filter'),
     path('faqs/', faqs, name='faqs'),
-    path('faqs-add/', addfaq, name='add_faq'),
-    path('', support, name='support')
+    path('faqs-add/', addfaq, name='add_faq')
 ]

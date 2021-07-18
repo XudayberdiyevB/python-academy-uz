@@ -23,7 +23,7 @@
               {% for result in all_result %}
                 <tr>
                   <td >{{forloop.counter}}</td>
-                  <td><a href="{% url 'problems:detail' result.pk %}" class="text-primary">{{result.problem.name}}</td></a>
+                  <td><a href="{% url 'problems:answer_detail' result.pk %}" class="text-primary">{{result.problem.name}}</td></a>
                   <td>
                     {% if result.is_correct %}
                      <span class="badge bg-success">To'g'ri</span>

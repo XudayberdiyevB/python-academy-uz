@@ -137,7 +137,7 @@
 <div class="home_rows">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-5">
         {% for quiz in quizes %}
-        <div class="col mb-4" onclick="location.href='{% url 'quiz_question' pk=quiz.id %}"';" style="cursor: pointer;">
+        <div class="col col-md-6 col-sm-6 col-lg-4 col-xl-4 mb-4" onclick="location.href='{% url 'quiz_question' pk=quiz.id %}"';" style="cursor: pointer;">
             <div class="card shadow hvr-grow-shadow">
 <!--             <img src="" class="card-img-top" alt="...">-->
              <div class="card-body">

@@ -11,6 +11,7 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from problems.models import UserRatingSystem,ProblemModel,ProblemAnswerModelUser
 from blogs.models import BlogModel
 from quiz.models import Progress
+from home.models import AdmingaXabar, UsergaJavob
 
 def register(request):
     if request.method=='POST':
@@ -65,7 +66,7 @@ def profile(request,user):
         u_form = UserUpdateForm(instance=filter_user)
         p_form = ProfileUpdateForm(instance=filter_user)
     my_blogs = BlogModel.objects.filter(author=filter_user)
-    exam_results = Progress.objects.filter(user=filter_user)[0]
+    # exam_results = Progress.objects.filter(user=filter_user)[0]
     context = {
         'u_form': u_form,
         'p_form': p_form,
@@ -83,3 +84,20 @@ def all_users(request):
         filter_users=User.objects.filter(username__icontains=text)
         return render(request,'account/all_users.html',{'all_users':filter_users})
     return render(request,'account/all_users.html',{'all_users':al_users})
+
+def support(request):
+    usermsg=None
+    adminmsg=None
+    if request.user.is_authenticated:
+        usermsg = AdmingaXabar.objects.filter(user=request.user)
+        adminmsg = UsergaJavob.objects.filter(send_to=request.user)
+    if request.method=='POST' and 'supportchat' in request.method and request.POST!=None:
+        msg=request.POST.get['supportchat']
+        u=AdmingaXabar(user=request.user,text=msg)
+        u.save()
+        return redirect('account:support')
+    context = {
+        'usermsg':usermsg,
+        'adminmsg':adminmsg
+    }
+    return render(request, 'account/support.html', context)

@@ -92,7 +92,7 @@
 													 Ko'proq
 												</a>
 												<ul class="dropdown-menu mydrop-menu" aria-labelledby="navbarDropdown">
-														<li><a class="dropdown-item mydrop-item" href="{% url 'home:faqs' %}" ><i class="fas fa-question"></i> Savol-Javoblar</a></li>
+														<li><a class="dropdown-item mydrop-item" href="{% url 'home:faqs' %}" ><i class="fas fa-question"></i> FAQs</a></li>
 														<li><a class="dropdown-item mydrop-item" href="{% url 'home:team' %}" ><i class="fas fa-users"></i> Bizning jamoa</a></li>
 												</ul>
 											</li>
@@ -114,7 +114,7 @@
 													<li><a class="dropdown-item mydrop-item" href="{% url 'blogs:blog_own_user' %}" ><i class="fas fa-money-check"></i> Mening maqolalarim</a></li>
 													<li><a class="dropdown-item mydrop-item" href="{% url 'quiz_progress' %}" ><i class="fas fa-poll-h"></i> Test | natijalarim</a></li>
 													<li><a class="dropdown-item mydrop-item" href="{% url 'problems:my_result' %}" ><i class="fas fa-poll-h"></i> Masala | natijalarim</a></li>
-													<li><a class="dropdown-item mydrop-item" href="" ><i class="fas fa-comment-dots"></i> Sizga xabar bor</a></li>
+													<li><a class="dropdown-item mydrop-item" href="{% url 'account:support' %}" ><i class="fas fa-comment-dots"></i> Savollar uchun</a></li>
 													<li><hr class="dropdown-divider"></li>
 													<li><a class="dropdown-item mydrop-item" href="{% url 'account:logout' %}" >Chiqish <i class="fas fa-sign-out-alt"></i></a></li>
 												</ul>
@@ -163,7 +163,7 @@
 		{% endblock content%}
 
 <!-- operator form start -->
-{% if request.user.is_authenticated %}
+<!-- {% if request.user.is_authenticated %}
 <input type="checkbox" id="check"> <label class="chat-btn-sp" for="check"> <i class="far fa-comment-dots comment" style="margin-top:60%"></i> <i class="fa fa-close close"></i> </label>
 <div class="wrapper">
 		<div class="chatheader">
@@ -208,9 +208,8 @@
 						</div>
 				</div>
 				{% endif %}
-
 				<div class="form-floating mt-3">
-					<form method="POST"">
+					<form method="POST">
 							 {% csrf_token %}
 								<div class="comment-input">
 										<input type="text" placeholder="Xabarni kiritish..." name='supportchat' id="supportchat" class="comment-inputype">
@@ -223,8 +222,9 @@
 				</div>
 		</div>
 </div>
-{% endif %}
+{% endif %} -->
 
+<div class="clearfix"></div>
 	<!-- Footer qismi -->
 <hr style="margin-top: 100px;">
 <footer class="bg-footer text-black text-center text-lg-start bg1-dark" >

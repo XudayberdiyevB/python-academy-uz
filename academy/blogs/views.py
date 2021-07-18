@@ -58,6 +58,7 @@ def blog_write_user(request):
             return redirect('blogs:blogs')
    
     return render(request,'blogs/blog_write_user.html',{'form':form})
+
 from django.http import HttpResponse
 def blog_detail(request, pk):
     most_blogs=BlogModel.objects.filter(is_publish=True).order_by('-count_of_view')

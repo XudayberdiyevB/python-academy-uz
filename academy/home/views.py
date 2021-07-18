@@ -75,21 +75,3 @@ def addfaq(request):
             faq.save()
             return redirect('home:faqs')
     return render(request, 'home/faqs_add.html', {'form':form})
-
-def support(request):
-    usermsg=None
-    adminmsg=None
-    if request.user.is_authenticated:
-        usermsg = AdmingaXabar.objects.filter(user=request.user)
-        adminmsg = UsergaJavob.objects.filter(send_to=request.user)
-    if request.method=='POST' and 'supportchat' in request.method and request.POST!=None:
-        msg=request.POST.get['supportchat']
-        u=AdmingaXabar(user=request.user,text=msg)
-        u.save()
-        print(u)
-        print(request.POST)
-    context = {
-        'usermsg':usermsg,
-        'adminmsg':adminmsg
-    }
-    return render(request, 'base.html', context)
