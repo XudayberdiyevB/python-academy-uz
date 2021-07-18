@@ -8,7 +8,7 @@ def problems(request):
 
 	if request.method=='POST' and 'search' in request.POST:
 		s=request.POST['search']
-		exercises=ProblemModel.objects.filter(content__icontains=s)
+		exercises=ProblemModel.objects.filter(name__icontains=s)
 		context = {
 			'exercises':exercises
 		}

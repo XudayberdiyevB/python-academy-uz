@@ -42,7 +42,7 @@ def blog_own_user(request):
 
 def blog_write_user(request): 
     form=BlogUserModelForm() 
-    if request.method=='POST' 'blogwrite' in request.POST:
+    if request.method=='POST':
         form=BlogUserModelForm(request.POST,request.FILES)
         if form.is_valid():
             blog=form.save(commit=False)
