@@ -37,7 +37,7 @@
 	<!-- END -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-<body style="margin-top:95px;">
+<body>
 		<!-- HEADER QISMI -->
 		<header class="header-color">
 				<div class="container" style="padding-top: 5px;">
@@ -224,6 +224,7 @@
 </div>
 {% endif %} -->
 
+<a id="back-top-button"></a>
 <div class="clearfix"></div>
 	<!-- Footer qismi -->
 <hr style="margin-top: 100px;">
@@ -234,31 +235,29 @@
 		<div class="row">
 			<!--Grid column-->
 			<div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-				<h5 class="text-uppercase">Footer Content</h5>
-				<p>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-					molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-					voluptatem veniam, est atque cumque eum delectus sint!
+				<h5 class="text-uppercase footer-c-color">Python Academy Uz</h5>
+				<p class="footer-t-color">
+					Python dasturlash va uning texnologiyalarini <a href="{% url 'home:homepage' %}" style="color: #007BFF;">pythonacademy.uz</a> bilan oson o'rganing!	Ushbu sayt yordamida o'zingizga kerakli bo'lgan kurslar, maqolalar, masala va testlar orqali bilimlaringizni mustahkamlashingiz mumkin. O'rgangan bilimlaringiz yordamida o'zingiz ham maqolalar yoza olasiz va python bo'yicha vakansiyalarni ham kuzatib borishingiz mumkin. Barchaga omad!!!
 				</p>
 			</div>
 			<!--Grid column-->
 
 			<!--Grid column-->
 			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-				<h5 class="text-uppercase">Links</h5>
+				<h5 class="text-uppercase footer-c-color">Havolalar</h5>
 
-				<ul class="list-unstyled mb-0">
+				<ul class="list-unstyled mb-0 footer-t-color">
 					<li>
-						<a href="#!">Link 1</a>
+						<a href="{% url 'home:faqs' %}">Tez-tez so'raladigan savollar</a>
+					</li>									
+					<li>
+						<a href="{% url 'jobs:jobs' %}">Vakansiyalarni topish</a>
 					</li>
 					<li>
-						<a href="#!">Link 2</a>
-					</li>
+						<a href="{% url 'home:team' %}">Bizning jamoa</a>
+					</li>	
 					<li>
-						<a href="#!">Link 3</a>
-					</li>
-					<li>
-						<a href="#!">Link 4</a>
+						<a href="{% url 'account:support' %}">Yordam</a>
 					</li>
 				</ul>
 			</div>
@@ -266,21 +265,24 @@
 
 			<!--Grid column-->
 			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-				<h5 class="text-uppercase mb-0">Links</h5>
+				<h5 class="text-uppercase footer-c-color">Aloqa</h5>
 
-				<ul class="list-unstyled">
+				<ul class="list-unstyled footer-t-color">
 					<li>
-						<a href="#!">Link 1</a>
+						<span><i class="fas fa-phone-alt"></i> <a href="#!">+998 99 336 70 99</a></span>
 					</li>
 					<li>
-						<a href="#!">Link 2</a>
+						<span><i class="fas fa-phone-alt"></i> <a href="#!">+998 99 332 84 05</a></span>
 					</li>
 					<li>
+						<span><i class="fab fa-telegram-plane"></i> <a href="https://t.me/pythonacademy_uz">@pythonacademy_uz</a></span>
+					</li>
+					<!-- <li>
 						<a href="#!">Link 3</a>
 					</li>
 					<li>
 						<a href="#!">Link 4</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<!--Grid column-->
@@ -292,7 +294,7 @@
 		<!-- Section: CTA -->
 		<section class="p-0 mt-4">
 			<p class="d-flex justify-content-center align-items-center">
-				<span class="me-3">Ro'yxatdan o'tish</span>
+				<span class="me-3 footer-t-color">Ro'yxatdan o'tish</span>
 				<button type="button" class="btn btn-outline-success btn-rounded">
 					Sign up!
 				</button>
@@ -314,9 +316,9 @@
 	<!-- Section: Social media -->
 
 	<!-- Copyright -->
-	<div class="text-center p-3 bg1-dark">
+	<div class="text-center p-3 bg1-dark footer-c-color">
 		© 2021 All rights reserved:
-		<a style="text-decoration: none; color: black;" href="pythonacademy">Python Academy</a>
+		<a style="text-decoration: none;" href="pythonacademy" class="footer-c-color">Python Academy</a>
 	</div>
 	<!-- Copyright -->
 </footer>

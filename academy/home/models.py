@@ -24,8 +24,8 @@ class AdmingaXabar(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     send_date=models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        ordering = ['-id']
+    # class Meta:
+    #     ordering = ['-id']
 
     def __str__(self):
         return str(self.user)+ '-' +self.text
@@ -37,8 +37,8 @@ class UsergaJavob(models.Model):
     send_date=models.DateTimeField(auto_now_add=True)
     is_answer=models.BooleanField(default=True)
 
-    class Meta:
-        ordering = ['-id']
+    # class Meta:
+    #     ordering = ['-id']
 
     def __str__(self):
         return str(self.send_to)+ '-' + self.javob + '-' +str(self.is_answer)

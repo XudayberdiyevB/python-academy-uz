@@ -5,10 +5,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 from .models import CourseModel, CourseListModel, CourseVideoModel, CommentCourse, ReplyCommentCourse
 import pafy
-# Create your views here.
 # all courses
 from home.models import TagModel
-
 
 def courses(request):
     courses = CourseModel.objects.all()

@@ -85,13 +85,14 @@ def all_users(request):
         return render(request,'account/all_users.html',{'all_users':filter_users})
     return render(request,'account/all_users.html',{'all_users':al_users})
 
+@login_required
 def support(request):
     usermsg=None
     adminmsg=None
     if request.user.is_authenticated:
         usermsg = AdmingaXabar.objects.filter(user=request.user)
         adminmsg = UsergaJavob.objects.filter(send_to=request.user)
-    if request.method=='POST' and 'supportchat' in request.method and request.POST!=None:
+    if request.method=='POST' is not None and 'supportchat' in request.method and request.POST!=None:
         msg=request.POST.get['supportchat']
         u=AdmingaXabar(user=request.user,text=msg)
         u.save()

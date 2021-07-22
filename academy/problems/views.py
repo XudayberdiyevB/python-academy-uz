@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 
 def problems(request):
-
 	if request.method=='POST' and 'search' in request.POST:
 		s=request.POST['search']
 		exercises=ProblemModel.objects.filter(name__icontains=s)

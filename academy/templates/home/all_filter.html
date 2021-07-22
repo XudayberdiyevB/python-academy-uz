@@ -7,9 +7,11 @@
 <h3>Maqolalar</h3>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3" id="more">
           {% for i in results_blog %}
-            <div class="col mb-4">
-                <div class="card">
-                 <img src="{{i.image.url}}" class="card-img-top" alt="...">
+            <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+                <div class="card hvr-grow-shadow shadow" onclick="location.href='{% url 'blogs:blog_detail' i.pk %}';" style="cursor: pointer;">
+                <div class="imgs-card">
+                  <img src="{{i.image.url}}" class="card-img-top" alt="...">
+                </div>
                  <div class="card-body">
                    <h5><a class="card-title text-decoration-none">{{i.title}}</a></h5>
                    <p class="card-text">{{i.text|truncatechars:9|safe}}</p>
@@ -44,9 +46,11 @@
 <h3 >Kurslardan</h3>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
 {% for i in results_course %}
-    <div class="col mb-4">
-        <div class="card shadow">
-         <img src="{{i.image.url}}" class="card-img-top" alt="...">
+    <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+        <div class="card hvr-grow-shadow shadow" onclick="location.href='{% url 'courses:course_detail' i.pk %}';" style="cursor: pointer;">
+        <div class="imgs-card">
+          <img src="{{i.image.url}}" class="card-img-top" alt="...">
+        </div>
          <div class="card-body">
            <h5><a  style="text-decoration:none" class="card-title">{{i.kurs_name}}</a></h5>
            <p class="card-text">{{i.kurs_info}}</p>
@@ -74,9 +78,11 @@
     <div class="container mt-3">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3" id="more">
           {% for i in result_home %}
-            <div class="col mb-4">
-            <div class="card">
-             <img src="{{i.image.url}}" class="card-img-top" alt="..." width="355" height="240">
+            <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+            <div class="card hvr-grow-shadow shadow" onclick="location.href='{% url 'home:card_detail' i.pk %}';" style="cursor: pointer;">
+            <div class="imgs-card">
+              <img src="{{i.image.url}}" class="card-img-top" alt="..." width="355" height="240">
+            </div>
              <div class="card-body">
                <h5><a class="card-title text-decoration-none">{{i.title}}</a></h5>
                <p class="card-text">{{i.text|truncatechars:9|safe}}</p>

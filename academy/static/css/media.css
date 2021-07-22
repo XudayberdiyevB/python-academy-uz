@@ -34,6 +34,21 @@
     .quiz-detail {
       width: 45%;
     }
+    .loginforma {
+      width: 55%;
+      margin-top: 16%;
+      padding: 5px;
+    }
+    .container-qa {
+      width: 70%;
+    }
+    .index-alltags {
+      margin-top:19%;
+    }
+    .footer-social {
+        width:40%;
+        margin:auto;
+    }
 }
 
 @media (min-width:1200px) and (max-width:1400px) {
@@ -70,6 +85,14 @@
     }
     .quiz-detail {
       width: 50%;
+    }
+    .container-qa {
+      width: 60%;
+    }
+    .loginforma {
+      width: 30%;
+      margin-top: 8%;
+      padding: 5px;
     }
 }
 
@@ -108,6 +131,11 @@
     .quiz-detail {
       width: 60%;
     }
+    .loginforma {
+      width: 35%;
+      margin-top: 10%;
+      padding: 5px;
+    }
 }
 
 @media (min-width:768px) and (max-width:991px) {
@@ -134,7 +162,7 @@
   .login-item {
     width:22%;
   }
-  .signup-item{
+  .signup-item{login_required
     width:30%;
   }
   .message-detail{
@@ -164,11 +192,19 @@
   .quiz-detail {
     width: 65%;
   }
+  .loginforma {
+    width: 45%;
+    margin-top: 12%;
+    padding: 5px;
+  }
+  
 }
 
 @media (min-width:576px) and (max-width:768px){
-  .loginforma{
-    width: 85%;
+  .loginforma {
+    width: 50%;
+    margin-top: 14%;
+    padding: 5px;
   }
   .mynav-menu {
     padding-left:5%;
@@ -273,7 +309,7 @@
       display: none;
     }
     .loginforma {
-      width: 75%;
+      width: 65%;
       margin-top: 21%;
       padding: 5px;
     }
