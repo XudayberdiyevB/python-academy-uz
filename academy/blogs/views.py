@@ -74,9 +74,10 @@ def blog_detail(request, pk):
                 comment=CommentBlogModel.objects.get(id=request.POST.get('comment_id'))
                 reply_com=ReplyCommentBlogModel(reply_comment=comment,author=request.user,text=request.POST.get('reply_comment'))
                 reply_com.save()
+                return redirect('blogs:blog_detail', pk=pk)
             elif request.POST['comment'] is not None:
                 CommentBlogModel.objects.create(blog=blog,author=request.user,text=request.POST['comment'])
-                return HttpResponse('create')
+                return redirect('blogs:blog_detail',pk=pk)
         return redirect('blogs:blog_detail',pk=pk)
 
     return render(request, 'blogs/blog_detail.html', {'blog':blog,'most_blogs':most_blogs})

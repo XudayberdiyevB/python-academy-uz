@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Job detail {% endblock title %}
+{% block title %} Ish haqida batafsil {% endblock title %}
 
 {% block content %}
 
@@ -44,17 +44,16 @@
                             <p>{{job.description}}</p>
                             <h6 class="mb-3 mt-4">Talab etiladigan bilimlar</h6>
                             <p>{{job.experience}}</p>
-                            <h6 class="mb-3 mt-4">Aloqa</h6>
-                            <p>{% if job.phone_number %}
-                                            <p><i class="fas fa-phone-alt"></i> {{job.phone_number}}</p>
-                                        
-                                        {% endif %}
-                                        {% if job.email %}
-                                            <p><i class="fas fa-at"></i> {{job.email}}</p>
-                                        {% endif %}
-                                        {% if job.telegram_profile %}
-                                        <a href="https://t.me/{{job.telegram_profile}}"><i class="fab fa-telegram"></i> {{job.telegram_profile}}</a>
-                                       {% endif%}</p>
+<!--                            <h6 class="mb-3 mt-4">Aloqa</h6>-->
+<!--                            <p>{% if job.phone_number %}-->
+<!--                            <p><i class="fas fa-phone-alt"></i> {{job.phone_number}}</p>-->
+<!--                            {% endif %}-->
+<!--                            {% if job.email %}-->
+<!--                            <p><i class="fas fa-at"></i> {{job.email}}</p>-->
+<!--                            {% endif %}-->
+<!--                            {% if job.telegram_profile %}-->
+<!--                            <a href="https://t.me/{{job.telegram_profile}}"><i class="fab fa-telegram"></i> {{job.telegram_profile}}</a>-->
+<!--                           {% endif%}</p>-->
                         </div>
                     </div>
                 </div>
@@ -66,14 +65,16 @@
                         <!-- Sidebar (Job Overview) Start -->
                         <div class="sidebar-widget">
                             <div class="inner">
-                                <h6 class="title">Ish haqida</h6>
+                                <h6 class="title d-inline-block">Ma'lumotlar </h6>
+                                <i class="fas fa-info-circle text-muted fa-lg"></i>
+                                <div class="clearfix"></div>
                                 <ul class="job-overview list-unstyled">
                                     <li><strong>E'lon berilgan sana:</strong> {{job.date}}</li>
                                     <li><strong>Ish vaqti:</strong> {{job.job_time}}</li>
-                                    <li><strong>Tajriba:</strong> {{job.experience_time}}</li>                                    
-                                    <li><strong>Ish manzili:</strong> {{job.location}}</li>
                                     <li><strong>Maosh:</strong> {{job.salary}}</li>
-                                    <li><strong>Oxirgi muddat:</strong> {{job.dedline|date:"d-M, Y"}}-yil</li>     
+                                    <li><strong>Tajriba:</strong> {{job.experience_time}}</li>
+                                    <li><strong>Ish manzili:</strong> {{job.location}}</li>
+                                    <li><strong>Oxirgi muddat:</strong> {{job.dedline|date:"d-M, Y"}}-yil</li>
                                 </ul>
                             </div>
                         </div>
@@ -82,7 +83,9 @@
                         <!-- Sidebar (Apply Buttons) Start -->
                         <div class="sidebar-widget">
                             <div class="inner">
-                                Aloqa <i class="fas fa-id-card-alt"></i>
+                                <h6 class="title d-inline-block">Aloqa </h6>
+                                <i class="fas fa-id-card-alt text-muted fa-lg"></i>
+                                <div class="clearfix"></div>
                                 <div class="row m-n2">
                                     <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
                                        {% if job.phone_number %}

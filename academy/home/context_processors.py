@@ -12,7 +12,6 @@ def chatsupport(request):
 		'usermsg':usermsg,
 		'adminmsg':adminmsg
 	}
-	print(context)
 	if key:
 		AdmingaXabar.objects.create(text=key,user=request.user)
 		context['msg']='Xabaringiz yuborildi!'
