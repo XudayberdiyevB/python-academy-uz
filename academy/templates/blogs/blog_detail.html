@@ -112,7 +112,7 @@
                                  {% endfor %}
                                 {% if request.user.is_authenticated %}
                                     <div class="form-floating mt-3">
-                                    <form id='form-reply-comment'>
+                                    <form id='form-reply-comment' method='POST'>
                                         {% csrf_token %}
                                         <div class="comment-input">
                                             <input type="hidden" value="{{i.id}}" name="comment_id">
@@ -154,7 +154,7 @@
     </div>
 <div class="clearfix"></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function getCookie(name) {
     var cookieValue = null;
     if(document.cookie && document.cookie != '') {
@@ -199,7 +199,7 @@ var csrftoken=getCookie('csrfmiddlwaretoken')
         }
         )
     })
-</script>
+</script> -->
 
 <script src="{% static 'js/blogcomments.js' %}"></script>
 <script src="https://use.fontawesome.com/fe459689b4.js"></script>

@@ -20,8 +20,12 @@
                   <br><br>
                   <i>Muallif: {{quiz.author}}</i>
                 </a></p>
-               <a href="{% url 'quiz_question' pk=quiz.id %}" class="btn btn-sm btn-outline-primary mb-2 mt-4">BOSHLASH</a>
-               <p class="card-tags">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'quiz_question' pk=quiz.id %}" class="btn btn-sm btn-outline-primary mb-2 mt-4">BOSHLASH</a>
+                {% else %}
+                    <a href="{% url 'account:login' %}" class='btn btn-danger'>Login</a>
+                {% endif %}
+                    <p class="card-tags">
                  <small class="text-muted">
                  <span class="fa fa-tags"></span>
                  {% for tag in quiz.tag.all %}

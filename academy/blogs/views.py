@@ -66,18 +66,29 @@ def blog_detail(request, pk):
     blog.count_of_view+=1
     blog.count_of_comment=blog.comment_blog.count()
     blog.save()
+    # if request.method == 'POST':
+    #     if request.POST.get('comment','')=='':
+    #         redirect('blogs:blog_detail',pk=pk)
+    #     else:
+    #         if request.POST.get('comment_id') is not None:
+    #             comment=CommentBlogModel.objects.get(id=request.POST.get('comment_id'))
+    #             reply_com=ReplyCommentBlogModel(reply_comment=comment,author=request.user,text=request.POST.get('reply_comment'))
+    #             reply_com.save()
+    #             return redirect('blogs:blog_detail', pk=pk)
+    #         elif request.POST['comment'] is not None:
+    #             CommentBlogModel.objects.create(blog=blog,author=request.user,text=request.POST['comment'])
+    #             return redirect('blogs:blog_detail',pk=pk)
+    
     if request.method == 'POST':
-        if request.POST['comment']=='':
-            redirect('blogs:blog_detail',pk=pk)
+        if request.POST.get('comment')=='':
+            redirect('courses:course_detail', pk=pk)
         else:
             if request.POST.get('comment_id') is not None:
                 comment=CommentBlogModel.objects.get(id=request.POST.get('comment_id'))
                 reply_com=ReplyCommentBlogModel(reply_comment=comment,author=request.user,text=request.POST.get('reply_comment'))
                 reply_com.save()
-                return redirect('blogs:blog_detail', pk=pk)
-            elif request.POST['comment'] is not None:
-                CommentBlogModel.objects.create(blog=blog,author=request.user,text=request.POST['comment'])
-                return redirect('blogs:blog_detail',pk=pk)
+            elif request.POST.get('comment') is not None:
+                CommentBlogModel.objects.create(blog=blog,author=request.user,text=request.POST['comment'])   
         return redirect('blogs:blog_detail',pk=pk)
 
     return render(request, 'blogs/blog_detail.html', {'blog':blog,'most_blogs':most_blogs})
