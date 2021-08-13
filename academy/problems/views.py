@@ -30,16 +30,16 @@ def problems(request):
 	context = {
 		'exercises':exercises
 	}
+
 	return render(request, 'problems/problems.html', context)
 
+@login_required
 def problem_detail(request,pk):
 	problem = ProblemModel.objects.get(id=pk)
 	all_result=None
 	if request.user.is_authenticated:
-
 		all_result=ProblemAnswerModelUser.objects.filter(user=request.user,problem=problem)
 		paginator = Paginator(all_result, 10)
-
 		page = request.GET.get('page')
 		try:
 			all_result = paginator.page(page)

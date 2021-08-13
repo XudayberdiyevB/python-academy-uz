@@ -9,5 +9,4 @@ urlpatterns = [
     path('own_blogs/',blog_own_user,name='blog_own_user'),
     path('own_blogs/<int:pk>/',blog_own_user_detail,name='blog_own_user_detail'),
     path('category-blog/<int:pk>/',blogs_category,name='category_blog')
-
 ]
